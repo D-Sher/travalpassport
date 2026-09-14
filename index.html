@@ -20,17 +20,26 @@ body {
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   padding: 16px;
 }
 
 .container {
   width: min(100%, 480px);
+  position: relative;
 }
 
-/* 頂部英雄區：深色奢華微光感 */
+/* 視點切換 */
+.page {
+  display: none;
+}
+.page.active {
+  display: block;
+}
+
+/* 頂部英雄區 */
 .hero {
-  background: linear-gradient(145deg, #1e293b, #0f172a);
+  background: linear-gradient(145deg, rgba(30,41,59,0.9), rgba(15,23,42,0.95)), url('banner.jpg') center/cover;
   color: #ffffff;
   border-radius: 24px;
   padding: 26px 20px;
@@ -40,31 +49,13 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.hero .flags {
-  font-size: 38px;
-  letter-spacing: 4px;
-  line-height: 1.2;
-}
-
-.hero .title {
-  font-size: 24px;
-  font-weight: 800;
-  letter-spacing: 0.05em;
-  margin: 8px 0 4px;
-  color: #f8fafc;
-}
-
-.hero .route {
-  font-size: 15px;
-  color: #94a3b8;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-}
-
+.hero .flags { font-size: 38px; line-height: 1.2; }
+.hero .title { font-size: 24px; font-weight: 800; margin: 8px 0 4px; color: #f8fafc; }
+.hero .route { font-size: 15px; color: #94a3b8; font-weight: 600; }
 .hero .date-badge {
   display: inline-block;
   margin-top: 14px;
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.15);
   border: 1px solid rgba(255, 255, 255, 0.2);
   padding: 6px 18px;
   border-radius: 30px;
@@ -73,7 +64,7 @@ body {
   color: #38bdf8;
 }
 
-/* 九宮格選單 (2欄 × 3列 正方形風格) */
+/* 九宮格選單 */
 .grid-menu {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -84,7 +75,7 @@ body {
   background: #ffffff;
   border: 2px solid #e2e8f0;
   border-radius: 22px;
-  aspect-ratio: 1 / 1; /* 保持正方形九宮格感 */
+  aspect-ratio: 1 / 1;
   padding: 16px;
   display: flex;
   flex-direction: column;
@@ -99,35 +90,96 @@ body {
 .grid-card:active {
   transform: scale(0.95);
   background-color: #f8fafc;
-  border-color: #cbd5e1;
 }
 
-.grid-card .icon {
-  font-size: 44px;
-  margin-bottom: 8px;
-  line-height: 1;
+.grid-card .icon { font-size: 44px; margin-bottom: 8px; }
+.grid-card .card-title { font-size: 19px; font-weight: 800; color: #0f172a; }
+.grid-card .card-subtitle { font-size: 13px; color: #64748b; font-weight: 600; margin-top: 4px; }
+
+.grid-card.danger { background: #fff5f5; border-color: #fca5a5; }
+.grid-card.danger .card-title { color: #dc2626; }
+
+/* 內頁通用樣式 */
+.subpage-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-.grid-card .card-title {
-  font-size: 19px;
+.btn-back {
+  background: #0f172a;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 14px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.subpage-title {
+  font-size: 22px;
   font-weight: 800;
-  color: #0f172a;
+  margin-left: 16px;
 }
 
-.grid-card .card-subtitle {
-  font-size: 13px;
-  color: #64748b;
-  font-weight: 600;
-  margin-top: 4px;
+.content-card {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 16px;
+  border: 2px solid #e2e8f0;
 }
 
-/* 緊急按鈕獨立顯眼色調 */
-.grid-card.danger {
-  background: #fff5f5;
-  border-color: #fca5a5;
+.content-card h3 {
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 10px;
+  color: #1e293b;
 }
-.grid-card.danger .card-title {
-  color: #dc2626;
+
+.content-card p, .content-card li {
+  font-size: 17px;
+  line-height: 1.6;
+  color: #334155;
+  font-weight: 500;
+}
+
+.img-placeholder {
+  width: 100%;
+  border-radius: 14px;
+  margin-top: 12px;
+  border: 1px solid #cbd5e1;
+  object-fit: cover;
+  background-color: #e2e8f0;
+  min-height: 160px;
+}
+
+/* 15天行程列表 */
+.day-item {
+  border-left: 4px solid #2563eb;
+  padding-left: 12px;
+  margin-bottom: 16px;
+}
+.day-title { font-size: 18px; font-weight: 800; color: #2563eb; }
+.day-desc { font-size: 16px; color: #475569; margin-top: 2px; }
+
+/* 緊急求助按鈕 */
+.btn-emergency {
+  display: block;
+  width: 100%;
+  background: #dc2626;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-size: 22px;
+  font-weight: 800;
+  padding: 18px;
+  border-radius: 16px;
+  margin-top: 10px;
 }
 </style>
 </head>
@@ -136,69 +188,192 @@ body {
 
 <div class="container">
 
-  <!-- 頂部資訊區 -->
-  <section class="hero">
-    <div class="flags">🇮🇹 🇫🇷</div>
-    <div class="title">2026 歐洲之旅</div>
-    <div class="route">米蘭 → 熱那亞 → 尼斯</div>
-    <div class="date-badge">TODAY · 10 月 16 日</div>
-  </section>
+  <!-- 首頁 (主視圖) -->
+  <div id="page-home" class="page active">
+    <section class="hero">
+      <div class="flags">🇮🇹 🇫🇷</div>
+      <div class="title">2026 歐洲之旅</div>
+      <div class="route">米蘭 → 熱那亞 → 尼斯</div>
+      <div class="date-badge">TODAY · 10 月 16 日</div>
+    </section>
 
-  <!-- 九宮格主要選單 -->
-  <main class="grid-menu">
+    <main class="grid-menu">
+      <div class="grid-card" onclick="showPage('tickets')">
+        <div class="icon">🎫</div>
+        <div class="card-title">車票門票</div>
+        <div class="card-subtitle">火車票 · QR Code</div>
+      </div>
+      <div class="grid-card" onclick="showPage('hotels')">
+        <div class="icon">🏨</div>
+        <div class="card-title">飯店住宿</div>
+        <div class="card-subtitle">確認單 · 地址</div>
+      </div>
+      <div class="grid-card" onclick="showPage('days')">
+        <div class="icon">📅</div>
+        <div class="card-title">15天行程</div>
+        <div class="card-subtitle">每日景點規劃</div>
+      </div>
+      <div class="grid-card" onclick="showPage('map')">
+        <div class="icon">🗺️</div>
+        <div class="card-title">旅遊地圖</div>
+        <div class="card-subtitle">Google Maps</div>
+      </div>
+      <div class="grid-card" onclick="showPage('guide')">
+        <div class="icon">📖</div>
+        <div class="card-title">旅行須知</div>
+        <div class="card-subtitle">搭車 · 行李提醒</div>
+      </div>
+      <div class="grid-card danger" onclick="showPage('emergency')">
+        <div class="icon">🆘</div>
+        <div class="card-title">緊急求助</div>
+        <div class="card-subtitle">救援電話 112</div>
+      </div>
+    </main>
+  </div>
 
-    <div class="grid-card" onclick="openPage('tickets')">
-      <div class="icon">🎫</div>
-      <div class="card-title">車票門票</div>
-      <div class="card-subtitle">火車票 · QR Code</div>
+  <!-- 分頁：車票門票 -->
+  <div id="page-tickets" class="page">
+    <div class="subpage-header">
+      <button class="btn-back" onclick="showPage('home')">← 返回</button>
+      <span class="subpage-title">🎫 車票與門票</span>
     </div>
-
-    <div class="grid-card" onclick="openPage('hotels')">
-      <div class="icon">🏨</div>
-      <div class="card-title">飯店住宿</div>
-      <div class="card-subtitle">確認單 · 地址</div>
+    <div class="content-card">
+      <h3>義大利國鐵 Trenitalia</h3>
+      <p>米蘭 Centrale → 熱那亞 Piazza Principe</p>
+      <p><b>車次：</b>IC 665 | <b>座位：</b>Car 3, Seat 45</p>
+      <!-- 圖片路徑設為根目錄的 ticket-train.jpg -->
+      <img src="ticket-train.jpg" alt="火車票圖檔 (請放 ticket-train.jpg 到根目錄)" class="img-placeholder" onerror="this.alt='⚠️ 請將車票圖檔命名為 ticket-train.jpg 放在網頁同目錄下'">
     </div>
+  </div>
 
-    <div class="grid-card" onclick="openPage('days')">
-      <div class="icon">📅</div>
-      <div class="card-title">15天行程</div>
-      <div class="card-subtitle">每日景點規劃</div>
+  <!-- 分頁：飯店住宿 -->
+  <div id="page-hotels" class="page">
+    <div class="subpage-header">
+      <button class="btn-back" onclick="showPage('home')">← 返回</button>
+      <span class="subpage-title">🏨 飯店住宿</span>
     </div>
-
-    <div class="grid-card" onclick="openPage('map')">
-      <div class="icon">🗺️</div>
-      <div class="card-title">旅遊地圖</div>
-      <div class="card-subtitle">Google Maps</div>
+    <div class="content-card">
+      <h3>米蘭飯店 Milano Hotel</h3>
+      <p>📍 地址：Via Rossi 12, Milano</p>
+      <p>📞 電話：+39 02 1234567</p>
+      <img src="hotel-milano.jpg" alt="米蘭飯店圖檔" class="img-placeholder" onerror="this.alt='⚠️ 請放 hotel-milano.jpg'">
     </div>
-
-    <div class="grid-card" onclick="openPage('guide')">
-      <div class="icon">📖</div>
-      <div class="card-title">旅行須知</div>
-      <div class="card-subtitle">搭車 · 行李提醒</div>
+    <div class="content-card">
+      <h3>熱那亞飯店 Genova Hotel</h3>
+      <p>📍 地址：Via Roma 5, Genova</p>
+      <img src="hotel-genova.jpg" alt="熱那亞飯店圖檔" class="img-placeholder" onerror="this.alt='⚠️ 請放 hotel-genova.jpg'">
     </div>
-
-    <div class="grid-card danger" onclick="openPage('emergency')">
-      <div class="icon">🆘</div>
-      <div class="card-title">緊急求助</div>
-      <div class="card-subtitle">救援電話 112</div>
+    <div class="content-card">
+      <h3>尼斯飯店 Nice Hotel</h3>
+      <p>📍 地址： Promenade des Anglais, Nice</p>
+      <img src="hotel-nice.jpg" alt="尼斯飯店圖檔" class="img-placeholder" onerror="this.alt='⚠️ 請放 hotel-nice.jpg'">
     </div>
+  </div>
 
-  </main>
+  <!-- 分頁：15天行程 -->
+  <div id="page-days" class="page">
+    <div class="subpage-header">
+      <button class="btn-back" onclick="showPage('home')">← 返回</button>
+      <span class="subpage-title">📅 15 天行程</span>
+    </div>
+    <div class="content-card">
+      <div class="day-item">
+        <div class="day-title">Day 1 - 10/16 (五)</div>
+        <div class="day-desc">抵達米蘭機場 → 入住飯店 → 米蘭大教堂散步</div>
+      </div>
+      <div class="day-item">
+        <div class="day-title">Day 2 - 10/17 (六)</div>
+        <div class="day-desc">米蘭市區巡禮 → 艾曼紐二世拱廊 → 觀賞最後的晚餐</div>
+      </div>
+      <div class="day-item">
+        <div class="day-title">Day 3 - 10/18 (日)</div>
+        <div class="day-desc">搭火車前往 Bergamo 貝爾加莫一日遊</div>
+      </div>
+      <div class="day-item">
+        <div class="day-title">Day 4 - 10/19 (一)</div>
+        <div class="day-desc">科摩湖 Varenna 湖畔漫步</div>
+      </div>
+      <div class="day-item">
+        <div class="day-title">Day 5 - 10/20 (二)</div>
+        <div class="day-desc">米蘭搭車前往熱那亞 → 港區導覽</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 分頁：地圖 -->
+  <div id="page-map" class="page">
+    <div class="subpage-header">
+      <button class="btn-back" onclick="showPage('home')">← 返回</button>
+      <span class="subpage-title">🗺️ 旅遊地圖</span>
+    </div>
+    <div class="content-card">
+      <h3>離線路線地圖</h3>
+      <p>請參考下方路線與車站位置：</p>
+      <img src="route-map.jpg" alt="全景地圖" class="img-placeholder" onerror="this.alt='⚠️ 請放 route-map.jpg'">
+    </div>
+    <div class="content-card">
+      <h3>線上地圖連結</h3>
+      <p>點擊可開啟手機 Google Maps 導航</p>
+      <a href="https://maps.google.com" target="_blank" style="display:inline-block; margin-top:10px; color:#2563eb; font-weight:700; font-size:18px;">開啟 Google 地圖 ↗</a>
+    </div>
+  </div>
+
+  <!-- 分頁：旅行須知 -->
+  <div id="page-guide" class="page">
+    <div class="subpage-header">
+      <button class="btn-back" onclick="showPage('home')">← 返回</button>
+      <span class="subpage-title">📖 旅行須知</span>
+    </div>
+    <div class="content-card">
+      <h3>⚠️ 防竊與安全提示</h3>
+      <ul style="padding-left: 20px;">
+        <li>護照與重要現金請隨身放入隱形腰包。</li>
+        <li>搭乘地鐵與火車時，包包請背在胸前。</li>
+        <li>不搭理任何路人遞過來的手環或花朵。</li>
+      </ul>
+    </div>
+    <div class="content-card">
+      <h3>🚆 火車搭乘提醒</h3>
+      <ul style="padding-left: 20px;">
+        <li>實體車票上車前必須去黃色/綠色驗票機打卡（Validating）。</li>
+        <li>電子票 QR Code 保留在手機相簿備查。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 分頁：緊急求助 -->
+  <div id="page-emergency" class="page">
+    <div class="subpage-header">
+      <button class="btn-back" onclick="showPage('home')">← 返回</button>
+      <span class="subpage-title">🆘 緊急求助</span>
+    </div>
+    <div class="content-card" style="border-color: #fca5a5;">
+      <h3 style="color: #dc2626;">歐洲通用緊急求助電話</h3>
+      <p>遇到緊急事故，手機直接撥打：</p>
+      <a href="tel:112" class="btn-emergency">📞 撥打 112 (求救)</a>
+    </div>
+    <div class="content-card">
+      <h3>外交部急難救助</h3>
+      <p><b>駐義大利代表處：</b><br><a href="tel:+393381901928" style="color:#2563eb; font-weight:700;">+39-338-1901928</a></p>
+      <br>
+      <p><b>駐普羅旺斯辦事處（法國）：</b><br><a href="tel:+33761149692" style="color:#2563eb; font-weight:700;">+33-761-149692</a></p>
+    </div>
+  </div>
 
 </div>
 
 <script>
-function openPage(page) {
-  const messages = {
-    tickets: "🎫 車票與門票\n\n點擊後顯示：火車票、交通票、QR Code。",
-    hotels: "🏨 飯店住宿\n\n點擊後顯示：米蘭、熱那亞、尼斯飯店資訊。",
-    days: "📅 15 天行程\n\n米蘭 → 貝爾加莫 → 瓦倫納 → 熱那亞 → 尼斯",
-    map: "🗺️ 旅遊地圖\n\n點擊後開啟 Google Maps 路線。",
-    guide: "📖 旅行注意事項\n\n點擊後查看：搭車指南、行李防竊提醒。",
-    emergency: "🆘 緊急求助\n\n歐洲通用救援電話：112"
-  };
+// 切換頁面邏輯
+function showPage(pageId) {
+  const pages = document.querySelectorAll('.page');
+  pages.forEach(page => page.classList.remove('active'));
 
-  alert(messages[page] || "頁面準備中");
+  const targetPage = document.getElementById('page-' + pageId);
+  if (targetPage) {
+    targetPage.classList.add('active');
+  }
+  // 切換時自動捲動回頂部
+  window.scrollTo(0, 0);
 }
 </script>
 
