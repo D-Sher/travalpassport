@@ -30,12 +30,8 @@ body {
 }
 
 /* 視點切換 */
-.page {
-  display: none;
-}
-.page.active {
-  display: block;
-}
+.page { display: none; }
+.page.active { display: block; }
 
 /* 頂部英雄區 */
 .hero {
@@ -158,14 +154,46 @@ body {
   min-height: 160px;
 }
 
-/* 15天行程列表 */
-.day-item {
-  border-left: 4px solid #2563eb;
-  padding-left: 12px;
+/* === 天數切換按鈕區 === */
+.day-selector {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.day-btn {
+  background: white;
+  border: 2px solid #cbd5e1;
+  color: #475569;
+  padding: 10px 18px;
+  border-radius: 16px;
+  font-size: 17px;
+  font-weight: 800;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.day-btn.active {
+  background: #2563eb;
+  color: white;
+  border-color: #2563eb;
+}
+
+/* 每日內容顯示 */
+.day-content { display: none; }
+.day-content.active { display: block; }
+
+.day-detail-item {
   margin-bottom: 16px;
 }
-.day-title { font-size: 18px; font-weight: 800; color: #2563eb; }
-.day-desc { font-size: 16px; color: #475569; margin-top: 2px; }
+.day-time {
+  font-weight: 800;
+  color: #2563eb;
+  font-size: 17px;
+}
 
 /* 緊急求助按鈕 */
 .btn-emergency {
@@ -241,8 +269,7 @@ body {
       <h3>義大利國鐵 Trenitalia</h3>
       <p>米蘭 Centrale → 熱那亞 Piazza Principe</p>
       <p><b>車次：</b>IC 665 | <b>座位：</b>Car 3, Seat 45</p>
-      <!-- 圖片路徑設為根目錄的 ticket-train.jpg -->
-      <img src="ticket-train.jpg" alt="火車票圖檔 (請放 ticket-train.jpg 到根目錄)" class="img-placeholder" onerror="this.alt='⚠️ 請將車票圖檔命名為 ticket-train.jpg 放在網頁同目錄下'">
+      <img src="ticket-train.jpg" alt="火車票圖檔" class="img-placeholder" onerror="this.alt='⚠️ 請將車票圖檔命名為 ticket-train.jpg 放在網頁同目錄下'">
     </div>
   </div>
 
@@ -270,34 +297,95 @@ body {
     </div>
   </div>
 
-  <!-- 分頁：15天行程 -->
+  <!-- 分頁：15天行程 (支援點擊天數切換) -->
   <div id="page-days" class="page">
     <div class="subpage-header">
       <button class="btn-back" onclick="showPage('home')">← 返回</button>
       <span class="subpage-title">📅 15 天行程</span>
     </div>
-    <div class="content-card">
-      <div class="day-item">
-        <div class="day-title">Day 1 - 10/16 (五)</div>
-        <div class="day-desc">抵達米蘭機場 → 入住飯店 → 米蘭大教堂散步</div>
-      </div>
-      <div class="day-item">
-        <div class="day-title">Day 2 - 10/17 (六)</div>
-        <div class="day-desc">米蘭市區巡禮 → 艾曼紐二世拱廊 → 觀賞最後的晚餐</div>
-      </div>
-      <div class="day-item">
-        <div class="day-title">Day 3 - 10/18 (日)</div>
-        <div class="day-desc">搭火車前往 Bergamo 貝爾加莫一日遊</div>
-      </div>
-      <div class="day-item">
-        <div class="day-title">Day 4 - 10/19 (一)</div>
-        <div class="day-desc">科摩湖 Varenna 湖畔漫步</div>
-      </div>
-      <div class="day-item">
-        <div class="day-title">Day 5 - 10/20 (二)</div>
-        <div class="day-desc">米蘭搭車前往熱那亞 → 港區導覽</div>
+
+    <!-- 天數切換橫滑選單 -->
+    <div class="day-selector">
+      <button class="day-btn active" onclick="switchDay(1)">D1 (10/16)</button>
+      <button class="day-btn" onclick="switchDay(2)">D2 (10/17)</button>
+      <button class="day-btn" onclick="switchDay(3)">D3 (10/18)</button>
+      <button class="day-btn" onclick="switchDay(4)">D4 (10/19)</button>
+      <button class="day-btn" onclick="switchDay(5)">D5 (10/20)</button>
+      <!-- 您可以依此類推繼續增加到 D15 -->
+    </div>
+
+    <!-- Day 1 內容 -->
+    <div id="day-1" class="day-content active">
+      <div class="content-card">
+        <h3>Day 1 - 10 月 16 日 (五)</h3>
+        <p style="color: #2563eb; font-weight: 700; margin-bottom: 12px;">📍 抵達米蘭 & 市區漫步</p>
+
+        <div class="day-detail-item">
+          <div class="day-time">14:00</div>
+          <p>抵達米蘭馬爾彭薩機場 (MXP)，搭乘機場快線前往飯店 Check-in。</p>
+        </div>
+        <div class="day-detail-item">
+          <div class="day-time">16:30</div>
+          <p>米蘭大教堂廣場散步，品嚐義式 gelato 冰淇淋。</p>
+        </div>
+        <div class="day-detail-item">
+          <div class="day-time">19:00</div>
+          <p>晚餐：米蘭燉飯與燉牛肉。</p>
+        </div>
+
+        <img src="day1.jpg" alt="Day 1 景點照片" class="img-placeholder" onerror="this.alt='⚠️ 可放 day1.jpg 照片'">
       </div>
     </div>
+
+    <!-- Day 2 內容 -->
+    <div id="day-2" class="day-content">
+      <div class="content-card">
+        <h3>Day 2 - 10 月 17 日 (六)</h3>
+        <p style="color: #2563eb; font-weight: 700; margin-bottom: 12px;">📍 米蘭藝術與經典巡禮</p>
+
+        <div class="day-detail-item">
+          <div class="day-time">09:30</div>
+          <p>參觀米蘭大教堂頂樓（已預約電梯票）。</p>
+        </div>
+        <div class="day-detail-item">
+          <div class="day-time">14:00</div>
+          <p>艾曼紐二世拱廊購物與咖啡。</p>
+        </div>
+
+        <img src="day2.jpg" alt="Day 2 景點照片" class="img-placeholder" onerror="this.alt='⚠️ 可放 day2.jpg 照片'">
+      </div>
+    </div>
+
+    <!-- Day 3 內容 -->
+    <div id="day-3" class="day-content">
+      <div class="content-card">
+        <h3>Day 3 - 10 月 18 日 (日)</h3>
+        <p style="color: #2563eb; font-weight: 700; margin-bottom: 12px;">📍 貝爾加莫 (Bergamo) 一日遊</p>
+        <p>搭乘火車前往舊城區 Upper City 散步。</p>
+        <img src="day3.jpg" alt="Day 3 景點照片" class="img-placeholder" onerror="this.alt='⚠️ 可放 day3.jpg 照片'">
+      </div>
+    </div>
+
+    <!-- Day 4 內容 -->
+    <div id="day-4" class="day-content">
+      <div class="content-card">
+        <h3>Day 4 - 10 月 19 日 (一)</h3>
+        <p style="color: #2563eb; font-weight: 700; margin-bottom: 12px;">📍 科摩湖 Varenna 湖畔漫步</p>
+        <p>欣賞科摩湖美景與花園渡假 Villa。</p>
+        <img src="day4.jpg" alt="Day 4 景點照片" class="img-placeholder" onerror="this.alt='⚠️ 可放 day4.jpg 照片'">
+      </div>
+    </div>
+
+    <!-- Day 5 內容 -->
+    <div id="day-5" class="day-content">
+      <div class="content-card">
+        <h3>Day 5 - 10 月 20 日 (二)</h3>
+        <p style="color: #2563eb; font-weight: 700; margin-bottom: 12px;">📍 移動前往熱那亞 (Genova)</p>
+        <p>搭乘 Trenitalia 火車抵達熱那亞，前往舊港區巡禮。</p>
+        <img src="day5.jpg" alt="Day 5 景點照片" class="img-placeholder" onerror="this.alt='⚠️ 可放 day5.jpg 照片'">
+      </div>
+    </div>
+
   </div>
 
   <!-- 分頁：地圖 -->
@@ -363,7 +451,7 @@ body {
 </div>
 
 <script>
-// 切換頁面邏輯
+// 主分頁切換
 function showPage(pageId) {
   const pages = document.querySelectorAll('.page');
   pages.forEach(page => page.classList.remove('active'));
@@ -372,8 +460,24 @@ function showPage(pageId) {
   if (targetPage) {
     targetPage.classList.add('active');
   }
-  // 切換時自動捲動回頂部
   window.scrollTo(0, 0);
+}
+
+// 每日行程天數切換邏輯
+function switchDay(dayNum) {
+  // 切換按鈕樣式
+  const btns = document.querySelectorAll('.day-btn');
+  btns.forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
+
+  // 切換內容區塊
+  const dayContents = document.querySelectorAll('.day-content');
+  dayContents.forEach(content => content.classList.remove('active'));
+
+  const targetDayContent = document.getElementById('day-' + dayNum);
+  if (targetDayContent) {
+    targetDayContent.classList.add('active');
+  }
 }
 </script>
 
