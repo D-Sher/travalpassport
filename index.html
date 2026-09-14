@@ -67,6 +67,29 @@ body {
 .hero .title { font-size: 26px; font-weight: 800; color: #ffffff; letter-spacing: 0.06em; }
 .hero .route { font-size: 15px; color: #94a3b8; font-weight: 500; margin-top: 6px; letter-spacing: 0.08em; }
 
+/* 常亮狀態標籤 */
+.wakelock-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  padding: 4px 12px;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  border-radius: 20px;
+  font-size: 12px;
+  color: #34d399;
+  font-weight: 600;
+}
+.wakelock-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #34d399;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 8px #34d399;
+}
+
 /* 旅行社風格精緻卡片 */
 .main-menu {
   display: flex;
@@ -178,14 +201,78 @@ body {
   margin-bottom: 8px;
 }
 
+.img-container {
+  position: relative;
+  margin-top: 14px;
+  cursor: pointer;
+}
+
 .img-placeholder {
   width: 100%;
   border-radius: 16px;
-  margin-top: 14px;
   border: 1px solid rgba(197, 168, 128, 0.3);
   object-fit: cover;
   background-color: #0f172a;
   min-height: 200px;
+  display: block;
+}
+
+.img-hint {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(15, 23, 42, 0.85);
+  color: #c5a880;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 700;
+  border: 1px solid rgba(197, 168, 128, 0.4);
+  pointer-events: none;
+}
+
+/* 全螢幕燈箱：純白發光背景物理打亮 */
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: #ffffff;
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  box-shadow: inset 0 0 100px rgba(255, 255, 255, 1);
+}
+
+.lightbox.active {
+  display: flex;
+}
+
+.lightbox img {
+  max-width: 95%;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 2px solid #000000;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: #ffffff;
+  font-size: 28px;
+  font-weight: 800;
+  cursor: pointer;
+  background: #0f172a;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
 }
 </style>
 </head>
@@ -201,6 +288,10 @@ body {
       <div class="flags">🇮🇹 🇫🇷</div>
       <div class="title">2026 歐洲頂級慢遊</div>
       <div class="route">MILANO · GENOVA · NICE</div>
+      <div id="wakelock-badge" class="wakelock-status">
+        <span class="wakelock-dot"></span>
+        <span id="wakelock-text">螢幕常亮已啟用</span>
+      </div>
     </section>
 
     <main class="main-menu">
@@ -235,17 +326,25 @@ body {
       <span class="subpage-title">🎫 通票憑證</span>
     </div>
 
+    <!-- 憑證 1 -->
     <div class="content-card">
       <h3>歐洲火車通行證 (Eurail Pass)</h3>
       <p><b>使用對象：</b>同行貴賓</p>
       <p><b>憑證編號：</b>EURL-2026-8899</p>
-      <img src="pass-ticket-1.jpg" alt="通票憑證圖片 1" class="img-placeholder" onerror="this.alt='⚠️ 請放 pass-ticket-1.jpg 到同目錄'">
+      <div class="img-container" onclick="openLightbox(this)">
+        <img src="pass-ticket-1.jpg" alt="通票憑證圖片 1" class="img-placeholder" onerror="this.alt='⚠️ 請放 pass-ticket-1.jpg 到同目錄'">
+        <div class="img-hint">🔍 點擊放大 (亮屏掃描)</div>
+      </div>
     </div>
 
+    <!-- 憑證 2 -->
     <div class="content-card">
       <h3>米蘭大教堂 快速通關券</h3>
       <p><b>預約時間：</b>10/17 (六) 10:00</p>
-      <img src="pass-ticket-2.jpg" alt="通票憑證圖片 2" class="img-placeholder" onerror="this.alt='⚠️ 請放 pass-ticket-2.jpg 到同目錄'">
+      <div class="img-container" onclick="openLightbox(this)">
+        <img src="pass-ticket-2.jpg" alt="通票憑證圖片 2" class="img-placeholder" onerror="this.alt='⚠️ 請放 pass-ticket-2.jpg 到同目錄'">
+        <div class="img-hint">🔍 點擊放大 (亮屏掃描)</div>
+      </div>
     </div>
   </div>
 
@@ -256,24 +355,39 @@ body {
       <span class="subpage-title">🏨 住宿憑證</span>
     </div>
 
+    <!-- 飯店 1 -->
     <div class="content-card">
       <h3>米蘭奢華飯店 (Milano Hotel)</h3>
       <p>📍 <b>地址：</b>Via Rossi 12, Milano</p>
       <p>📞 <b>電話：</b>+39 02 1234567</p>
-      <img src="hotel-1.jpg" alt="米蘭飯店憑證" class="img-placeholder" onerror="this.alt='⚠️ 請放 hotel-1.jpg 到同目錄'">
+      <div class="img-container" onclick="openLightbox(this)">
+        <img src="hotel-1.jpg" alt="米蘭飯店憑證" class="img-placeholder" onerror="this.alt='⚠️ 請放 hotel-1.jpg 到同目錄'">
+        <div class="img-hint">🔍 點擊放大 (亮屏掃描)</div>
+      </div>
     </div>
 
+    <!-- 飯店 2 -->
     <div class="content-card">
       <h3>尼斯海景飯店 (Nice Hotel)</h3>
       <p>📍 <b>地址：</b>Promenade des Anglais, Nice</p>
       <p>📞 <b>電話：</b>+33 4 93000000</p>
-      <img src="hotel-2.jpg" alt="尼斯飯店憑證" class="img-placeholder" onerror="this.alt='⚠️ 請放 hotel-2.jpg 到同目錄'">
+      <div class="img-container" onclick="openLightbox(this)">
+        <img src="hotel-2.jpg" alt="尼斯飯店憑證" class="img-placeholder" onerror="this.alt='⚠️ 請放 hotel-2.jpg 到同目錄'">
+        <div class="img-hint">🔍 點擊放大 (亮屏掃描)</div>
+      </div>
     </div>
   </div>
 
 </div>
 
+<!-- 全螢幕燈箱元件 -->
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close">&times;</span>
+  <img id="lightbox-img" src="" alt="全螢幕憑證圖片">
+</div>
+
 <script>
+/* 切換頁面邏輯 */
 function showPage(pageId) {
   const pages = document.querySelectorAll('.page');
   pages.forEach(page => page.classList.remove('active'));
@@ -284,6 +398,43 @@ function showPage(pageId) {
   }
   window.scrollTo(0, 0);
 }
+
+/* 點擊放大全螢幕圖片 (Lightbox) */
+function openLightbox(container) {
+  const img = container.querySelector('img');
+  if (img && img.src) {
+    document.getElementById('lightbox-img').src = img.src;
+    document.getElementById('lightbox').classList.add('active');
+  }
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+}
+
+/* 自動保持手機螢幕常亮 (Screen Wake Lock API) */
+let wakeLock = null;
+
+async function requestWakeLock() {
+  try {
+    if ('wakeLock' in navigator) {
+      wakeLock = await navigator.wakeLock.request('screen');
+      document.getElementById('wakelock-text').innerText = '螢幕常亮已啟用';
+    } else {
+      document.getElementById('wakelock-text').innerText = '瀏覽器不支援常亮';
+    }
+  } catch (err) {
+    document.getElementById('wakelock-text').innerText = '螢幕常亮休眠中';
+  }
+}
+
+requestWakeLock();
+
+document.addEventListener('visibilitychange', () => {
+  if (wakeLock !== null && document.visibilityState === 'visible') {
+    requestWakeLock();
+  }
+});
 </script>
 
 </body>
