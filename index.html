@@ -3,105 +3,132 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026 歐洲之旅</title>
+<title>2026 Europe Journey</title>
 
 <style>
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", sans-serif;
-  background-color: #f8fafc;
+  background: #f1f5f9;
   color: #0f172a;
   min-height: 100vh;
   display: flex;
   justify-content: center;
+  align-items: center;
+  padding: 16px;
 }
 
 .container {
   width: min(100%, 480px);
-  padding: 20px 16px 40px;
 }
 
-/* 頂部卡片 */
+/* 頂部英雄區：深色奢華微光感 */
 .hero {
-  background: #0f172a;
+  background: linear-gradient(145deg, #1e293b, #0f172a);
   color: #ffffff;
-  border-radius: 20px;
-  padding: 24px 20px;
+  border-radius: 24px;
+  padding: 26px 20px;
   text-align: center;
   margin-bottom: 20px;
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.hero .flags { font-size: 36px; line-height: 1.2; }
-.hero .title { font-size: 26px; font-weight: 800; margin: 6px 0 4px; }
-.hero .route { font-size: 16px; color: #94a3b8; font-weight: 600; }
-.hero .date { 
+.hero .flags {
+  font-size: 38px;
+  letter-spacing: 4px;
+  line-height: 1.2;
+}
+
+.hero .title {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  margin: 8px 0 4px;
+  color: #f8fafc;
+}
+
+.hero .route {
+  font-size: 15px;
+  color: #94a3b8;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.hero .date-badge {
   display: inline-block;
-  margin-top: 12px;
-  background: #2563eb; 
-  padding: 6px 16px; 
-  border-radius: 20px; 
-  font-size: 18px; 
-  font-weight: 700; 
-}
-
-/* 大按鈕選單 (單欄直排更易點擊) */
-.menu {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.card {
-  background: #ffffff;
-  border: 2px solid #cbd5e1;
-  border-radius: 16px;
-  padding: 16px 20px;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  transition: background-color 0.1s;
-}
-
-.card:active {
-  background-color: #e2e8f0;
-  transform: scale(0.98);
-}
-
-.icon {
-  font-size: 36px;
-  margin-right: 16px;
-  width: 44px;
-  text-align: center;
-}
-
-.card-text {
-  display: flex;
-  flex-direction: column;
-}
-
-.card-title {
-  font-size: 20px;
+  margin-top: 14px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 6px 18px;
+  border-radius: 30px;
+  font-size: 16px;
   font-weight: 700;
+  color: #38bdf8;
+}
+
+/* 九宮格選單 (2欄 × 3列 正方形風格) */
+.grid-menu {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.grid-card {
+  background: #ffffff;
+  border: 2px solid #e2e8f0;
+  border-radius: 22px;
+  aspect-ratio: 1 / 1; /* 保持正方形九宮格感 */
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
+  transition: all 0.15s ease;
+}
+
+.grid-card:active {
+  transform: scale(0.95);
+  background-color: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+.grid-card .icon {
+  font-size: 44px;
+  margin-bottom: 8px;
+  line-height: 1;
+}
+
+.grid-card .card-title {
+  font-size: 19px;
+  font-weight: 800;
   color: #0f172a;
 }
 
-.card-subtitle {
-  font-size: 14px;
+.grid-card .card-subtitle {
+  font-size: 13px;
   color: #64748b;
-  font-weight: 500;
+  font-weight: 600;
+  margin-top: 4px;
 }
 
-/* 緊急按鈕強調 */
-.card.danger {
-  border-color: #ef4444;
-  background-color: #fef2f2;
+/* 緊急按鈕獨立顯眼色調 */
+.grid-card.danger {
+  background: #fff5f5;
+  border-color: #fca5a5;
 }
-.card.danger .card-title { color: #dc2626; }
+.grid-card.danger .card-title {
+  color: #dc2626;
+}
 </style>
 </head>
 
@@ -109,66 +136,54 @@ body {
 
 <div class="container">
 
-  <!-- 頂部資訊 -->
+  <!-- 頂部資訊區 -->
   <section class="hero">
     <div class="flags">🇮🇹 🇫🇷</div>
     <div class="title">2026 歐洲之旅</div>
     <div class="route">米蘭 → 熱那亞 → 尼斯</div>
-    <div class="date">今天日期：10 月 16 日</div>
+    <div class="date-badge">TODAY · 10 月 16 日</div>
   </section>
 
-  <!-- 功能選單 -->
-  <nav class="menu">
+  <!-- 九宮格主要選單 -->
+  <main class="grid-menu">
 
-    <div class="card" onclick="openPage('tickets')">
+    <div class="grid-card" onclick="openPage('tickets')">
       <div class="icon">🎫</div>
-      <div class="card-text">
-        <div class="card-title">車票與門票</div>
-        <div class="card-subtitle">火車票、QR Code</div>
-      </div>
+      <div class="card-title">車票門票</div>
+      <div class="card-subtitle">火車票 · QR Code</div>
     </div>
 
-    <div class="card" onclick="openPage('hotels')">
+    <div class="grid-card" onclick="openPage('hotels')">
       <div class="icon">🏨</div>
-      <div class="card-text">
-        <div class="card-title">飯店住宿</div>
-        <div class="card-subtitle">飯店確認單、地址</div>
-      </div>
+      <div class="card-title">飯店住宿</div>
+      <div class="card-subtitle">確認單 · 地址</div>
     </div>
 
-    <div class="card" onclick="openPage('days')">
+    <div class="grid-card" onclick="openPage('days')">
       <div class="icon">📅</div>
-      <div class="card-text">
-        <div class="card-title">15 天每日行程</div>
-        <div class="card-subtitle">每日景點與路線</div>
-      </div>
+      <div class="card-title">15天行程</div>
+      <div class="card-subtitle">每日景點規劃</div>
     </div>
 
-    <div class="card" onclick="openPage('map')">
+    <div class="grid-card" onclick="openPage('map')">
       <div class="icon">🗺️</div>
-      <div class="card-text">
-        <div class="card-title">旅遊地圖</div>
-        <div class="card-subtitle">開啟景點路線地圖</div>
-      </div>
+      <div class="card-title">旅遊地圖</div>
+      <div class="card-subtitle">Google Maps</div>
     </div>
 
-    <div class="card" onclick="openPage('guide')">
+    <div class="grid-card" onclick="openPage('guide')">
       <div class="icon">📖</div>
-      <div class="card-text">
-        <div class="card-title">旅行注意事項</div>
-        <div class="card-subtitle">行李、車站注意事項</div>
-      </div>
+      <div class="card-title">旅行須知</div>
+      <div class="card-subtitle">搭車 · 行李提醒</div>
     </div>
 
-    <div class="card danger" onclick="openPage('emergency')">
+    <div class="grid-card danger" onclick="openPage('emergency')">
       <div class="icon">🆘</div>
-      <div class="card-text">
-        <div class="card-title">緊急求助</div>
-        <div class="card-subtitle">報警電話 112、求助資訊</div>
-      </div>
+      <div class="card-title">緊急求助</div>
+      <div class="card-subtitle">救援電話 112</div>
     </div>
 
-  </nav>
+  </main>
 
 </div>
 
