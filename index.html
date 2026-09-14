@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026 Europe Journey</title>
+<title>2026 Europe Journey | Private Travel Certificate</title>
 
 <style>
 * {
@@ -15,8 +15,8 @@
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", sans-serif;
-  background: #f1f5f9;
-  color: #0f172a;
+  background: #0b1120;
+  color: #f8fafc;
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -29,185 +29,163 @@ body {
   position: relative;
 }
 
-/* 視點切換 */
-.page { display: none; }
-.page.active { display: block; }
+/* 頁面切換動畫 */
+.page { display: none; opacity: 0; transition: opacity 0.2s ease-in-out; }
+.page.active { display: block; opacity: 1; }
 
-/* 頂部英雄區 */
+/* 頂部高級旅行社風格 Hero Card */
 .hero {
-  background: linear-gradient(145deg, rgba(30,41,59,0.9), rgba(15,23,42,0.95)), url('banner.jpg') center/cover;
-  color: #ffffff;
-  border-radius: 24px;
-  padding: 26px 20px;
+  background: linear-gradient(165deg, #1e293b 0%, #0f172a 100%);
+  border: 1px solid rgba(197, 168, 128, 0.4);
+  border-radius: 28px;
+  padding: 32px 24px;
   text-align: center;
-  margin-bottom: 20px;
-  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 24px;
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
+  position: relative;
+  overflow: hidden;
 }
 
-.hero .flags { font-size: 38px; line-height: 1.2; }
-.hero .title { font-size: 24px; font-weight: 800; margin: 8px 0 4px; color: #f8fafc; }
-.hero .route { font-size: 15px; color: #94a3b8; font-weight: 600; }
-.hero .date-badge {
-  display: inline-block;
-  margin-top: 14px;
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 6px 18px;
-  border-radius: 30px;
-  font-size: 16px;
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background: radial-gradient(circle at top right, rgba(197, 168, 128, 0.15), transparent 60%);
+  pointer-events: none;
+}
+
+.hero .agency-badge {
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  color: #c5a880;
   font-weight: 700;
-  color: #38bdf8;
+  text-transform: uppercase;
+  margin-bottom: 8px;
 }
 
-/* 九宮格選單 */
-.grid-menu {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-}
+.hero .flags { font-size: 40px; line-height: 1.2; margin-bottom: 6px; }
+.hero .title { font-size: 26px; font-weight: 800; color: #ffffff; letter-spacing: 0.06em; }
+.hero .route { font-size: 15px; color: #94a3b8; font-weight: 500; margin-top: 6px; letter-spacing: 0.08em; }
 
-.grid-card {
-  background: #ffffff;
-  border: 2px solid #e2e8f0;
-  border-radius: 22px;
-  aspect-ratio: 1 / 1;
-  padding: 16px;
+/* 旅行社風格精緻卡片 */
+.main-menu {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  gap: 20px;
+}
+
+.luxury-card {
+  background: linear-gradient(135deg, #1e293b, #172033);
+  border: 2px solid rgba(197, 168, 128, 0.35);
+  border-radius: 24px;
+  padding: 28px 24px;
+  display: flex;
   align-items: center;
-  text-align: center;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
-  transition: all 0.15s ease;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+  position: relative;
 }
 
-.grid-card:active {
-  transform: scale(0.95);
-  background-color: #f8fafc;
+.luxury-card:active {
+  transform: scale(0.97);
+  border-color: #c5a880;
+  background: #24334a;
 }
 
-.grid-card .icon { font-size: 44px; margin-bottom: 8px; }
-.grid-card .card-title { font-size: 19px; font-weight: 800; color: #0f172a; }
-.grid-card .card-subtitle { font-size: 13px; color: #64748b; font-weight: 600; margin-top: 4px; }
+.luxury-card .icon-box {
+  width: 68px;
+  height: 68px;
+  background: rgba(197, 168, 128, 0.12);
+  border: 1px solid rgba(197, 168, 128, 0.3);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 38px;
+  margin-right: 20px;
+  flex-shrink: 0;
+}
 
-.grid-card.danger { background: #fff5f5; border-color: #fca5a5; }
-.grid-card.danger .card-title { color: #dc2626; }
+.luxury-card .card-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+}
 
-/* 內頁通用樣式 */
+.luxury-card .card-subtitle {
+  font-size: 14px;
+  color: #c5a880;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.luxury-card .arrow {
+  margin-left: auto;
+  font-size: 22px;
+  color: #c5a880;
+  font-weight: 700;
+}
+
+/* 內頁專用樣式 */
 .subpage-header {
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .btn-back {
-  background: #0f172a;
-  color: white;
-  border: none;
+  background: rgba(197, 168, 128, 0.15);
+  color: #c5a880;
+  border: 1.5px solid #c5a880;
   padding: 12px 20px;
-  border-radius: 14px;
+  border-radius: 16px;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 800;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 6px;
 }
 
 .subpage-title {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 800;
   margin-left: 16px;
+  color: #ffffff;
 }
 
 .content-card {
-  background: white;
-  border-radius: 20px;
-  padding: 20px;
-  margin-bottom: 16px;
-  border: 2px solid #e2e8f0;
+  background: #1e293b;
+  border-radius: 22px;
+  padding: 24px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .content-card h3 {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 800;
-  margin-bottom: 10px;
-  color: #1e293b;
+  margin-bottom: 12px;
+  color: #c5a880;
+  border-bottom: 1px solid rgba(197, 168, 128, 0.2);
+  padding-bottom: 8px;
 }
 
-.content-card p, .content-card li {
-  font-size: 17px;
+.content-card p {
+  font-size: 18px;
   line-height: 1.6;
-  color: #334155;
+  color: #e2e8f0;
   font-weight: 500;
+  margin-bottom: 8px;
 }
 
 .img-placeholder {
   width: 100%;
-  border-radius: 14px;
-  margin-top: 12px;
-  border: 1px solid #cbd5e1;
+  border-radius: 16px;
+  margin-top: 14px;
+  border: 1px solid rgba(197, 168, 128, 0.3);
   object-fit: cover;
-  background-color: #e2e8f0;
-  min-height: 160px;
-}
-
-/* === 天數切換按鈕區 === */
-.day-selector {
-  display: flex;
-  gap: 10px;
-  overflow-x: auto;
-  padding-bottom: 12px;
-  margin-bottom: 16px;
-  -webkit-overflow-scrolling: touch;
-}
-
-.day-btn {
-  background: white;
-  border: 2px solid #cbd5e1;
-  color: #475569;
-  padding: 10px 18px;
-  border-radius: 16px;
-  font-size: 17px;
-  font-weight: 800;
-  white-space: nowrap;
-  cursor: pointer;
-}
-
-.day-btn.active {
-  background: #2563eb;
-  color: white;
-  border-color: #2563eb;
-}
-
-/* 每日內容顯示 */
-.day-content { display: none; }
-.day-content.active { display: block; }
-
-.day-detail-item {
-  margin-bottom: 16px;
-}
-.day-time {
-  font-weight: 800;
-  color: #2563eb;
-  font-size: 17px;
-}
-
-/* 緊急求助按鈕 */
-.btn-emergency {
-  display: block;
-  width: 100%;
-  background: #dc2626;
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  font-size: 22px;
-  font-weight: 800;
-  padding: 18px;
-  border-radius: 16px;
-  margin-top: 10px;
+  background-color: #0f172a;
+  min-height: 200px;
 }
 </style>
 </head>
@@ -216,242 +194,86 @@ body {
 
 <div class="container">
 
-  <!-- 首頁 (主視圖) -->
+  <!-- 首頁 -->
   <div id="page-home" class="page active">
     <section class="hero">
+      <div class="agency-badge">GRAND TRAVEL SERVICE</div>
       <div class="flags">🇮🇹 🇫🇷</div>
-      <div class="title">2026 歐洲之旅</div>
-      <div class="route">米蘭 → 熱那亞 → 尼斯</div>
-      <div class="date-badge">TODAY · 10 月 16 日</div>
+      <div class="title">2026 歐洲頂級慢遊</div>
+      <div class="route">MILANO · GENOVA · NICE</div>
     </section>
 
-    <main class="grid-menu">
-      <div class="grid-card" onclick="showPage('tickets')">
-        <div class="icon">🎫</div>
-        <div class="card-title">車票門票</div>
-        <div class="card-subtitle">火車票 · QR Code</div>
+    <main class="main-menu">
+      
+      <!-- 通票憑證 -->
+      <div class="luxury-card" onclick="showPage('tickets')">
+        <div class="icon-box">🎫</div>
+        <div>
+          <div class="card-title">通票憑證</div>
+          <div class="card-subtitle">Pass & Tickets</div>
+        </div>
+        <div class="arrow">➔</div>
       </div>
-      <div class="grid-card" onclick="showPage('hotels')">
-        <div class="icon">🏨</div>
-        <div class="card-title">飯店住宿</div>
-        <div class="card-subtitle">確認單 · 地址</div>
+
+      <!-- 住宿憑證 -->
+      <div class="luxury-card" onclick="showPage('hotels')">
+        <div class="icon-box">🏨</div>
+        <div>
+          <div class="card-title">住宿憑證</div>
+          <div class="card-subtitle">Hotel Bookings</div>
+        </div>
+        <div class="arrow">➔</div>
       </div>
-      <div class="grid-card" onclick="showPage('days')">
-        <div class="icon">📅</div>
-        <div class="card-title">15天行程</div>
-        <div class="card-subtitle">每日景點規劃</div>
-      </div>
-      <div class="grid-card" onclick="showPage('map')">
-        <div class="icon">🗺️</div>
-        <div class="card-title">旅遊地圖</div>
-        <div class="card-subtitle">Google Maps</div>
-      </div>
-      <div class="grid-card" onclick="showPage('guide')">
-        <div class="icon">📖</div>
-        <div class="card-title">旅行須知</div>
-        <div class="card-subtitle">搭車 · 行李提醒</div>
-      </div>
-      <div class="grid-card danger" onclick="showPage('emergency')">
-        <div class="icon">🆘</div>
-        <div class="card-title">緊急求助</div>
-        <div class="card-subtitle">救援電話 112</div>
-      </div>
+
     </main>
   </div>
 
-  <!-- 分頁：車票門票 -->
+  <!-- 內頁：通票憑證 -->
   <div id="page-tickets" class="page">
     <div class="subpage-header">
       <button class="btn-back" onclick="showPage('home')">← 返回</button>
-      <span class="subpage-title">🎫 車票與門票</span>
+      <span class="subpage-title">🎫 通票憑證</span>
     </div>
+
     <div class="content-card">
-      <h3>義大利國鐵 Trenitalia</h3>
-      <p>米蘭 Centrale → 熱那亞 Piazza Principe</p>
-      <p><b>車次：</b>IC 665 | <b>座位：</b>Car 3, Seat 45</p>
-      <img src="ticket-train.jpg" alt="火車票圖檔" class="img-placeholder" onerror="this.alt='⚠️ 請將車票圖檔命名為 ticket-train.jpg 放在網頁同目錄下'">
+      <h3>歐洲火車通行證 (Eurail Pass)</h3>
+      <p><b>使用對象：</b>同行貴賓</p>
+      <p><b>憑證編號：</b>EURL-2026-8899</p>
+      <img src="pass-ticket-1.jpg" alt="通票憑證圖片 1" class="img-placeholder" onerror="this.alt='⚠️ 請放 pass-ticket-1.jpg 到同目錄'">
+    </div>
+
+    <div class="content-card">
+      <h3>米蘭大教堂 快速通關券</h3>
+      <p><b>預約時間：</b>10/17 (六) 10:00</p>
+      <img src="pass-ticket-2.jpg" alt="通票憑證圖片 2" class="img-placeholder" onerror="this.alt='⚠️ 請放 pass-ticket-2.jpg 到同目錄'">
     </div>
   </div>
 
-  <!-- 分頁：飯店住宿 -->
+  <!-- 內頁：住宿憑證 -->
   <div id="page-hotels" class="page">
     <div class="subpage-header">
       <button class="btn-back" onclick="showPage('home')">← 返回</button>
-      <span class="subpage-title">🏨 飯店住宿</span>
+      <span class="subpage-title">🏨 住宿憑證</span>
     </div>
+
     <div class="content-card">
-      <h3>米蘭飯店 Milano Hotel</h3>
-      <p>📍 地址：Via Rossi 12, Milano</p>
-      <p>📞 電話：+39 02 1234567</p>
-      <img src="hotel-milano.jpg" alt="米蘭飯店圖檔" class="img-placeholder" onerror="this.alt='⚠️ 請放 hotel-milano.jpg'">
+      <h3>米蘭奢華飯店 (Milano Hotel)</h3>
+      <p>📍 <b>地址：</b>Via Rossi 12, Milano</p>
+      <p>📞 <b>電話：</b>+39 02 1234567</p>
+      <img src="hotel-1.jpg" alt="米蘭飯店憑證" class="img-placeholder" onerror="this.alt='⚠️ 請放 hotel-1.jpg 到同目錄'">
     </div>
+
     <div class="content-card">
-      <h3>熱那亞飯店 Genova Hotel</h3>
-      <p>📍 地址：Via Roma 5, Genova</p>
-      <img src="hotel-genova.jpg" alt="熱那亞飯店圖檔" class="img-placeholder" onerror="this.alt='⚠️ 請放 hotel-genova.jpg'">
-    </div>
-    <div class="content-card">
-      <h3>尼斯飯店 Nice Hotel</h3>
-      <p>📍 地址： Promenade des Anglais, Nice</p>
-      <img src="hotel-nice.jpg" alt="尼斯飯店圖檔" class="img-placeholder" onerror="this.alt='⚠️ 請放 hotel-nice.jpg'">
-    </div>
-  </div>
-
-  <!-- 分頁：15天行程 (支援點擊天數切換) -->
-  <div id="page-days" class="page">
-    <div class="subpage-header">
-      <button class="btn-back" onclick="showPage('home')">← 返回</button>
-      <span class="subpage-title">📅 15 天行程</span>
-    </div>
-
-    <!-- 天數切換橫滑選單 -->
-    <div class="day-selector">
-      <button class="day-btn active" onclick="switchDay(1)">D1 (10/16)</button>
-      <button class="day-btn" onclick="switchDay(2)">D2 (10/17)</button>
-      <button class="day-btn" onclick="switchDay(3)">D3 (10/18)</button>
-      <button class="day-btn" onclick="switchDay(4)">D4 (10/19)</button>
-      <button class="day-btn" onclick="switchDay(5)">D5 (10/20)</button>
-      <!-- 您可以依此類推繼續增加到 D15 -->
-    </div>
-
-    <!-- Day 1 內容 -->
-    <div id="day-1" class="day-content active">
-      <div class="content-card">
-        <h3>Day 1 - 10 月 16 日 (五)</h3>
-        <p style="color: #2563eb; font-weight: 700; margin-bottom: 12px;">📍 抵達米蘭 & 市區漫步</p>
-
-        <div class="day-detail-item">
-          <div class="day-time">14:00</div>
-          <p>抵達米蘭馬爾彭薩機場 (MXP)，搭乘機場快線前往飯店 Check-in。</p>
-        </div>
-        <div class="day-detail-item">
-          <div class="day-time">16:30</div>
-          <p>米蘭大教堂廣場散步，品嚐義式 gelato 冰淇淋。</p>
-        </div>
-        <div class="day-detail-item">
-          <div class="day-time">19:00</div>
-          <p>晚餐：米蘭燉飯與燉牛肉。</p>
-        </div>
-
-        <img src="day1.jpg" alt="Day 1 景點照片" class="img-placeholder" onerror="this.alt='⚠️ 可放 day1.jpg 照片'">
-      </div>
-    </div>
-
-    <!-- Day 2 內容 -->
-    <div id="day-2" class="day-content">
-      <div class="content-card">
-        <h3>Day 2 - 10 月 17 日 (六)</h3>
-        <p style="color: #2563eb; font-weight: 700; margin-bottom: 12px;">📍 米蘭藝術與經典巡禮</p>
-
-        <div class="day-detail-item">
-          <div class="day-time">09:30</div>
-          <p>參觀米蘭大教堂頂樓（已預約電梯票）。</p>
-        </div>
-        <div class="day-detail-item">
-          <div class="day-time">14:00</div>
-          <p>艾曼紐二世拱廊購物與咖啡。</p>
-        </div>
-
-        <img src="day2.jpg" alt="Day 2 景點照片" class="img-placeholder" onerror="this.alt='⚠️ 可放 day2.jpg 照片'">
-      </div>
-    </div>
-
-    <!-- Day 3 內容 -->
-    <div id="day-3" class="day-content">
-      <div class="content-card">
-        <h3>Day 3 - 10 月 18 日 (日)</h3>
-        <p style="color: #2563eb; font-weight: 700; margin-bottom: 12px;">📍 貝爾加莫 (Bergamo) 一日遊</p>
-        <p>搭乘火車前往舊城區 Upper City 散步。</p>
-        <img src="day3.jpg" alt="Day 3 景點照片" class="img-placeholder" onerror="this.alt='⚠️ 可放 day3.jpg 照片'">
-      </div>
-    </div>
-
-    <!-- Day 4 內容 -->
-    <div id="day-4" class="day-content">
-      <div class="content-card">
-        <h3>Day 4 - 10 月 19 日 (一)</h3>
-        <p style="color: #2563eb; font-weight: 700; margin-bottom: 12px;">📍 科摩湖 Varenna 湖畔漫步</p>
-        <p>欣賞科摩湖美景與花園渡假 Villa。</p>
-        <img src="day4.jpg" alt="Day 4 景點照片" class="img-placeholder" onerror="this.alt='⚠️ 可放 day4.jpg 照片'">
-      </div>
-    </div>
-
-    <!-- Day 5 內容 -->
-    <div id="day-5" class="day-content">
-      <div class="content-card">
-        <h3>Day 5 - 10 月 20 日 (二)</h3>
-        <p style="color: #2563eb; font-weight: 700; margin-bottom: 12px;">📍 移動前往熱那亞 (Genova)</p>
-        <p>搭乘 Trenitalia 火車抵達熱那亞，前往舊港區巡禮。</p>
-        <img src="day5.jpg" alt="Day 5 景點照片" class="img-placeholder" onerror="this.alt='⚠️ 可放 day5.jpg 照片'">
-      </div>
-    </div>
-
-  </div>
-
-  <!-- 分頁：地圖 -->
-  <div id="page-map" class="page">
-    <div class="subpage-header">
-      <button class="btn-back" onclick="showPage('home')">← 返回</button>
-      <span class="subpage-title">🗺️ 旅遊地圖</span>
-    </div>
-    <div class="content-card">
-      <h3>離線路線地圖</h3>
-      <p>請參考下方路線與車站位置：</p>
-      <img src="route-map.jpg" alt="全景地圖" class="img-placeholder" onerror="this.alt='⚠️ 請放 route-map.jpg'">
-    </div>
-    <div class="content-card">
-      <h3>線上地圖連結</h3>
-      <p>點擊可開啟手機 Google Maps 導航</p>
-      <a href="https://maps.google.com" target="_blank" style="display:inline-block; margin-top:10px; color:#2563eb; font-weight:700; font-size:18px;">開啟 Google 地圖 ↗</a>
-    </div>
-  </div>
-
-  <!-- 分頁：旅行須知 -->
-  <div id="page-guide" class="page">
-    <div class="subpage-header">
-      <button class="btn-back" onclick="showPage('home')">← 返回</button>
-      <span class="subpage-title">📖 旅行須知</span>
-    </div>
-    <div class="content-card">
-      <h3>⚠️ 防竊與安全提示</h3>
-      <ul style="padding-left: 20px;">
-        <li>護照與重要現金請隨身放入隱形腰包。</li>
-        <li>搭乘地鐵與火車時，包包請背在胸前。</li>
-        <li>不搭理任何路人遞過來的手環或花朵。</li>
-      </ul>
-    </div>
-    <div class="content-card">
-      <h3>🚆 火車搭乘提醒</h3>
-      <ul style="padding-left: 20px;">
-        <li>實體車票上車前必須去黃色/綠色驗票機打卡（Validating）。</li>
-        <li>電子票 QR Code 保留在手機相簿備查。</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- 分頁：緊急求助 -->
-  <div id="page-emergency" class="page">
-    <div class="subpage-header">
-      <button class="btn-back" onclick="showPage('home')">← 返回</button>
-      <span class="subpage-title">🆘 緊急求助</span>
-    </div>
-    <div class="content-card" style="border-color: #fca5a5;">
-      <h3 style="color: #dc2626;">歐洲通用緊急求助電話</h3>
-      <p>遇到緊急事故，手機直接撥打：</p>
-      <a href="tel:112" class="btn-emergency">📞 撥打 112 (求救)</a>
-    </div>
-    <div class="content-card">
-      <h3>外交部急難救助</h3>
-      <p><b>駐義大利代表處：</b><br><a href="tel:+393381901928" style="color:#2563eb; font-weight:700;">+39-338-1901928</a></p>
-      <br>
-      <p><b>駐普羅旺斯辦事處（法國）：</b><br><a href="tel:+33761149692" style="color:#2563eb; font-weight:700;">+33-761-149692</a></p>
+      <h3>尼斯海景飯店 (Nice Hotel)</h3>
+      <p>📍 <b>地址：</b>Promenade des Anglais, Nice</p>
+      <p>📞 <b>電話：</b>+33 4 93000000</p>
+      <img src="hotel-2.jpg" alt="尼斯飯店憑證" class="img-placeholder" onerror="this.alt='⚠️ 請放 hotel-2.jpg 到同目錄'">
     </div>
   </div>
 
 </div>
 
 <script>
-// 主分頁切換
 function showPage(pageId) {
   const pages = document.querySelectorAll('.page');
   pages.forEach(page => page.classList.remove('active'));
@@ -461,23 +283,6 @@ function showPage(pageId) {
     targetPage.classList.add('active');
   }
   window.scrollTo(0, 0);
-}
-
-// 每日行程天數切換邏輯
-function switchDay(dayNum) {
-  // 切換按鈕樣式
-  const btns = document.querySelectorAll('.day-btn');
-  btns.forEach(btn => btn.classList.remove('active'));
-  event.target.classList.add('active');
-
-  // 切換內容區塊
-  const dayContents = document.querySelectorAll('.day-content');
-  dayContents.forEach(content => content.classList.remove('active'));
-
-  const targetDayContent = document.getElementById('day-' + dayNum);
-  if (targetDayContent) {
-    targetDayContent.classList.add('active');
-  }
 }
 </script>
 
