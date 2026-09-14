@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 歐洲之旅</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", sans-serif;
+  background-color: #f8fafc;
+  color: #0f172a;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: min(100%, 480px);
+  padding: 20px 16px 40px;
+}
+
+/* 頂部卡片 */
+.hero {
+  background: #0f172a;
+  color: #ffffff;
+  border-radius: 20px;
+  padding: 24px 20px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.hero .flags { font-size: 36px; line-height: 1.2; }
+.hero .title { font-size: 26px; font-weight: 800; margin: 6px 0 4px; }
+.hero .route { font-size: 16px; color: #94a3b8; font-weight: 600; }
+.hero .date { 
+  display: inline-block;
+  margin-top: 12px;
+  background: #2563eb; 
+  padding: 6px 16px; 
+  border-radius: 20px; 
+  font-size: 18px; 
+  font-weight: 700; 
+}
+
+/* 大按鈕選單 (單欄直排更易點擊) */
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.card {
+  background: #ffffff;
+  border: 2px solid #cbd5e1;
+  border-radius: 16px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.1s;
+}
+
+.card:active {
+  background-color: #e2e8f0;
+  transform: scale(0.98);
+}
+
+.icon {
+  font-size: 36px;
+  margin-right: 16px;
+  width: 44px;
+  text-align: center;
+}
+
+.card-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.card-subtitle {
+  font-size: 14px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* 緊急按鈕強調 */
+.card.danger {
+  border-color: #ef4444;
+  background-color: #fef2f2;
+}
+.card.danger .card-title { color: #dc2626; }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- 頂部資訊 -->
+  <section class="hero">
+    <div class="flags">🇮🇹 🇫🇷</div>
+    <div class="title">2026 歐洲之旅</div>
+    <div class="route">米蘭 → 熱那亞 → 尼斯</div>
+    <div class="date">今天日期：10 月 16 日</div>
+  </section>
+
+  <!-- 功能選單 -->
+  <nav class="menu">
+
+    <div class="card" onclick="openPage('tickets')">
+      <div class="icon">🎫</div>
+      <div class="card-text">
+        <div class="card-title">車票與門票</div>
+        <div class="card-subtitle">火車票、QR Code</div>
+      </div>
+    </div>
+
+    <div class="card" onclick="openPage('hotels')">
+      <div class="icon">🏨</div>
+      <div class="card-text">
+        <div class="card-title">飯店住宿</div>
+        <div class="card-subtitle">飯店確認單、地址</div>
+      </div>
+    </div>
+
+    <div class="card" onclick="openPage('days')">
+      <div class="icon">📅</div>
+      <div class="card-text">
+        <div class="card-title">15 天每日行程</div>
+        <div class="card-subtitle">每日景點與路線</div>
+      </div>
+    </div>
+
+    <div class="card" onclick="openPage('map')">
+      <div class="icon">🗺️</div>
+      <div class="card-text">
+        <div class="card-title">旅遊地圖</div>
+        <div class="card-subtitle">開啟景點路線地圖</div>
+      </div>
+    </div>
+
+    <div class="card" onclick="openPage('guide')">
+      <div class="icon">📖</div>
+      <div class="card-text">
+        <div class="card-title">旅行注意事項</div>
+        <div class="card-subtitle">行李、車站注意事項</div>
+      </div>
+    </div>
+
+    <div class="card danger" onclick="openPage('emergency')">
+      <div class="icon">🆘</div>
+      <div class="card-text">
+        <div class="card-title">緊急求助</div>
+        <div class="card-subtitle">報警電話 112、求助資訊</div>
+      </div>
+    </div>
+
+  </nav>
+
+</div>
+
+<script>
+function openPage(page) {
+  const messages = {
+    tickets: "🎫 車票與門票\n\n點擊後顯示：火車票、交通票、QR Code。",
+    hotels: "🏨 飯店住宿\n\n點擊後顯示：米蘭、熱那亞、尼斯飯店資訊。",
+    days: "📅 15 天行程\n\n米蘭 → 貝爾加莫 → 瓦倫納 → 熱那亞 → 尼斯",
+    map: "🗺️ 旅遊地圖\n\n點擊後開啟 Google Maps 路線。",
+    guide: "📖 旅行注意事項\n\n點擊後查看：搭車指南、行李防竊提醒。",
+    emergency: "🆘 緊急求助\n\n歐洲通用救援電話：112"
+  };
+
+  alert(messages[page] || "頁面準備中");
+}
+</script>
+
+</body>
+</html>
