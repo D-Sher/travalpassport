@@ -33,7 +33,7 @@ body {
 .page { display: none; opacity: 0; transition: opacity 0.2s ease-in-out; }
 .page.active { display: block; opacity: 1; }
 
-/* 頂部高級旅行社風格 Hero Card (Travaleuro 奢華金黑風格) */
+/* 頂部高級旅行社風格 Hero Card */
 .hero {
   background: linear-gradient(145deg, #171e2e 0%, #0d121d 100%);
   border: 1px solid rgba(212, 175, 55, 0.4);
@@ -380,7 +380,7 @@ body {
       </div>
     </section>
 
-    <!-- 當天重要提醒警示區塊（無提醒時自動隱藏） -->
+    <!-- 當天重要提醒警示區塊 -->
     <div id="today-alert" class="alert-box" style="display: none;">
       <div class="alert-title">⚠️ 今日重要提醒</div>
       <div id="alert-content" class="alert-content"></div>
@@ -424,6 +424,12 @@ body {
       <button class="date-btn" onclick="filterTickets('10/19', this)">10/19</button>
       <button class="date-btn" onclick="filterTickets('10/20', this)">10/20</button>
       <button class="date-btn" onclick="filterTickets('10/23', this)">10/23</button>
+    </div>
+
+    <!-- 通票憑證頁面專用的重要提醒框 -->
+    <div id="ticket-alert" class="alert-box" style="display: none;">
+      <div class="alert-title">⚠️ 今日重要提醒</div>
+      <div id="ticket-alert-content" class="alert-content"></div>
     </div>
 
     <!-- 憑證 1 -->
@@ -609,13 +615,17 @@ const dailyAlerts = {
   ]
 };
 
+/* 格式化今天的日期標籤 M/D 或 MM/DD 統一比對 */
+function getTodayFormatted() {
+  const now = new Date();
+  const month = String(now.getMonth() + 1).padStart(2, '0');
+  const date = String(now.getDate()).padStart(2, '0');
+  return `${month}/${date}`;
+}
+
 /* 檢查並顯示今日提醒 */
 function checkTodayAlert() {
-  const now = new Date();
-  const month = now.getMonth() + 1;
-  const date = now.getDate();
-  const todayStr = `${month}/${date < 10 ? '0' + date : date}`;
-
+  const todayStr = getTodayFormatted();
   const alertContainer = document.getElementById('today-alert');
   const alertContent = document.getElementById('alert-content');
 
@@ -643,10 +653,9 @@ function showPage(pageId) {
   }
 }
 
-/* 根據日期篩選卡片 */
-/* 根據日期篩選卡片 + 同步切換頂部提醒 */
+/* 根據日期篩選卡片 + 同步切換提醒 */
 function filterTickets(targetDate, btnElement) {
-  // 1. 更新按鈕高亮狀態
+  // 1. 更新日期按鈕高亮
   const buttons = document.querySelectorAll('.date-btn');
   buttons.forEach(btn => btn.classList.remove('active'));
   
@@ -654,7 +663,7 @@ function filterTickets(targetDate, btnElement) {
     btnElement.classList.add('active');
   }
 
-  // 2. 隱藏/顯示對應行程卡片
+  // 2. 篩選憑證卡片
   const cards = document.querySelectorAll('#page-tickets .content-card');
   cards.forEach(card => {
     const cardDate = card.getAttribute('data-date');
@@ -665,27 +674,24 @@ function filterTickets(targetDate, btnElement) {
     }
   });
 
-  // 3. ✨ 新增：同步切換首頁/頂部的提醒區塊
-  const alertContainer = document.getElementById('today-alert');
-  const alertContent = document.getElementById('alert-content');
+  // 3. 更新提醒內容
+  const ticketAlert = document.getElementById('ticket-alert');
+  const ticketContent = document.getElementById('ticket-alert-content');
 
-  // 如果選中的日期有提醒資料
   if (dailyAlerts[targetDate] && dailyAlerts[targetDate].length > 0) {
-    alertContent.innerHTML = dailyAlerts[targetDate].map(msg => `<p>${msg}</p>`).join('');
-    alertContainer.style.display = 'block';
+    const alertHtml = dailyAlerts[targetDate].map(msg => `<p>${msg}</p>`).join('');
+    if (ticketAlert && ticketContent) {
+      ticketContent.innerHTML = alertHtml;
+      ticketAlert.style.display = 'block';
+    }
   } else {
-    // 點擊「全部」或沒有提醒的日期時自動隱藏
-    alertContainer.style.display = 'none';
+    if (ticketAlert) ticketAlert.style.display = 'none';
   }
 }
 
 /* 當天日期自動選擇 */
 function autoSelectTodayTicket() {
-  const now = new Date();
-  const month = now.getMonth() + 1;
-  const date = now.getDate();
-  const todayStr = `${month}/${date < 10 ? '0' + date : date}`;
-
+  const todayStr = getTodayFormatted();
   const buttons = document.querySelectorAll('.date-btn');
   let matchedBtn = null;
 
@@ -745,16 +751,15 @@ async function requestWakeLock() {
   }
 }
 
+// 立即觸發 WakeLock 與 Initial Alert 檢查
 requestWakeLock();
+checkTodayAlert();
 
 document.addEventListener('visibilitychange', () => {
   if (wakeLock !== null && document.visibilityState === 'visible') {
     requestWakeLock();
   }
 });
-
-/* 初始化檢查今日提醒 */
-document.addEventListener('DOMContentLoaded', checkTodayAlert);
 </script>
 
 </body>
