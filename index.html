@@ -325,19 +325,10 @@ body {
     </div>
 
     <!-- 憑證 1 -->
-<div class="content-card" onclick="openTrenordWallet()" style="cursor: pointer;">
-  <h3>米蘭機場 ➔ 米蘭 MXP 2951</h3>
-  <p><b>使用方法：</b>點擊此處自動打開 Trenord App > Wallet</p>
-</div>
-
-<script>
-function openTrenordWallet() {
-  // 呼叫名為 "TrenordHelper" 的捷徑，並帶入參數 "wallet"
-  const shortcutName = "TrenordHelper";
-  const action = "wallet";
-  window.location.href = `shortcuts://run-shortcut?name=${encodeURIComponent(shortcutName)}&input=text&text=${encodeURIComponent(action)}`;
-}
-</script>
+    <div class="content-card" onclick="openTrenordWallet()" style="cursor: pointer;">
+      <h3>米蘭機場 ➔ 米蘭 MXP 2951</h3>
+      <p><b>使用方法：</b>點擊此處自動打開 Trenord App > Wallet</p>
+    </div>
 
     <!-- 憑證 2 -->
     <div class="content-card">
@@ -349,114 +340,75 @@ function openTrenordWallet() {
       </div>
     </div>
 
-  <!-- 憑證 3-->
-<div class="content-card" onclick="openTrenordWallet()" style="cursor: pointer;">
-  <h3>米蘭 ➔ 貝爾加莫 RE 2219</h3>
-  <p><b>使用方法：</b>點擊此處自動打開 Trenord App > Wallet</p>
-</div>
+    <!-- 憑證 3 -->
+    <div class="content-card" onclick="openTrenordWallet()" style="cursor: pointer;">
+      <h3>米蘭 ➔ 貝爾加莫 RE 2219</h3>
+      <p><b>使用方法：</b>點擊此處自動打開 Trenord App > Wallet</p>
+    </div>
 
-<script>
-function openTrenordWallet() {
-  // 呼叫名為 "TrenordHelper" 的捷徑，並帶入參數 "wallet"
-  const shortcutName = "TrenordHelper";
-  const action = "wallet";
-  window.location.href = `shortcuts://run-shortcut?name=${encodeURIComponent(shortcutName)}&input=text&text=${encodeURIComponent(action)}`;
-}
-</script>
+    <!-- 憑證 4 -->
+    <div class="content-card" onclick="openAtbWallet()" style="cursor: pointer;">
+      <h3>貝爾加莫一日票</h3>
+      <p><b>使用方法：</b>點擊此處自動打開 atb-mobile</p>
+    </div>
 
-      <!-- 憑證 4 -->
-<div class="content-card" onclick="openTrenordWallet()" style="cursor: pointer;">
-  <h3>貝爾加莫一日票</h3>
-  <p><b>使用方法：</b>點擊此處自動打開 atb-mobile</p>
-</div>
+    <!-- 憑證 5 -->
+    <div class="content-card" onclick="openTrenordWallet()" style="cursor: pointer;">
+      <h3>貝爾加莫 ➔ 米蘭 RE 2232</h3>
+      <p><b>使用方法：</b>點擊此處自動打開 Trenord App > Wallet</p>
+    </div>
 
-<script>
-function openTrenordWallet() {
-  // 呼叫名為 "atbmobile" 的捷徑"
-  const shortcutName = "atbmobile";
-  const action = "tickets";
-  window.location.href = `shortcuts://run-shortcut?name=${encodeURIComponent(shortcutName)}&input=text&text=${encodeURIComponent(action)}`;
-}
-</script>
+    <!-- 憑證 6 -->
+    <div class="content-card" onclick="openTrenordWallet()" style="cursor: pointer;">
+      <h3>米蘭 ➔ 瓦倫納 RE 2818</h3>
+      <p><b>使用方法：</b>點擊此處自動打開 Trenord App > Wallet</p>
+    </div>
 
-
-  <!-- 憑證 5-->
-<div class="content-card" onclick="openTrenordWallet()" style="cursor: pointer;">
-  <h3>貝爾加莫 ➔ 米蘭 RE 2232</h3>
-  <p><b>使用方法：</b>點擊此處自動打開 Trenord App > Wallet</p>
-</div>
-
-<script>
-function openTrenordWallet() {
-  // 呼叫名為 "TrenordHelper" 的捷徑，並帶入參數 "wallet"
-  const shortcutName = "TrenordHelper";
-  const action = "wallet";
-  window.location.href = `shortcuts://run-shortcut?name=${encodeURIComponent(shortcutName)}&input=text&text=${encodeURIComponent(action)}`;
-}
-</script>
-
-      <!-- 憑證 6 -->
-<div class="content-card" onclick="openTrenordWallet()" style="cursor: pointer;">
-  <h3>米蘭 ➔ 瓦倫納 RE 2818</h3>
-  <p><b>使用方法：</b>點擊此處自動打開 Trenord App > Wallet</p>
-</div>
-
-<script>
-function openTrenordWallet() {
-  // 呼叫名為 "TrenordHelper" 的捷徑，並帶入參數 "wallet"
-  const shortcutName = "TrenordHelper";
-  const action = "wallet";
-  window.location.href = `shortcuts://run-shortcut?name=${encodeURIComponent(shortcutName)}&input=text&text=${encodeURIComponent(action)}`;
-}
-</script>
-
-       <!-- 憑證 7 -->
+    <!-- 憑證 7 -->
     <div class="content-card">
-      <h3>科莫湖中央區一日遊船(限普通船）/h3>
+      <h3>科莫湖中央區一日遊船(限普通船）</h3>
       <div class="img-container" onclick="openLightbox(this)">
-        <img src="pass-ticket-3.jpg" alt="通票憑證圖片 2" class="img-placeholder" onerror="this.alt='⚠️ 請放 pass-ticket-3.jpg 到同目錄'">
+        <img src="pass-ticket-3.jpg" alt="通票憑證圖片 3" class="img-placeholder" onerror="this.alt='⚠️ 請放 pass-ticket-3.jpg 到同目錄'">
         <div class="img-hint">🔍 點擊放大 (亮屏掃描)</div>
       </div>
     </div>
 
-     <!-- 憑證 8-->
-<div class="content-card" onclick="openTrenordWallet()" style="cursor: pointer;">
-  <h3>瓦倫納 ➔ 米蘭 RE 2818</h3>
-  <p><b>自行購買車票</p>
-</div>
-
-       <!-- 憑證 9-->
+    <!-- 憑證 8 -->
     <div class="content-card">
-      <h3>米蘭 ➔ 熱那亞 	IC 659</h3>
-      <p><b>使用時間：</p>
+      <h3>瓦倫納 ➔ 米蘭 RE 2818</h3>
+      <p><b>使用說明：</b>自行購買車票</p>
+    </div>
+
+    <!-- 憑證 9 -->
+    <div class="content-card">
+      <h3>米蘭 ➔ 熱那亞 IC 659</h3>
+      <p><b>使用時間：</b>請參閱票面時間</p>
       <div class="img-container" onclick="openLightbox(this)">
-        <img src="pass-ticket-4.jpg" alt="通票憑證圖片 2" class="img-placeholder" onerror="this.alt='⚠️ 請放 pass-ticket-4.jpg 到同目錄'">
+        <img src="pass-ticket-4.jpg" alt="通票憑證圖片 4" class="img-placeholder" onerror="this.alt='⚠️ 請放 pass-ticket-4.jpg 到同目錄'">
         <div class="img-hint">🔍 點擊放大 (亮屏掃描)</div>
       </div>
     </div>
 
-
-      <!-- 憑證 10 -->
+    <!-- 憑證 10 -->
     <div class="content-card">
-      <h3>熱那亞一日票(含景點，交通) 	IC 633</h3>
-      <p><b>可使用：新街博物館(紅宮 白宮)，D'Albertis Castle 等</p>
+      <h3>熱那亞一日票(含景點，交通)</h3>
+      <p><b>可使用：</b>新街博物館(紅宮 白宮)，D'Albertis Castle 等</p>
       <div class="img-container" onclick="openLightbox(this)">
-        <img src="pass-ticket-5.jpg" alt="通票憑證圖片 2" class="img-placeholder" onerror="this.alt='⚠️ 請放 pass-ticket-5.jpg 到同目錄'">
+        <img src="pass-ticket-5.jpg" alt="通票憑證圖片 5" class="img-placeholder" onerror="this.alt='⚠️ 請放 pass-ticket-5.jpg 到同目錄'">
         <div class="img-hint">🔍 點擊放大 (亮屏掃描)</div>
       </div>
     </div>
 
-    
-       <!-- 憑證 11 -->
+    <!-- 憑證 11 -->
     <div class="content-card">
-      <h3>熱那亞 ➔ 文堤米莉亞	IC 633</h3>
-      <p><b>使用時間：</p>
+      <h3>熱那亞 ➔ 文堤米莉亞 IC 633</h3>
+      <p><b>使用時間：</b>請參閱票面時間</p>
       <div class="img-container" onclick="openLightbox(this)">
-        <img src="pass-ticket-6.jpg" alt="通票憑證圖片 2" class="img-placeholder" onerror="this.alt='⚠️ 請放 pass-ticket-6.jpg 到同目錄'">
+        <img src="pass-ticket-6.jpg" alt="通票憑證圖片 6" class="img-placeholder" onerror="this.alt='⚠️ 請放 pass-ticket-6.jpg 到同目錄'">
         <div class="img-hint">🔍 點擊放大 (亮屏掃描)</div>
       </div>
     </div>
-
+  </div>
 
   <!-- 內頁：住宿憑證 -->
   <div id="page-hotels" class="page">
@@ -508,7 +460,7 @@ function openTrenordWallet() {
 </div>
 
 <script>
-/* 切換頁面邏輯 */
+/* 頁面切換 */
 function showPage(pageId) {
   const pages = document.querySelectorAll('.page');
   pages.forEach(page => page.classList.remove('active'));
@@ -518,6 +470,19 @@ function showPage(pageId) {
     targetPage.classList.add('active');
   }
   window.scrollTo(0, 0);
+}
+
+/* 捷徑跳轉函式 */
+function openTrenordWallet() {
+  const shortcutName = "TrenordHelper";
+  const action = "wallet";
+  window.location.href = `shortcuts://run-shortcut?name=${encodeURIComponent(shortcutName)}&input=text&text=${encodeURIComponent(action)}`;
+}
+
+function openAtbWallet() {
+  const shortcutName = "atbmobile";
+  const action = "tickets";
+  window.location.href = `shortcuts://run-shortcut?name=${encodeURIComponent(shortcutName)}&input=text&text=${encodeURIComponent(action)}`;
 }
 
 /* 點擊放大全螢幕圖片 (Lightbox) */
@@ -533,7 +498,7 @@ function closeLightbox() {
   document.getElementById('lightbox').classList.remove('active');
 }
 
-/* 自動保持手機螢幕常亮 (Screen Wake Lock API) */
+/* 螢幕常亮 Screen Wake Lock API */
 let wakeLock = null;
 
 async function requestWakeLock() {
