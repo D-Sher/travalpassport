@@ -524,6 +524,18 @@ body {
       </div>
     </div>
 
+
+       <!-- 憑證 16 -->
+    <div class="content-card" data-date="10/22" onclick="openAMTGenova()" style="cursor: pointer;">
+      <h3>10/22 METDaily 24小時 搭乘728前往菲諾港</h3>
+      <p><b>使用方法：</b>開啟 AMT Genova > Tickets</p>
+      <p><b>流程：</b>Tickets with credit card > MET Daily 24 Hours > 回到首頁點 > Tickets > Your tickets 點彈窗中間的綠色字樣跳出票卷</p>
+      <div class="img-container" onclick="openLightbox(this)">
+        <img src="METDaily.jpg" alt="通票憑證圖片 2" class="img-placeholder" onerror="this.alt='⚠️ 請放 METDaily.jpg 到同目錄'">
+      </div>
+    </div>
+    
+
     <!-- 憑證 15 -->
     <div class="content-card" data-date="10/22">
       <h3>10/22 菲諾港 ➔ 熱拿亞(Santa Margherita Ligure)</h3>
@@ -534,16 +546,7 @@ body {
       </div>
     </div>
 
-    <!-- 憑證 16 -->
-    <div class="content-card" data-date="10/22">
-      <h3>10/22 METDaily 24小時 搭乘728前往菲諾港</h3>
-      <p><b>使用方法：</b>開啟 AMT Genova > Tickets</p>
-      <p><b>流程：</b>Tickets with credit card > MET Daily 24 Hours > 回到首頁點 > Tickets > Your tickets 點彈窗中間的綠色字樣跳出票卷</p>
-      <div class="img-container" onclick="openLightbox(this)">
-        <img src="METDaily.jpg" alt="通票憑證圖片 2" class="img-placeholder" onerror="this.alt='⚠️ 請放 METDaily.jpg 到同目錄'">
-        <div class="img-hint">🔍 點擊放大</div>
-      </div>
-    </div>
+ 
 
     <!-- 憑證 11 -->
     <div class="content-card" data-date="10/23">
@@ -554,6 +557,16 @@ body {
         <div class="img-hint">🔍 點擊放大 (亮屏掃描)</div>
       </div>
     </div>
+
+    <div class="content-card" data-date="10/19" onclick="openWallet()" style="cursor: pointer;">
+      <h3>10/23 文堤米莉亞寄放行李憑證</h3>
+      <p><b>使用時間：10/23當天皆可寄放取回</p>
+      <p><b>使用方法：</b>點擊此處自動打開寄放憑證(錢包)</p>
+       <div class="img-container" onclick="openLightbox(this)">
+        <img src="ST.jpg" alt="通票憑證圖片 2" class="img-placeholder" onerror="this.alt='⚠️ 請放 ST.jpg 到同目錄'">
+      </div>
+    </div>
+    
 
     <!-- 憑證 12 -->
     <div class="content-card" data-date="10/23">
@@ -747,6 +760,18 @@ function autoSelectTodayTicket() {
 /* 捷徑跳轉函式 */
 function openTrenordWallet() {
   const shortcutName = "TrenordHelper";
+  const action = "wallet";
+  window.location.href = `shortcuts://run-shortcut?name=${encodeURIComponent(shortcutName)}&input=text&text=${encodeURIComponent(action)}`;
+}
+
+function openWallet() {
+  const shortcutName = "Wallet";
+  const action = "wallet";
+  window.location.href = `shortcuts://run-shortcut?name=${encodeURIComponent(shortcutName)}&input=text&text=${encodeURIComponent(action)}`;
+}
+
+function openAMTGenova() {
+  const shortcutName = "AMTGenova";
   const action = "wallet";
   window.location.href = `shortcuts://run-shortcut?name=${encodeURIComponent(shortcutName)}&input=text&text=${encodeURIComponent(action)}`;
 }
