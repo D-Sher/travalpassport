@@ -155,25 +155,60 @@ body {
 .subpage-header {
   display: flex;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
 .btn-back {
   background: rgba(197, 168, 128, 0.15);
   color: #c5a880;
   border: 1.5px solid #c5a880;
-  padding: 12px 20px;
+  padding: 10px 18px;
   border-radius: 16px;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 800;
   cursor: pointer;
 }
 
 .subpage-title {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 800;
   margin-left: 16px;
   color: #ffffff;
+}
+
+/* 新增：日期選擇器容器 */
+.date-filter-container {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.date-filter-container::-webkit-scrollbar {
+  display: none;
+}
+
+.date-btn {
+  background: #1e293b;
+  color: #94a3b8;
+  border: 1px solid rgba(197, 168, 128, 0.2);
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.date-btn.active {
+  background: #c5a880;
+  color: #0f172a;
+  border-color: #c5a880;
+  box-shadow: 0 4px 12px rgba(197, 168, 128, 0.3);
 }
 
 .content-card {
@@ -182,6 +217,7 @@ body {
   padding: 24px;
   margin-bottom: 20px;
   border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
 }
 
 .content-card h3 {
@@ -324,14 +360,24 @@ body {
       <span class="subpage-title">🎫 通票憑證</span>
     </div>
 
+    <!-- 日期快速選擇橫條 -->
+    <div class="date-filter-container">
+      <button class="date-btn active" onclick="filterTickets('all', this)">全部</button>
+      <button class="date-btn" onclick="filterTickets('10/16', this)">10/16</button>
+      <button class="date-btn" onclick="filterTickets('10/18', this)">10/18</button>
+      <button class="date-btn" onclick="filterTickets('10/19', this)">10/19</button>
+      <button class="date-btn" onclick="filterTickets('10/20', this)">10/20</button>
+      <button class="date-btn" onclick="filterTickets('10/23', this)">10/23</button>
+    </div>
+
     <!-- 憑證 1 -->
-    <div class="content-card" onclick="openTrenordWallet()" style="cursor: pointer;">
+    <div class="content-card" data-date="10/16" onclick="openTrenordWallet()" style="cursor: pointer;">
       <h3>10/16 米蘭機場 ➔ 米蘭 MXP 2951</h3>
       <p><b>使用方法：</b>點擊此處自動打開 Trenord App > Wallet</p>
     </div>
 
     <!-- 憑證 2 -->
-    <div class="content-card">
+    <div class="content-card" data-date="10/16">
       <h3>10/16 米蘭城市票 24H 兌換卷</h3>
       <p><b>預約時間：</b>10/16 (五) 晚上六點前</p>
       <p><b>使用時間：</b>10/17</p>
@@ -342,31 +388,31 @@ body {
     </div>
 
     <!-- 憑證 3 -->
-    <div class="content-card" onclick="openTrenordWallet()" style="cursor: pointer;">
+    <div class="content-card" data-date="10/18" onclick="openTrenordWallet()" style="cursor: pointer;">
       <h3>10/18 米蘭 ➔ 貝爾加莫 RE 2219</h3>
       <p><b>使用方法：</b>點擊此處自動打開 Trenord App > Wallet</p>
     </div>
 
     <!-- 憑證 4 -->
-    <div class="content-card" onclick="openAtbWallet()" style="cursor: pointer;">
+    <div class="content-card" data-date="10/18" onclick="openAtbWallet()" style="cursor: pointer;">
       <h3>10/18 貝爾加莫一日票</h3>
       <p><b>使用方法：</b>點擊此處自動打開 atb-mobile > Tickets</p>
     </div>
 
     <!-- 憑證 5 -->
-    <div class="content-card" onclick="openTrenordWallet()" style="cursor: pointer;">
+    <div class="content-card" data-date="10/18" onclick="openTrenordWallet()" style="cursor: pointer;">
       <h3>10/18 貝爾加莫 ➔ 米蘭 RE 2232</h3>
       <p><b>使用方法：</b>點擊此處自動打開 Trenord App > Wallet</p>
     </div>
 
     <!-- 憑證 6 -->
-    <div class="content-card" onclick="openTrenordWallet()" style="cursor: pointer;">
+    <div class="content-card" data-date="10/19" onclick="openTrenordWallet()" style="cursor: pointer;">
       <h3>10/19 米蘭 ➔ 瓦倫納 RE 2818</h3>
       <p><b>使用方法：</b>點擊此處自動打開 Trenord App > Wallet</p>
     </div>
 
     <!-- 憑證 7 -->
-    <div class="content-card">
+    <div class="content-card" data-date="10/19">
       <h3>10/19 科莫湖中央區一日遊船(限普通船）</h3>
       <div class="img-container" onclick="openLightbox(this)">
         <img src="pass-ticket-3.jpg" alt="通票憑證圖片 3" class="img-placeholder" onerror="this.alt='⚠️ 請放 pass-ticket-3.jpg 到同目錄'">
@@ -375,7 +421,7 @@ body {
     </div>
 
     <!-- 憑證 8 -->
-    <div class="content-card">
+    <div class="content-card" data-date="10/19">
       <h3>10/19 瓦倫納 ➔ 米蘭(自行購買)</h3>
       <p><b>使用時間：</b>請參閱時刻表</p>
       <div class="img-container" onclick="openLightbox(this)">
@@ -385,7 +431,7 @@ body {
     </div>
 
     <!-- 憑證 9 -->
-    <div class="content-card">
+    <div class="content-card" data-date="10/20">
       <h3>10/20 米蘭 ➔ 熱那亞 IC 659</h3>
       <p><b>使用時間：</b>請參閱票面時間</p>
       <div class="img-container" onclick="openLightbox(this)">
@@ -395,7 +441,7 @@ body {
     </div>
 
     <!-- 憑證 10 -->
-    <div class="content-card">
+    <div class="content-card" data-date="10/20">
       <h3>10/20 熱那亞一日票(含景點，交通)</h3>
       <p><b>可21開始使用：</b>新街博物館(紅宮 白宮)，D'Albertis Castle 等</p>
       <div class="img-container" onclick="openLightbox(this)">
@@ -405,7 +451,7 @@ body {
     </div>
 
     <!-- 憑證 11 -->
-    <div class="content-card">
+    <div class="content-card" data-date="10/23">
       <h3>10/23 熱那亞 ➔ 文堤米莉亞 IC 633</h3>
       <p><b>使用時間：</b>請參閱票面時間</p>
       <div class="img-container" onclick="openLightbox(this)">
@@ -415,7 +461,7 @@ body {
     </div>
 
     <!-- 憑證 12 -->
-    <div class="content-card">
+    <div class="content-card" data-date="10/23">
       <h3>10/23 文堤米莉亞 ➔ 尼斯(自行購買)</h3>
       <p><b>使用時間：</b>請參閱時刻表</p>
       <div class="img-container" onclick="openLightbox(this)">
@@ -424,16 +470,14 @@ body {
       </div>
     </div>
 
-      <!-- 憑證 12 -->
-    <div class="content-card">
+    <!-- 憑證 13 -->
+    <div class="content-card" data-date="10/23">
       <h3>10/23 尼斯 PASS SUD AZUR EXPLORE 3 or 7日票(自行購買)</h3>
-      <p><b>使用時間：</b>10-23～10-27/p>
-      <!-- 將 window.location.href 內換成您的目標網址 -->
+      <p><b>使用時間：</b>10-23～10-27</p>
       <div class="img-container" onclick="window.open('https://maps.app.goo.gl/UfpiQBTEUX4PSRXH8', '_blank')">
           <img src="ticketstore.png" alt="通票憑證圖片 6" class="img-placeholder" onerror="this.alt='⚠️ 請放ticketstore.png 到同目錄'">
           <div class="img-hint">🔗 點擊前往售票處位置引導</div>
       </div>
-
     </div>
     
   </div>
@@ -498,6 +542,60 @@ function showPage(pageId) {
     targetPage.classList.add('active');
   }
   window.scrollTo(0, 0);
+
+  // 如果開啟的是通票頁面，觸發自動日期選擇
+  if (pageId === 'tickets') {
+    autoSelectTodayTicket();
+  }
+}
+
+/* 根據日期篩選卡片 */
+function filterTickets(targetDate, btnElement) {
+  // 更新按鈕高亮狀態
+  const buttons = document.querySelectorAll('.date-btn');
+  buttons.forEach(btn => btn.classList.remove('active'));
+  
+  if (btnElement) {
+    btnElement.classList.add('active');
+  }
+
+  // 隱藏/顯示對應卡片
+  const cards = document.querySelectorAll('#page-tickets .content-card');
+  cards.forEach(card => {
+    const cardDate = card.getAttribute('data-date');
+    if (targetDate === 'all' || cardDate === targetDate) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+/* 當天日期自動選擇 */
+function autoSelectTodayTicket() {
+  const now = new Date();
+  const month = now.getMonth() + 1; // 月份從0開始
+  const date = now.getDate();
+  const todayStr = `${month}/${date < 10 ? '0' + date : date}`;
+
+  const buttons = document.querySelectorAll('.date-btn');
+  let matchedBtn = null;
+
+  // 尋找是否有匹配今天日期的按鈕
+  buttons.forEach(btn => {
+    if (btn.innerText.includes(todayStr)) {
+      matchedBtn = btn;
+    }
+  });
+
+  if (matchedBtn) {
+    // 如果今天有行程，自動點擊當天日期按鈕
+    matchedBtn.click();
+  } else {
+    // 若今天非行程日期，預設顯示全部
+    const allBtn = Array.from(buttons).find(btn => btn.innerText.includes('全部'));
+    if (allBtn) allBtn.click();
+  }
 }
 
 /* 捷徑跳轉函式 */
