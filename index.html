@@ -90,6 +90,48 @@ body {
   box-shadow: 0 0 8px #34d399;
 }
 
+/* 紅色重要提醒卡片 */
+.alert-box {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1.5px solid #ef4444;
+  border-radius: 20px;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 20px rgba(239, 68, 68, 0.25);
+  animation: pulse-border 2s infinite;
+}
+
+.alert-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: #fca5a5;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.alert-content {
+  font-size: 15px;
+  color: #fecdd3;
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+.alert-content p {
+  margin-bottom: 4px;
+}
+
+.alert-content p:last-child {
+  margin-bottom: 0;
+}
+
+@keyframes pulse-border {
+  0% { border-color: rgba(239, 68, 68, 0.8); }
+  50% { border-color: rgba(239, 68, 68, 0.3); }
+  100% { border-color: rgba(239, 68, 68, 0.8); }
+}
+
 /* 旅行社風格精緻卡片 */
 .main-menu {
   display: flex;
@@ -176,7 +218,7 @@ body {
   color: #ffffff;
 }
 
-/* 新增：日期選擇器容器 */
+/* 日期選擇器容器 */
 .date-filter-container {
   display: flex;
   gap: 8px;
@@ -330,6 +372,12 @@ body {
       </div>
     </section>
 
+    <!-- 當天重要提醒警示區塊（無提醒時自動隱藏） -->
+    <div id="today-alert" class="alert-box" style="display: none;">
+      <div class="alert-title">⚠️ 今日重要提醒</div>
+      <div id="alert-content" class="alert-content"></div>
+    </div>
+
     <main class="main-menu">
       <!-- 通票憑證 -->
       <div class="luxury-card" onclick="showPage('tickets')">
@@ -396,7 +444,7 @@ body {
     <!-- 憑證 4 -->
     <div class="content-card" data-date="10/18" onclick="openAtbWallet()" style="cursor: pointer;">
       <h3>10/18 貝爾加莫一日票</h3>
-      <p><b>啟用時間：需在搭乘火車時進行啟用</p>
+      <p><b>啟用時間：</b>需在搭乘火車時進行啟用</p>
       <p><b>使用方法：</b>點擊此處自動打開 atb-mobile > Tickets</p>
     </div>
 
@@ -466,7 +514,7 @@ body {
       <h3>10/23 文堤米莉亞 ➔ 尼斯(自行購買)</h3>
       <p><b>使用時間：</b>請參閱時刻表</p>
       <div class="img-container" onclick="openLightbox(this)">
-        <img src="Timetable-2.jpg" alt="通票憑證圖片 6" class="img-placeholder" onerror="this.alt='⚠️ 請放Timetable-2.jpg 到同目錄'">
+        <img src="Timetable-2.jpg" alt="通票憑證圖片 6" class="img-placeholder" onerror="this.alt='⚠️ 請放 Timetable-2.jpg 到同目錄'">
         <div class="img-hint">🔍 點擊放大</div>
       </div>
     </div>
@@ -476,7 +524,7 @@ body {
       <h3>10/23 尼斯 PASS SUD AZUR EXPLORE 3 or 7日票(自行購買)</h3>
       <p><b>使用時間：</b>10-23～10-27</p>
       <div class="img-container" onclick="window.open('https://maps.app.goo.gl/UfpiQBTEUX4PSRXH8', '_blank')">
-          <img src="ticketstore.png" alt="通票憑證圖片 6" class="img-placeholder" onerror="this.alt='⚠️ 請放ticketstore.png 到同目錄'">
+          <img src="ticketstore.png" alt="通票憑證圖片 6" class="img-placeholder" onerror="this.alt='⚠️ 請放 ticketstore.png 到同目錄'">
           <div class="img-hint">🔗 點擊前往售票處位置引導</div>
       </div>
     </div>
@@ -533,6 +581,44 @@ body {
 </div>
 
 <script>
+/* 當天提醒資料庫 */
+const dailyAlerts = {
+  "10/16": [
+    "📌 晚上 18:00 前需預約/兌換米蘭城市 24H 票卷。"
+  ],
+  "10/18": [
+    "📌 搭乘火車時需提前開啟 atb-mobile 啟用「貝爾加莫一日票」。"
+  ],
+  "10/19": [
+    "📌 瓦倫納 ➔ 米蘭段需自行現場購買車票，請參閱時刻表。"
+  ],
+  "10/20": [
+    "📌 熱那亞一日票可於 21 號開始使用（含紅宮、白宮、D'Albertis Castle 等）。"
+  ],
+  "10/23": [
+    "📌 文堤米莉亞 ➔ 尼斯段需自行購買車票。",
+    "📌 請至售票處購買 尼斯 PASS SUD AZUR EXPLORE (3或7日票)。"
+  ]
+};
+
+/* 檢查並顯示今日提醒 */
+function checkTodayAlert() {
+  const now = new Date();
+  const month = now.getMonth() + 1;
+  const date = now.getDate();
+  const todayStr = `${month}/${date < 10 ? '0' + date : date}`;
+
+  const alertContainer = document.getElementById('today-alert');
+  const alertContent = document.getElementById('alert-content');
+
+  if (dailyAlerts[todayStr] && dailyAlerts[todayStr].length > 0) {
+    alertContent.innerHTML = dailyAlerts[todayStr].map(msg => `<p>${msg}</p>`).join('');
+    alertContainer.style.display = 'block';
+  } else {
+    alertContainer.style.display = 'none';
+  }
+}
+
 /* 頁面切換 */
 function showPage(pageId) {
   const pages = document.querySelectorAll('.page');
@@ -544,7 +630,6 @@ function showPage(pageId) {
   }
   window.scrollTo(0, 0);
 
-  // 如果開啟的是通票頁面，觸發自動日期選擇
   if (pageId === 'tickets') {
     autoSelectTodayTicket();
   }
@@ -552,7 +637,6 @@ function showPage(pageId) {
 
 /* 根據日期篩選卡片 */
 function filterTickets(targetDate, btnElement) {
-  // 更新按鈕高亮狀態
   const buttons = document.querySelectorAll('.date-btn');
   buttons.forEach(btn => btn.classList.remove('active'));
   
@@ -560,7 +644,6 @@ function filterTickets(targetDate, btnElement) {
     btnElement.classList.add('active');
   }
 
-  // 隱藏/顯示對應卡片
   const cards = document.querySelectorAll('#page-tickets .content-card');
   cards.forEach(card => {
     const cardDate = card.getAttribute('data-date');
@@ -575,14 +658,13 @@ function filterTickets(targetDate, btnElement) {
 /* 當天日期自動選擇 */
 function autoSelectTodayTicket() {
   const now = new Date();
-  const month = now.getMonth() + 1; // 月份從0開始
+  const month = now.getMonth() + 1;
   const date = now.getDate();
   const todayStr = `${month}/${date < 10 ? '0' + date : date}`;
 
   const buttons = document.querySelectorAll('.date-btn');
   let matchedBtn = null;
 
-  // 尋找是否有匹配今天日期的按鈕
   buttons.forEach(btn => {
     if (btn.innerText.includes(todayStr)) {
       matchedBtn = btn;
@@ -590,10 +672,8 @@ function autoSelectTodayTicket() {
   });
 
   if (matchedBtn) {
-    // 如果今天有行程，自動點擊當天日期按鈕
     matchedBtn.click();
   } else {
-    // 若今天非行程日期，預設顯示全部
     const allBtn = Array.from(buttons).find(btn => btn.innerText.includes('全部'));
     if (allBtn) allBtn.click();
   }
@@ -648,6 +728,9 @@ document.addEventListener('visibilitychange', () => {
     requestWakeLock();
   }
 });
+
+/* 初始化檢查今日提醒 */
+document.addEventListener('DOMContentLoaded', checkTodayAlert);
 </script>
 
 </body>
