@@ -423,6 +423,7 @@ body {
       <button class="date-btn" onclick="filterTickets('10/18', this)">10/18</button>
       <button class="date-btn" onclick="filterTickets('10/19', this)">10/19</button>
       <button class="date-btn" onclick="filterTickets('10/20', this)">10/20</button>
+      <button class="date-btn" onclick="filterTickets('10/22', this)">10/22</button>
       <button class="date-btn" onclick="filterTickets('10/23', this)">10/23</button>
     </div>
 
@@ -513,8 +514,8 @@ body {
       </div>
     </div>
 
-     <!-- 憑證 14 -->
-    <div class="content-card" data-date="10/20">
+    <!-- 憑證 14 -->
+    <div class="content-card" data-date="10/22">
       <h3>10/22 熱那亞 ➔ 菲諾港(Santa Margherita Ligure)</h3>
       <p><b>使用時間：</b>請參閱票面時間</p>
       <div class="img-container" onclick="openLightbox(this)">
@@ -523,8 +524,8 @@ body {
       </div>
     </div>
 
-       <!-- 憑證 15 -->
-    <div class="content-card" data-date="10/20">
+    <!-- 憑證 15 -->
+    <div class="content-card" data-date="10/22">
       <h3>10/22 菲諾港 ➔ 熱拿亞(Santa Margherita Ligure)</h3>
       <p><b>使用時間：</b>請參閱票面時間</p>
       <div class="img-container" onclick="openLightbox(this)">
@@ -533,12 +534,11 @@ body {
       </div>
     </div>
 
-     <!-- 憑證 16 -->
-    <div class="content-card" data-date="10/19" onclick="openTrenordWallet()" style="cursor: pointer;">
+    <!-- 憑證 16 -->
+    <div class="content-card" data-date="10/22">
       <h3>10/22 METDaily 24小時 搭乘728前往菲諾港</h3>
-      <p><b>使用方法：</b>點擊此處自動打開 AMT Genova > Tickets</p>
-      <p><b></b>Tickets with credit card > MET Daily 24 Hours</p>
-      <p><b></b>回到首頁點 > Tickets > Your tickets 點彈窗中間的 綠色字樣跳出票卷 ></p>
+      <p><b>使用方法：</b>開啟 AMT Genova > Tickets</p>
+      <p><b>流程：</b>Tickets with credit card > MET Daily 24 Hours > 回到首頁點 > Tickets > Your tickets 點彈窗中間的綠色字樣跳出票卷</p>
       <div class="img-container" onclick="openLightbox(this)">
         <img src="METDaily.jpg" alt="通票憑證圖片 2" class="img-placeholder" onerror="this.alt='⚠️ 請放 METDaily.jpg 到同目錄'">
         <div class="img-hint">🔍 點擊放大</div>
@@ -641,17 +641,20 @@ const dailyAlerts = {
   "10/20": [
     "📌 熱那亞一日票可於 21 號開始使用（含紅宮、白宮、D'Albertis Castle 等）。"
   ],
+  "10/22": [
+    "📌 搭乘 728 公車至菲諾港前，請確認已啟用 METDaily 24小時票卷。"
+  ],
   "10/23": [
     "📌 文堤米莉亞 ➔ 尼斯段需自行購買車票。",
     "📌 請至售票處購買 尼斯 PASS SUD AZUR EXPLORE (3或7日票)。"
   ]
 };
 
-/* 格式化今天的日期標籤 M/D 或 MM/DD 統一比對 */
+/* 格式化今天的日期標籤 M/D 比對 (不補零以匹配 10/16 格式) */
 function getTodayFormatted() {
   const now = new Date();
-  const month = String(now.getMonth() + 1).padStart(2, '0');
-  const date = String(now.getDate()).padStart(2, '0');
+  const month = now.getMonth() + 1;
+  const date = now.getDate();
   return `${month}/${date}`;
 }
 
@@ -728,7 +731,7 @@ function autoSelectTodayTicket() {
   let matchedBtn = null;
 
   buttons.forEach(btn => {
-    if (btn.innerText.includes(todayStr)) {
+    if (btn.innerText.trim() === todayStr) {
       matchedBtn = btn;
     }
   });
