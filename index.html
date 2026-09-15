@@ -644,7 +644,9 @@ function showPage(pageId) {
 }
 
 /* 根據日期篩選卡片 */
+/* 根據日期篩選卡片 + 同步切換頂部提醒 */
 function filterTickets(targetDate, btnElement) {
+  // 1. 更新按鈕高亮狀態
   const buttons = document.querySelectorAll('.date-btn');
   buttons.forEach(btn => btn.classList.remove('active'));
   
@@ -652,6 +654,7 @@ function filterTickets(targetDate, btnElement) {
     btnElement.classList.add('active');
   }
 
+  // 2. 隱藏/顯示對應行程卡片
   const cards = document.querySelectorAll('#page-tickets .content-card');
   cards.forEach(card => {
     const cardDate = card.getAttribute('data-date');
@@ -661,6 +664,19 @@ function filterTickets(targetDate, btnElement) {
       card.style.display = 'none';
     }
   });
+
+  // 3. ✨ 新增：同步切換首頁/頂部的提醒區塊
+  const alertContainer = document.getElementById('today-alert');
+  const alertContent = document.getElementById('alert-content');
+
+  // 如果選中的日期有提醒資料
+  if (dailyAlerts[targetDate] && dailyAlerts[targetDate].length > 0) {
+    alertContent.innerHTML = dailyAlerts[targetDate].map(msg => `<p>${msg}</p>`).join('');
+    alertContainer.style.display = 'block';
+  } else {
+    // 點擊「全部」或沒有提醒的日期時自動隱藏
+    alertContainer.style.display = 'none';
+  }
 }
 
 /* 當天日期自動選擇 */
