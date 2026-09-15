@@ -712,12 +712,12 @@ async function requestWakeLock() {
   try {
     if ('wakeLock' in navigator) {
       wakeLock = await navigator.wakeLock.request('screen');
-      document.getElementById('wakelock-text').innerText = '螢幕常亮已啟用';
+      //document.getElementById('wakelock-text').innerText = '螢幕常亮已啟用';
     } else {
-      document.getElementById('wakelock-text').innerText = '瀏覽器不支援常亮';
+      //document.getElementById('wakelock-text').innerText = '瀏覽器不支援常亮';
     }
   } catch (err) {
-    document.getElementById('wakelock-text').innerText = '螢幕常亮休眠中';
+    //document.getElementById('wakelock-text').innerText = '螢幕常亮休眠中';
   }
 }
 
