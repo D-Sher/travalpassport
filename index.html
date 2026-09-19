@@ -162,22 +162,31 @@ const itineraries = {
     fullMap: "",
     nodes: [
       { name: "Hilton Milan", type: "hotel", tag: "出發", note: "飯店出發", map: "", transit: "搭乘 Metro M3 ➔ Duomo 站" },
-      { name: "米蘭主教座堂 (Duomo)", type: "sight", tag: "主景點", note: "參觀參觀參觀教堂與廣場區域", map: "https://maps.app.goo.gl/1BwWX5AbHh28yy7H7", transit: "步行 1 分鐘" },
-      { name: "埃馬努埃萊二世拱廊", type: "sight", tag: "輕鬆區域", note: "大教堂旁輕鬆逛街區", map: "https://maps.app.goo.gl/xzRx7fFwCv5wQWSr5", transit: "步行" },
-      { name: "Ristorante Galleria", type: "food", tag: "午餐用餐", note: "義大利餐廳（1987年開幕）", map: "https://maps.app.goo.gl/EyZaBaxgdZJNYJxs7", transit: "步行" },
-      { name: "星巴克臻選® 米蘭烘焙工坊", type: "food", tag: "下午茶", note: "義大利百年郵局改建歐洲最大星巴克", map: "https://maps.app.goo.gl/r5styKUNJncvAmP18", transit: "路面電車 1 號線" },
-      { name: "威尼斯門 / 蒙塔內利花園", type: "sight", tag: "步行散步", note: "米蘭最古老的城市花園，散步放鬆", map: "https://maps.app.goo.gl/6rNZ97skhvHupy7J6", transit: "輕軌 9 號線 ➔ 飯店" },
-      { name: "La Volta at RH Milan", type: "food", tag: "晚餐地點", note: "高評價餐館，適合晚宴", map: "https://maps.app.goo.gl/2WXDwH9QnPzpH5S27", transit: "" }
+      { name: "米蘭主教座堂 (Duomo)", type: "sight", tag: "主景點", note: "參觀教堂與廣場區域", map: "https://maps.app.goo.gl/1BwWX5AbHh28yy7H7", transit: "步行 1 分鐘" },
+      { name: "埃馬努埃萊二世拱廊", type: "sight", tag: "輕鬆區域", note: "大教堂旁輕鬆逛街區", map: "https://maps.app.goo.gl/xzRx7fFwCv5wQWSr5", transit: "步行 2 分鐘" },
+      { name: "Ristorante Galleria", type: "food", tag: "午餐用餐", note: "義大利餐廳（1987年開幕）", map: "https://maps.app.goo.gl/EyZaBaxgdZJNYJxs7", transit: "步行 3 分鐘" },
+      { name: "斯卡拉大劇院 (Teatro alla Scala)", type: "sight", tag: "輕鬆區域", note: "18 世紀豪華劇院，外觀與劇院廣場散步", map: "https://maps.app.goo.gl/UnXheEdWotjZfWuJA", transit: "步行 2 分鐘" },
+      { name: "La Corte Romanengo - Salon de thé Manzoni", type: "food", tag: "下午茶/早午餐", note: "百年老字號精緻茶館與法式/義式點心，極具優雅氛圍", map: "https://maps.app.goo.gl/cQpBxgS17Wz8Z48P7", transit: "步行 6 分鐘" },
+      { name: "星巴克臻選® 米蘭烘焙工坊", type: "food", tag: "下午茶/參觀", note: "義大利百年郵局改建歐洲最大星巴克，感受工業風烘焙區", map: "https://maps.app.goo.gl/r5styKUNJncvAmP18", transit: "搭乘路面電車 1 號線 / 9 號線" },
+      { name: "威尼斯門 / 蒙塔內利花園", type: "sight", tag: "步行散步", note: "米蘭最古老的城市花園，散步放鬆", map: "https://maps.app.goo.gl/6rNZ97skhvHupy7J6", transit: "步行 5 分鐘" },
+      { name: "La Volta at RH Milan", type: "food", tag: "晚餐地點", note: "高評價餐館，適合晚宴", map: "https://maps.app.goo.gl/2WXDwH9QnPzpH5S27", transit: "輕軌 9 號線 ➔ 飯店" }
     ]
   },
   "10/18": {
     summary: ["貝爾加莫一日往返；重點放在 Città Alta，避免連續長距離步行。"],
     fullMap: "",
     nodes: [
-      { name: "米蘭中央車站", type: "station", tag: "鐵路轉乘", note: "搭乘 Trenord 列車前往 Bergamo", map: "", transit: "火車約 1 小時" },
-      { name: "Bergamo車站 / Papa Giovanni", type: "station", tag: "公車轉乘", note: "轉乘 1 號公車前往纜車站", map: "https://maps.app.goo.gl/EVm2E9U8cCz7u4ep7", transit: "1號公車 / 纜車" },
-      { name: "Funicolare Città Alta", type: "sight", tag: "景點纜車", note: "搭纜車登上舊城區觀景", map: "https://maps.app.goo.gl/hQddPGQVXAosPEkh9", transit: "步行" },
-      { name: "Piazza Vecchia (古城廣場)", type: "sight", tag: "輕鬆區域", note: "廣場散步＋咖啡館休息", map: "https://maps.app.goo.gl/GAMLzZ9RnEtkszmR7", transit: "" }
+      { name: "米蘭中央車站 (Milano Centrale)", type: "station", tag: "出發樞紐", note: "搭乘 Trenord 列車前往 Bergamo", map: "", transit: "火車約 1 小時" },
+      { name: "Bergamo 火車站 / Papa Giovanni fermata 2", type: "station", tag: "公車轉乘", note: "搭乘 1 號公車前往纜車站", map: "https://maps.app.goo.gl/EVm2E9U8cCz7u4ep7", transit: "1號公車" },
+      { name: "Vittorio Emanuele 47", type: "station", tag: "公車下車站", note: "1號公車站點，準備前往纜車", map: "https://maps.app.goo.gl/NtLLoYUNVAXrqHdz6", transit: "步行 2 分鐘" },
+      { name: "Funicolare Città Alta (山下站)", type: "sight", tag: "纜車", note: "搭乘纜車/電梯優先，輕鬆登上上城區", map: "https://maps.app.goo.gl/hQddPGQVXAosPEkh9", transit: "纜車上行" },
+      { name: "Staz.Sup.Fun.Città (山上站)", type: "station", tag: "景點纜車站", note: "抵達舊城上城區", map: "https://maps.app.goo.gl/fuunghtVxQhhKFqL6", transit: "步行" },
+      { name: "Alta Funicolare", type: "food", tag: "午餐地點", note: "義大利小餐館享用午餐", map: "https://maps.app.goo.gl/iXWio87iSoBz62rZ8", transit: "步行" },
+      { name: "Pezzi di artiglieria", type: "sight", tag: "觀景台", note: "公園觀景台，可遠眺貝爾加莫下城區全景", map: "https://maps.app.goo.gl/Jvfs6N9M6MZFx1yd8", transit: "步行" },
+      { name: "Piazzetta Luigi Angelini", type: "sight", tag: "捷徑走廊", note: "可從此中庭走廊直接通往廣場", map: "https://maps.app.goo.gl/DBSityoEsMeUvjnT8", transit: "步行" },
+      { name: "Piazza Vecchia (老城廣場)", type: "sight", tag: "輕鬆區域", note: "古城廣場散步與休息", map: "https://maps.app.goo.gl/GAMLzZ9RnEtkszmR7", transit: "步行" },
+      { name: "Carmen Gelato - Colleoni", type: "food", tag: "冰淇淋/甜點", note: "當地熱門義大利冰淇淋店", map: "https://maps.app.goo.gl/pDy86qQXNP8UkHyJ6", transit: "搭乘纜車/公車返回 Bergamo 火車站" },
+      { name: "Bergamo 火車站", type: "station", tag: "回程樞紐", note: "搭乘 Trenord 返回米蘭中央車站", map: "", transit: "火車約 1 小時" }
     ]
   }
   /* 其他日期依此類推延伸 */
