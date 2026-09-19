@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026 Europe Journey | 行程導覽總覽</title>
+<title>2026 Europe Journey | 行程總覽與每日導覽</title>
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
@@ -37,45 +37,21 @@ body{
   letter-spacing:.06em
 }
 .route{font-size:15px;color:#94a3b8;font-weight:500;margin-top:6px;letter-spacing:.08em}
-.status{
-  display:inline-flex;align-items:center;gap:6px;margin-top:12px;padding:4px 12px;
-  background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.3);
-  border-radius:20px;font-size:12px;color:#fbbf24;font-weight:600
-}
-.status-dot{width:8px;height:8px;background:#fbbf24;border-radius:50%;display:inline-block;box-shadow:0 0 8px #fbbf24}
 
 .alert-box{
-  background:linear-gradient(135deg,rgba(239,68,68,.15),rgba(185,28,28,.05));
-  border:1.5px solid #ef4444;border-radius:20px;padding:16px 20px;margin-bottom:20px;
-  box-shadow:0 8px 20px rgba(239,68,68,.2)
+  background:linear-gradient(135deg,rgba(245,158,11,.15),rgba(180,83,9,.05));
+  border:1.5px solid #f59e0b;border-radius:20px;padding:16px 20px;margin-bottom:20px;
+  box-shadow:0 8px 20px rgba(245,158,11,.15)
 }
-.alert-title{font-size:16px;font-weight:800;color:#fca5a5;margin-bottom:6px;display:flex;gap:6px}
-.alert-content{font-size:15px;color:#fecdd3;line-height:1.5;font-weight:600}
-.alert-content p{margin-bottom:4px}.alert-content p:last-child{margin-bottom:0}
-
-.main-menu{display:flex;flex-direction:column;gap:20px}
-.luxury-card{
-  background:linear-gradient(135deg,#161e2e,#101623);
-  border:1.5px solid rgba(212,175,55,.3);border-radius:24px;padding:28px 24px;
-  display:flex;align-items:center;cursor:pointer;box-shadow:0 10px 25px rgba(0,0,0,.5);
-  transition:all .2s ease;position:relative
-}
-.luxury-card:active{transform:scale(.97);border-color:#d4af37;background:#1c273c}
-.icon-box{
-  width:68px;height:68px;background:rgba(212,175,55,.1);border:1px solid rgba(212,175,55,.3);
-  border-radius:20px;display:flex;align-items:center;justify-content:center;
-  font-size:38px;margin-right:20px;flex-shrink:0
-}
-.card-title{font-size:24px;font-weight:800;color:#fff;letter-spacing:.02em}
-.card-subtitle{font-size:14px;color:#d4af37;font-weight:600;margin-top:4px}
-.arrow{margin-left:auto;font-size:22px;color:#d4af37;font-weight:700}
+.alert-title{font-size:16px;font-weight:800;color:#fbbf24;margin-bottom:6px;display:flex;gap:6px}
+.alert-content{font-size:14px;color:#fef3c7;line-height:1.5;font-weight:500}
 
 .subpage-header{display:flex;align-items:center;margin-bottom:16px}
 .btn-back{
   background:rgba(212,175,55,.1);color:#d4af37;border:1.5px solid #d4af37;
-  padding:10px 18px;border-radius:16px;font-size:16px;font-weight:800;cursor:pointer
+  padding:8px 16px;border-radius:14px;font-size:15px;font-weight:800;cursor:pointer
 }
-.subpage-title{font-size:22px;font-weight:800;margin-left:16px;color:#fff}
+.subpage-title{font-size:20px;font-weight:800;margin-left:12px;color:#fff}
 
 .date-filter-container{
   display:flex;gap:8px;overflow-x:auto;padding-bottom:12px;margin-bottom:16px;
@@ -94,49 +70,43 @@ body{
   border:1px solid rgba(212,175,55,.15)
 }
 .content-card h3{font-size:20px;font-weight:800;margin-bottom:12px;color:#d4af37;border-bottom:1px solid rgba(212,175,55,.2);padding-bottom:8px}
-.content-card p{font-size:16px;line-height:1.6;color:#e2e8f0;font-weight:500;margin-bottom:7px}
-.content-card p:last-child{margin-bottom:0}
 
-.item{
-  padding:14px 0;border-bottom:1px solid rgba(148,163,184,.12)
+/* 時間軸線條與節點 */
+.timeline{position:relative;padding-left:20px;margin-top:16px;border-left:2px dashed rgba(212,175,55,.3)}
+.timeline-item{position:relative;margin-bottom:20px}
+.timeline-item:last-child{margin-bottom:0}
+.timeline-dot{
+  position:absolute;left:-27px;top:2px;width:12px;height:12px;
+  border-radius:50%;background:#d4af37;box-shadow:0 0 8px #d4af37
 }
-.item:first-child{padding-top:0}.item:last-child{border-bottom:0;padding-bottom:0}
-.item-title{font-size:18px;font-weight:800;color:#fff;margin-bottom:6px}
-.item-meta{font-size:14px;color:#94a3b8;line-height:1.55}
+
+.item-title{font-size:17px;font-weight:800;color:#fff;margin-bottom:4px;display:flex;align-items:center;gap:6px}
+.item-meta{font-size:14px;color:#94a3b8;line-height:1.5}
+
 .badge{
-  display:inline-block;padding:4px 9px;border-radius:10px;margin:2px 4px 2px 0;
-  font-size:12px;font-weight:800;background:rgba(212,175,55,.1);color:#d4af37;
-  border:1px solid rgba(212,175,55,.25)
+  display:inline-block;padding:2px 8px;border-radius:8px;
+  font-size:11px;font-weight:800;background:rgba(212,175,55,.15);color:#d4af37;
+  border:1px solid rgba(212,175,55,.3)
 }
-.transport-badge{
-  display:inline-block;padding:4px 9px;border-radius:10px;margin:2px 4px 2px 0;
-  font-size:12px;font-weight:800;background:rgba(59,130,246,.1);color:#93c5fd;
-  border:1px solid rgba(59,130,246,.25)
-}
-.map-btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:7px;
-  margin-top:10px;padding:11px 14px;border-radius:14px;
-  background:#d4af37;color:#0b0f19;text-decoration:none;font-weight:800;font-size:14px
-}
-.map-btn.secondary{background:rgba(212,175,55,.1);color:#d4af37;border:1px solid rgba(212,175,55,.35)}
-.route-box{
-  background:linear-gradient(135deg,rgba(59,130,246,.08),rgba(15,23,42,.3));
-  border:1px solid rgba(96,165,250,.2);border-radius:18px;padding:16px;margin-top:10px
-}
-.route-line{font-size:17px;font-weight:800;color:#fff;line-height:1.55}
-.route-arrow{color:#d4af37;padding:0 4px}
-.route-detail{font-size:14px;color:#94a3b8;line-height:1.6;margin-top:7px}
-.summary{
-  background:rgba(212,175,55,.06);border-left:3px solid #d4af37;
-  border-radius:10px;padding:12px 14px;margin-top:12px;
-  color:#e2e8f0;font-size:15px;line-height:1.6
-}
-.empty{color:#64748b;text-align:center;padding:18px 0}
+.badge.hotel{background:rgba(168,85,247,.15);color:#c084fc;border-color:rgba(168,85,247,.3)}
+.badge.station{background:rgba(59,130,246,.15);color:#93c5fd;border-color:rgba(59,130,246,.3)}
+.badge.food{background:rgba(239,68,68,.15);color:#fca5a5;border-color:rgba(239,68,68,.3)}
 
-.small-note{font-size:12px;color:#64748b;line-height:1.5;margin-top:12px}
-.section-label{
-  font-size:12px;letter-spacing:.15em;color:#64748b;font-weight:800;
-  margin:18px 2px 8px;text-transform:uppercase
+.transit-info{
+  font-size:12px;color:#d4af37;background:rgba(212,175,55,.05);
+  padding:4px 10px;border-radius:6px;margin:8px 0;display:inline-block
+}
+
+.map-btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  margin-top:6px;padding:6px 12px;border-radius:10px;
+  background:rgba(212,175,55,.15);color:#d4af37;border:1px solid rgba(212,175,55,.3);
+  text-decoration:none;font-weight:700;font-size:12px
+}
+.full-map-btn{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  width:100%;padding:12px;border-radius:14px;background:#d4af37;color:#0b0f19;
+  text-decoration:none;font-weight:800;font-size:15px;margin-top:12px
 }
 </style>
 </head>
@@ -144,657 +114,146 @@ body{
 <body>
 <div class="container">
 
-  <!-- ==================== 首頁 ==================== -->
+  <!-- 主頁面 -->
   <div id="page-home" class="page active">
     <section class="hero">
       <div class="agency-badge">PRIVATE JOURNEY GUIDE</div>
       <div class="flags">🇮🇹 🇫🇷</div>
-      <div class="title">2026 蔚藍海岸的慢活詩篇</div>
+      <div class="title">2026 蔚藍海岸慢活詩篇</div>
       <div class="route">MILANO · GENOVA · NICE</div>
-      <div class="status">
-        <span class="status-dot"></span>
-        <span>行程導覽總覽</span>
-      </div>
     </section>
 
-    <main class="main-menu">
+    <!-- 日期選擇頁籤 -->
+    <div class="date-filter-container" id="date-buttons"></div>
 
-      <div class="luxury-card" onclick="showPage('sights')">
-        <div class="icon-box">📍</div>
-        <div>
-          <div class="card-title">景點總覽</div>
-          <div class="card-subtitle">Sightseeing Guide</div>
-        </div>
-        <div class="arrow">➔</div>
-      </div>
-
-      <div class="luxury-card" onclick="showPage('stations')">
-        <div class="icon-box">🚉</div>
-        <div>
-          <div class="card-title">車站總覽</div>
-          <div class="card-subtitle">Rail · Metro · Tram</div>
-        </div>
-        <div class="arrow">➔</div>
-      </div>
-
-      <div class="luxury-card" onclick="showPage('routes')">
-        <div class="icon-box">🗺️</div>
-        <div>
-          <div class="card-title">路線引導總覽</div>
-          <div class="card-subtitle">Daily Route & Transport</div>
-        </div>
-        <div class="arrow">➔</div>
-      </div>
-
-    </main>
-  </div>
-
-
-  <!-- ==================== 景點總覽 ==================== -->
-  <div id="page-sights" class="page">
-    <div class="subpage-header">
-      <button class="btn-back" onclick="showPage('home')">← 返回</button>
-      <span class="subpage-title">📍 景點總覽</span>
+    <!-- 當日提醒與導覽內容 -->
+    <div id="day-alert" class="alert-box" style="display:none">
+      <div class="alert-title">⚠️ 當日重要提醒</div>
+      <div id="day-alert-content" class="alert-content"></div>
     </div>
 
-    <div class="date-filter-container" id="sight-dates"></div>
-    <div id="sight-alert" class="alert-box" style="display:none">
-      <div class="alert-title">⚠️ 當日提醒總結</div>
-      <div id="sight-alert-content" class="alert-content"></div>
-    </div>
-    <div id="sight-list"></div>
-  </div>
-
-
-  <!-- ==================== 車站總覽 ==================== -->
-  <div id="page-stations" class="page">
-    <div class="subpage-header">
-      <button class="btn-back" onclick="showPage('home')">← 返回</button>
-      <span class="subpage-title">🚉 車站總覽</span>
-    </div>
-
-    <div class="date-filter-container" id="station-dates"></div>
-    <div id="station-alert" class="alert-box" style="display:none">
-      <div class="alert-title">⚠️ 當日提醒總結</div>
-      <div id="station-alert-content" class="alert-content"></div>
-    </div>
-    <div id="station-list"></div>
-  </div>
-
-
-  <!-- ==================== 路線引導總覽 ==================== -->
-  <div id="page-routes" class="page">
-    <div class="subpage-header">
-      <button class="btn-back" onclick="showPage('home')">← 返回</button>
-      <span class="subpage-title">🗺️ 路線引導總覽</span>
-    </div>
-
-    <div class="date-filter-container" id="route-dates"></div>
-    <div id="route-alert" class="alert-box" style="display:none">
-      <div class="alert-title">⚠️ 當日提醒總結</div>
-      <div id="route-alert-content" class="alert-content"></div>
-    </div>
-    <div id="route-list"></div>
+    <div id="day-content"></div>
   </div>
 
 </div>
 
 <script>
-/* ============================================================
-   三大功能共用資料
-   只需要修改這裡，就可以更新整個網站。
-   ============================================================ */
-
-// Google Maps 不再用地名搜尋；每個景點／車站直接貼 Google Maps 分享網址。
-// maps.app.goo.gl 可直接放入 href，網站不會再猜同名地點。
 const tripDates = [
   "10/16","10/17","10/18","10/19","10/20","10/21",
   "10/22","10/23","10/24","10/25","10/26","10/27","10/28"
 ];
 
-/* ---------- 景點總覽 ----------
-   items 格式：
-   [名稱, 說明, 標籤, Google Maps 分享網址]
-
-   例如：
-   ["米蘭主教座堂","主景點","主景點","https://maps.app.goo.gl/xxxxx"]
-   -------------------------------- */
-const sights = {
+/* ============================================================
+   整合型資料結構：結合 景點、車站、飯店 與 交通路線
+   ============================================================ */
+const itineraries = {
   "10/16": {
-    summary:["抵達米蘭後以入住與休息為主，不安排大量景點。"],
-    items:[
-      ["米蘭中央車站","抵達後以車站、飯店及晚餐動線為主","輕鬆適應日","https://maps.app.goo.gl/eKFHHZgWkQdQsDw29"],
-      ["米蘭車站遊客服務中心","領取城市一日票","輕鬆適應日","https://maps.app.goo.gl/EMNEXY3UwxDi1PBq6"],
-      ["米蘭希爾頓飯店","4星希爾頓旗下","下塌飯店","https://maps.app.goo.gl/hVubVJzqpUFYn6pA7"],
-      ["CotoliAMO","飯店附設的義大利餐廳","晚餐用餐地點","https://maps.app.goo.gl/rPbei9YcnEGtG8WM7"],
-      ["Via Filzi Via Pirelli","輕軌9號線可往威尼斯門方向","輕鬆適應日","https://maps.app.goo.gl/iw3xrHTMCfDTdfuS9"]
+    summary: ["抵達米蘭後以入住與休息為主，不安排大量景點。"],
+    fullMap: "",
+    nodes: [
+      { name: "Milano Malpensa Airport (MXP)", type: "station", tag: "機場鐵路", note: "抵達機場後辦理入境與取行李", map: "", transit: "搭乘 Trenord 機場快線 ➔ 米蘭中央車站" },
+      { name: "米蘭中央車站 (Milano Centrale)", type: "station", tag: "交通樞紐", note: "抵達市區轉乘點", map: "https://maps.app.goo.gl/eKFHHZgWkQdQsDw29", transit: "步行 3 分鐘" },
+      { name: "Hilton Milan", type: "hotel", tag: "住宿飯店", note: "辦理入住、放置行李與休息", map: "", transit: "步行" },
+      { name: "CotoliAMO", type: "food", tag: "晚餐地點", note: "飯店附設義大利餐廳，輕鬆享用晚餐", map: "https://maps.app.goo.gl/rPbei9YcnEGtG8WM7", transit: "" }
     ]
   },
   "10/17": {
-    summary:["米蘭市區主景點日；控制在 1 個主景點＋1 個輕鬆區域。"],
-    items:[
-      ["米蘭主教座堂","主景點","主景點","https://maps.app.goo.gl/1BwWX5AbHh28yy7H7"],
-      ["埃馬努埃萊二世拱廊","大教堂旁輕鬆逛街區","輕鬆區域","https://maps.app.goo.gl/xzRx7fFwCv5wQWSr5"],
-      ["Ristorante Galleria","義大利餐廳 1987年開幕","中午用餐","https://maps.app.goo.gl/EyZaBaxgdZJNYJxs7"],
-      ["星巴克臻選® 米蘭烘焙工坊","義大利百年郵局入住歐洲最大星巴克","可選下午茶","https://maps.app.goo.gl/r5styKUNJncvAmP18"],
-      ["斯卡拉大劇院","18 世紀的豪華劇院，以義大利歌劇聞名","輕鬆區域","https://maps.app.goo.gl/UnXheEdWotjZfWuJA"],
-      ["Teatro Alla Scala","米蘭路面電車1號線","輕鬆區域","https://maps.app.goo.gl/GfDCCWtFYoVaRMRB7"],
-      ["P.Za Cavour","米蘭路面電車1號線","輕鬆區域","https://maps.app.goo.gl/eseG5QHQiTzeafg6A"],
-      ["蒙塔內利花園","米蘭最古老的城市花園 建於1784年","步行區域","https://maps.app.goo.gl/6rNZ97skhvHupy7J6"],
-      ["杜尼亞尼宮","建於 17 世紀的歷史建築","步行區域","https://maps.app.goo.gl/fd9UDLkg3gbBq2yZA"],
-      ["自然歷史博物館","米蘭路面電車1號線","步行區域","https://maps.app.goo.gl/ocFSBaGMmMnAotdL7"],
-      ["La Volta at RH Milan","一家評分蠻高的餐館適合晚宴","晚餐用餐地點","https://maps.app.goo.gl/2WXDwH9QnPzpH5S27"],
-      ["威尼斯門","古羅馬時期便存在的老城門，多次經不同朝代改建","步行區域","https://maps.app.goo.gl/KWPwvb8wrSSKXA9n7"],
-      ["P.Ta Venezia M1","輕軌9號線往希爾頓方向","步行區域","https://maps.app.goo.gl/G8emMzHB7PY5fqmo7"]
-    ]
+    summary: ["米蘭市區主景點日；控制在 1 個主景點＋1 個輕鬆區域。"],
+    fullMap: "",
+    nodes: [
+      { name: "Hilton Milan", type: "hotel", tag: "出發", note: "飯店出發", map: "", transit: "搭乘 Metro M3 ➔ Duomo 站" },
+      { name: "米蘭主教座堂 (Duomo)", type: "sight", tag: "主景點", note: "參觀參觀參觀教堂與廣場區域", map: "https://maps.app.goo.gl/1BwWX5AbHh28yy7H7", transit: "步行 1 分鐘" },
+      { name: "埃馬努埃萊二世拱廊", type: "sight", tag: "輕鬆區域", note: "大教堂旁輕鬆逛街區", map: "https://maps.app.goo.gl/xzRx7fFwCv5wQWSr5", transit: "步行" },
+      { name: "Ristorante Galleria", type: "food", tag: "午餐用餐", note: "義大利餐廳（1987年開幕）", map: "https://maps.app.goo.gl/EyZaBaxgdZJNYJxs7", transit: "步行" },
+      { name: "星巴克臻選® 米蘭烘焙工坊", type: "food", tag: "下午茶", note: "義大利百年郵局改建歐洲最大星巴克", map: "https://maps.app.goo.gl/r5styKUNJncvAmP18", transit: "路面電車 1 號線" },
+      { name: "威尼斯門 / 蒙塔內利花園", type: "sight", tag: "步行散步", note: "米蘭最古老的城市花園，散步放鬆", map: "https://maps.app.goo.gl/6rNZ97skhvHupy7J6", transit: "輕軌 9 號線 ➔ 飯店" },
+      { name: "La Volta at RH Milan", type: "food", tag: "晚餐地點", note: "高評價餐館，適合晚宴", map: "https://maps.app.goo.gl/2WXDwH9QnPzpH5S27", transit: "" }
     ]
   },
   "10/18": {
-    summary:["貝爾加莫一日往返；重點放在 Città Alta，避免連續長距離步行。"],
-    items:[
-      ["Papa Giovanni fermata 2","1號公車站","轉乘點","https://maps.app.goo.gl/EVm2E9U8cCz7u4ep7"],
-      ["Vittorio Emanuele 47","1號公車站","下車點","https://maps.app.goo.gl/NtLLoYUNVAXrqHdz6"],
-      ["Funicolare Città Alta","搭纜車／電梯優先，安排老城觀景","主景點纜車站上行","https://maps.app.goo.gl/hQddPGQVXAosPEkh9"],
-      ["Staz.Sup.Fun.Città","搭纜車／電梯優先，安排老城觀景","主景點纜車站","https://maps.app.goo.gl/fuunghtVxQhhKFqL6"],
-      ["Alta Funicolare","義大利小餐館","中午用餐地點","https://maps.app.goo.gl/iXWio87iSoBz62rZ8"]
-      ["Pezzi di artiglieria","觀景台公園 可看到貝爾加莫下城區全景","步行區域","https://maps.app.goo.gl/Jvfs6N9M6MZFx1yd8"],
-      ["Piazzetta Luigi Angelini","可從這個中庭走廊直接走到廣場","步行區域","https://maps.app.goo.gl/DBSityoEsMeUvjnT8"],
-      ["Piazza Vecchia","古城廣場＋咖啡休息","輕鬆區域","https://maps.app.goo.gl/GAMLzZ9RnEtkszmR7"],
-      ["Carmen Gelato - Colleoni","義大利冰淇淋店","https://maps.app.goo.gl/pDy86qQXNP8UkHyJ6"]
-    ]
-  },
-  "10/19": {
-    summary:["科莫湖日；先到 Varenna，再依體力前往 Bellagio。"],
-    items:[
-      ["Varenna","湖畔散步、村鎮觀景","主景點"],
-      ["Bellagio","搭普通船前往，安排短距離湖畔活動","輕鬆區域"]
-    ]
-  },
-  "10/20": {
-    summary:["上午米蘭 → 熱那亞；抵達後以飯店休息與舊港為主。"],
-    items:[
-      ["Porto Antico 舊港","抵達熱那亞後的第一個輕鬆區域","主景點"],
-      ["舊港海景咖啡","坐下休息，不追景點數量","輕鬆區域"]
-    ]
-  },
-  "10/21": {
-    summary:["熱那亞市區日；以舊城與 Via Garibaldi 為核心。"],
-    items:[
-      ["Via Garibaldi 新街","紅宮／白宮等歷史建築集中區","主景點"],
-      ["Piazza De Ferrari","廣場＋市中心短程散步","輕鬆區域"]
-    ]
-  },
-  "10/22": {
-    summary:["菲諾港一日遊；Santa Margherita Ligure 作為火車轉乘與海邊活動節點。"],
-    items:[
-      ["Santa Margherita Ligure","火車抵達後的海港散步","主景點"],
-      ["Portofino 菲諾港","搭 728 公車前往，安排海港短程觀景","輕鬆區域"]
-    ]
-  },
-  "10/23": {
-    summary:["熱那亞 → Ventimiglia → Nice；這一天重點是轉乘與行李寄放。"],
-    items:[
-      ["Ventimiglia","車站周邊午餐／短暫停留","轉乘休息"],
-      ["Nice Promenade des Anglais","抵達 Nice 後以飯店及海濱為主","輕鬆區域"]
-    ]
-  },
-  "10/24": {
-    summary:["尼斯慢活日；以海濱與老城為主，保留午後休息。"],
-    items:[
-      ["Promenade des Anglais","海濱散步、坐看海景","主景點"],
-      ["Vieux Nice 舊城","短程街區探索＋咖啡休息","輕鬆區域"]
-    ]
-  },
-  "10/25": {
-    summary:["以尼斯為基地安排蔚藍海岸近郊；實際景點依當日交通與體力調整。"],
-    items:[
-      ["蔚藍海岸近郊","依當日最終行程安排","主景點"],
-      ["尼斯海濱／市中心","回程後休息","輕鬆區域"]
-    ]
-  },
-  "10/26": {
-    summary:["保留彈性；不設定過多景點，優先慢遊與休息。"],
-    items:[
-      ["尼斯市區","自由安排","彈性行程"]
-    ]
-  },
-  "10/27": {
-    summary:["尼斯最後完整活動日；以低強度行程為主。"],
-    items:[
-      ["Nice 海濱","最後海景散步","主景點"],
-      ["市中心咖啡／購物","伴手禮與休息","輕鬆區域"]
-    ]
-  },
-  "10/28": {
-    summary:["退房後前往 Nice Côte d'Azur Airport，下午航班返台。"],
-    items:[
-      ["尼斯市區／飯店周邊","退房、整理行李","出發日"]
+    summary: ["貝爾加莫一日往返；重點放在 Città Alta，避免連續長距離步行。"],
+    fullMap: "",
+    nodes: [
+      { name: "米蘭中央車站", type: "station", tag: "鐵路轉乘", note: "搭乘 Trenord 列車前往 Bergamo", map: "", transit: "火車約 1 小時" },
+      { name: "Bergamo車站 / Papa Giovanni", type: "station", tag: "公車轉乘", note: "轉乘 1 號公車前往纜車站", map: "https://maps.app.goo.gl/EVm2E9U8cCz7u4ep7", transit: "1號公車 / 纜車" },
+      { name: "Funicolare Città Alta", type: "sight", tag: "景點纜車", note: "搭纜車登上舊城區觀景", map: "https://maps.app.goo.gl/hQddPGQVXAosPEkh9", transit: "步行" },
+      { name: "Piazza Vecchia (古城廣場)", type: "sight", tag: "輕鬆區域", note: "廣場散步＋咖啡館休息", map: "https://maps.app.goo.gl/GAMLzZ9RnEtkszmR7", transit: "" }
     ]
   }
+  /* 其他日期依此類推延伸 */
 };
 
-/* ---------- 車站總覽 ----------
-   items 格式：
-   [名稱, 交通類型, 說明, Google Maps 分享網址]
+function renderDateButtons() {
+  const box = document.getElementById("date-buttons");
+  box.innerHTML = 
+    `<button class="date-btn active" onclick="renderDay('all', this)">全部行程</button>` +
+    tripDates.map(d => `<button class="date-btn" onclick="renderDay('${d}', this)">${d}</button>`).join("");
+}
 
-   例如：
-   ["Milano Centrale","國鐵","市區轉乘樞紐","https://maps.app.goo.gl/xxxxx"]
-   -------------------------------- */
-const stations = {
-  "10/16":{
-    summary:["抵達米蘭後，主要確認 Milano Centrale 與飯店動線。"],
-    items:[
-      ["Milano Malpensa Airport (MXP)","國鐵／機場鐵路","抵達"],
-      ["Milano Centrale","國鐵","MXP → Milano Centrale"]
-    ]
-  },
-  "10/17":{
-    summary:["市區移動以 Metro 為主，避免不必要步行。"],
-    items:[
-      ["Milano Centrale","Metro M2／M3、國鐵","市區轉乘樞紐"],
-      ["Duomo","Metro M1／M3","大教堂站"]
-    ]
-  },
-  "10/18":{
-    summary:["米蘭中央車站往返 Bergamo；當地可使用 ATB 交通。"],
-    items:[
-      ["Milano Centrale","國鐵 Trenord","→ Bergamo"],
-      ["Bergamo","國鐵／ATB","火車站"],
-      ["Bergamo Alta","ATB／Funicolare","前往上城"]
-    ]
-  },
-  "10/19":{
-    summary:["Milano Centrale → Varenna；湖區以船為主。"],
-    items:[
-      ["Milano Centrale","國鐵 Trenord","→ Varenna-Esino"],
-      ["Varenna-Esino","國鐵","湖區入口"],
-      ["Varenna","湖區船運","→ Bellagio"]
-    ]
-  },
-  "10/20":{
-    summary:["早上由 Milano Centrale 前往 Genova Piazza Principe。"],
-    items:[
-      ["Milano Centrale","國鐵 Intercity 659","09:10 出發"],
-      ["Genova Piazza Principe","國鐵","10:44 左右抵達；以實際車票為準"]
-    ]
-  },
-  "10/21":{
-    summary:["熱那亞市區可依當日行程搭乘 AMT 公車／地鐵。"],
-    items:[
-      ["Genova Piazza Principe","國鐵／AMT","市區轉乘"],
-      ["Genova Brignole","國鐵／AMT","市區另一主要樞紐"]
-    ]
-  },
-  "10/22":{
-    summary:["火車至 Santa Margherita Ligure，再搭 728 公車前往 Portofino。"],
-    items:[
-      ["Genova Piazza Principe","國鐵 Intercity","→ Santa Margherita Ligure"],
-      ["Santa Margherita Ligure","國鐵","菲諾港轉乘點"],
-      ["Portofino","AMT 728 公車","→ Portofino"]
-    ]
-  },
-  "10/23":{
-    summary:["這天最重要的是 Genova → Ventimiglia → Nice 的連續轉乘。"],
-    items:[
-      ["Genova Piazza Principe","國鐵 IC 633","08:58 出發"],
-      ["Ventimiglia","國鐵／TER","11:04 左右抵達；後續依實際車票"],
-      ["Nice-Ville","國鐵","Ventimiglia → Nice"]
-    ]
-  },
-  "10/24":{
-    summary:["尼斯市區以 Lignes d'Azur 公車／電車為主，依實際景點調整。"],
-    items:[
-      ["Nice-Ville","國鐵／市區交通","市區主要轉乘站"],
-      ["Jean Médecin","Tram 1／2","市中心"],
-      ["Masséna","Tram 1／2","舊城／海濱方向"]
-    ]
-  },
-  "10/25":{
-    summary:["近郊移動依當日最終安排使用 TER／ZOU 或市區交通。"],
-    items:[
-      ["Nice-Ville","國鐵／TER／ZOU","近郊主要出發站"]
-    ]
-  },
-  "10/26":{
-    summary:["彈性日，以 Nice 市區交通為主。"],
-    items:[
-      ["Nice-Ville","國鐵／TER／ZOU","主要轉乘樞紐"]
-    ]
-  },
-  "10/27":{
-    summary:["最後完整活動日；依景點選擇市區 Tram／Bus。"],
-    items:[
-      ["Nice-Ville","國鐵／市區交通","主要轉乘樞紐"]
-    ]
-  },
-  "10/28":{
-    summary:["離開 Nice 前往機場；建議預留充足轉乘時間。"],
-    items:[
-      ["Nice-Ville","Tram 2 / 機場交通","→ Nice Côte d'Azur Airport"],
-      ["Nice Côte d'Azur Airport","航空","返台"]
-    ]
+function renderDay(targetDate, btn) {
+  if(btn) {
+    btn.parentElement.querySelectorAll(".date-btn").forEach(x => x.classList.remove("active"));
+    btn.classList.add("active");
   }
-};
 
-/* ---------- 每日路線總覽 ----------
-   maps = 直接從 Google Maps「分享」取得的路線網址
-   例如：
-   maps:"https://maps.app.goo.gl/xxxxx"
-   -------------------------------- */
-const routes = {
-  "10/16":{
-    summary:["抵達日，以最少轉乘與入住為優先。"],
-    route:["MXP","Milano Centrale","Hilton Milan"],
-    detail:"機場 → Milano Centrale → 飯店。已知使用機場鐵路；抵達後不安排高強度市區行程。",
-    transport:"Trenord / 國鐵",
-    estimate:"以當日實際航班、機場通關與列車狀況為準",
-    maps:""
-  },
-  "10/17":{
-    summary:["米蘭市區低強度移動；主景點集中處理。"],
-    route:["Hilton Milan","Duomo","Galleria","Hilton Milan"],
-    detail:"飯店 → Duomo → Galleria → 回飯店／休息。",
-    transport:"Metro + 步行",
-    estimate:"市區短程；避免連續長距離步行",
-    maps:""
-  },
-  "10/18":{
-    summary:["米蘭 ↔ Bergamo 一日往返。"],
-    route:["Milano Centrale","Bergamo","Città Alta","Bergamo","Milano Centrale"],
-    detail:"國鐵到 Bergamo，再使用 ATB／Funicolare 上城；下午回米蘭。",
-    transport:"Trenord + ATB / Funicolare",
-    estimate:"火車約 1 小時級距；實際以當日車次為準",
-    maps:""
-  },
-  "10/19":{
-    summary:["米蘭 → Varenna → Bellagio → Varenna → 米蘭。"],
-    route:["Milano Centrale","Varenna-Esino","Varenna","Bellagio","Varenna","Milano Centrale"],
-    detail:"火車抵達 Varenna 後先散步，再搭普通船前往 Bellagio；回程自行購買 Varenna → Milano 車票。",
-    transport:"Trenord + Lake Como 船",
-    estimate:"已規劃約 09:20 左右由 Milano Centrale 出發；實際以車票／船班為準",
-    maps:""
-  },
-  "10/20":{
-    summary:["米蘭 → 熱那亞；下午進入慢活節奏。"],
-    route:["Milano Centrale","Genova Piazza Principe","Hotel","Porto Antico"],
-    detail:"IC 659 已規劃 09:10 出發；抵達後先飯店／行李，再前往舊港。",
-    transport:"Intercity 659 + 步行 / 市區交通",
-    estimate:"已知車程約 1 小時 34 分",
-    maps:""
-  },
-  "10/21":{
-    summary:["熱那亞市區歷史街區日。"],
-    route:["Hotel","Via Garibaldi","Piazza De Ferrari","Hotel"],
-    detail:"以歷史街區為主，安排坐下休息，不追求景點數量。",
-    transport:"AMT + 步行",
-    estimate:"市區短程",
-    maps:""
-  },
-  "10/22":{
-    summary:["熱那亞 → Santa Margherita Ligure → Portofino → 熱那亞。"],
-    route:["Genova Piazza Principe","Santa Margherita Ligure","Portofino","Santa Margherita Ligure","Genova"],
-    detail:"火車至 Santa Margherita Ligure，再搭 728 公車前往 Portofino；回程搭火車返回熱那亞。",
-    transport:"Intercity / 國鐵 + AMT 728",
-    estimate:"以已購票時間及當日 728 公車班次為準",
-    maps:""
-  },
-  "10/23":{
-    summary:["全程最需要注意轉乘的一天：Genova → Ventimiglia → Nice。"],
-    route:["Genova Piazza Principe","Ventimiglia","Nice-Ville","AC Hotel Nice"],
-    detail:"IC 633 已規劃 08:58 出發、約 11:04 抵達 Ventimiglia。先處理行李寄放／午餐，再前往 Nice。",
-    transport:"Intercity + TER / 國鐵",
-    estimate:"Ventimiglia 轉乘時間請以當日實際列車為準，不建議壓縮午餐時間",
-    maps:""
-  },
-  "10/24":{
-    summary:["Nice 海濱＋舊城慢遊。"],
-    route:["AC Hotel Nice","Promenade des Anglais","Vieux Nice","AC Hotel Nice"],
-    detail:"以海濱與舊城為主，午餐後保留休息。",
-    transport:"Tram / Bus + 步行",
-    estimate:"市區短程",
-    maps:""
-  },
-  "10/25":{
-    summary:["Nice 基地近郊日；路線依當日最終決定。"],
-    route:["AC Hotel Nice","Nice-Ville","Côte d'Azur nearby destination","Nice-Ville","Hotel"],
-    detail:"使用 TER／ZOU 或市區交通；保留彈性，不設定過多轉乘。",
-    transport:"TER / ZOU",
-    estimate:"依最終目的地與班次",
-    maps:""
-  },
-  "10/26":{
-    summary:["彈性慢活日。"],
-    route:["AC Hotel Nice","Nice city","AC Hotel Nice"],
-    detail:"以 Nice 市區自由活動、咖啡、海濱與休息為主。",
-    transport:"Tram / Bus / 步行",
-    estimate:"低強度",
-    maps:""
-  },
-  "10/27":{
-    summary:["尼斯最後完整活動日。"],
-    route:["AC Hotel Nice","Nice city","Promenade","AC Hotel Nice"],
-    detail:"最後採買、海濱散步與休息；避免安排高風險轉乘。",
-    transport:"Tram / Bus + 步行",
-    estimate:"低強度",
-    maps:""
-  },
-  "10/28":{
-    summary:["飯店 → Nice Côte d'Azur Airport；返台。"],
-    route:["AC Hotel Nice","Nice-Ville / Tram 2","Nice Airport","TPE"],
-    detail:"退房後前往機場，預留機場報到與安檢時間。",
-    transport:"Tram / Airport transport + Flight",
-    estimate:"依航班時間倒推出發",
-    maps:""
-  }
-};
+  const container = document.getElementById("day-content");
+  const alertBox = document.getElementById("day-alert");
+  const alertContent = document.getElementById("day-alert-content");
 
-
-/* ============================================================
-   Google Maps
-   ============================================================ */
-
-function mapButton(url, label="📍 Google Maps 導引"){
-  if(!url) return "";
-  return `<a class="map-btn" href="${url}" target="_blank" rel="noopener">${label}</a>`;
-}
-
-function routeButton(url){
-  if(!url) return "";
-  return `<a class="map-btn" href="${url}" target="_blank" rel="noopener">🗺️ 開啟今日 Google Maps 路線</a>`;
-}
-
-
-/* ============================================================
-   共用日期按鈕
-   ============================================================ */
-
-function renderDateButtons(containerId, callbackName){
-  const box = document.getElementById(containerId);
-  box.innerHTML =
-    `<button class="date-btn active" onclick="${callbackName}('all',this)">全部</button>` +
-    tripDates.map(d => `<button class="date-btn" onclick="${callbackName}('${d}',this)">${d}</button>`).join("");
-}
-
-function activateButton(btn){
-  if(!btn) return;
-  btn.parentElement.querySelectorAll(".date-btn").forEach(x=>x.classList.remove("active"));
-  btn.classList.add("active");
-}
-
-
-/* ============================================================
-   景點
-   ============================================================ */
-
-function renderSightPage(targetDate="all", btn=null){
-  activateButton(btn);
-
-  const list = document.getElementById("sight-list");
-  const alert = document.getElementById("sight-alert");
-  const alertContent = document.getElementById("sight-alert-content");
-
-  if(targetDate === "all"){
-    alert.style.display="none";
-    list.innerHTML = tripDates.map(date => renderSightCard(date)).join("");
+  if(targetDate === "all") {
+    alertBox.style.display = "none";
+    container.innerHTML = tripDates.map(date => renderDayCard(date)).join("");
     return;
   }
 
-  const data = sights[targetDate];
-  if(!data){ list.innerHTML='<div class="empty">尚無資料</div>'; return; }
+  const data = itineraries[targetDate];
+  if(!data) {
+    alertBox.style.display = "none";
+    container.innerHTML = '<div style="color:#64748b;text-align:center;padding:20px;">尚無本日行程資料</div>';
+    return;
+  }
 
-  alertContent.innerHTML = data.summary.map(x=>`<p>${x}</p>`).join("");
-  alert.style.display="block";
-  list.innerHTML = renderSightCard(targetDate);
+  alertContent.innerHTML = data.summary.map(x => `<p>${x}</p>`).join("");
+  alertBox.style.display = "block";
+  container.innerHTML = renderDayCard(targetDate);
 }
 
-function renderSightCard(date){
-  const data=sights[date];
+function renderDayCard(date) {
+  const data = itineraries[date];
   if(!data) return "";
+
+  const getTypeBadge = (type, tag) => {
+    if(type === 'hotel') return `<span class="badge hotel">🏨 ${tag}</span>`;
+    if(type === 'station') return `<span class="badge station">🚉 ${tag}</span>`;
+    if(type === 'food') return `<span class="badge food">🍽️ ${tag}</span>`;
+    return `<span class="badge">📍 ${tag}</span>`;
+  };
+
   return `
     <div class="content-card">
-      <h3>${date} · 景點安排</h3>
-      ${data.items.map(item=>`
-        <div class="item">
-          <div class="item-title">${item[0]}</div>
-          <div class="item-meta">${item[1]}</div>
-          <span class="badge">${item[2]}</span>
-          ${mapButton(item[3])}
-        </div>
-      `).join("")}
-      <div class="summary"><b>提醒總結：</b>${data.summary.join(" ")}</div>
+      <h3>${date} 行程與路線導引</h3>
+      
+      <div class="timeline">
+        ${data.nodes.map(node => `
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="item-title">
+              ${node.name}${getTypeBadge(node.type, node.tag)}
+            </div>
+            <div class="item-meta">${node.note}</div>${node.map ? `<a class="map-btn" href="${node.map}" target="_blank">📍 地點導航</a>` : ''}
+            ${node.transit ? `<br><div class="transit-info">⬇️ ${node.transit}</div>` : ''}
+          </div>
+        `).join("")}
+      </div>
+
+      ${data.fullMap ? `<a class="full-map-btn" href="${data.fullMap}" target="_blank">🗺️ 開啟今日 Google Maps 總路線</a>` : ''}
     </div>
   `;
 }
 
-
-/* ============================================================
-   車站
-   ============================================================ */
-
-function renderStationPage(targetDate="all", btn=null){
-  activateButton(btn);
-
-  const list=document.getElementById("station-list");
-  const alert=document.getElementById("station-alert");
-  const alertContent=document.getElementById("station-alert-content");
-
-  if(targetDate==="all"){
-    alert.style.display="none";
-    list.innerHTML=tripDates.map(date=>renderStationCard(date)).join("");
-    return;
-  }
-
-  const data=stations[targetDate];
-  if(!data){list.innerHTML='<div class="empty">尚無資料</div>';return;}
-
-  alertContent.innerHTML=data.summary.map(x=>`<p>${x}</p>`).join("");
-  alert.style.display="block";
-  list.innerHTML=renderStationCard(targetDate);
-}
-
-function renderStationCard(date){
-  const data=stations[date];
-  if(!data) return "";
-  return `
-    <div class="content-card">
-      <h3>${date} · 車站／交通節點</h3>
-      ${data.items.map(item=>`
-        <div class="item">
-          <div class="item-title">🚉 ${item[0]}</div>
-          <span class="transport-badge">${item[1]}</span>
-          <div class="item-meta">${item[2]}</div>
-          ${mapButton(item[3],"📍 Google Maps 車站導引")}
-        </div>
-      `).join("")}
-      <div class="summary"><b>提醒總結：</b>${data.summary.join(" ")}</div>
-    </div>
-  `;
-}
-
-
-/* ============================================================
-   路線
-   ============================================================ */
-
-function renderRoutePage(targetDate="all", btn=null){
-  activateButton(btn);
-
-  const list=document.getElementById("route-list");
-  const alert=document.getElementById("route-alert");
-  const alertContent=document.getElementById("route-alert-content");
-
-  if(targetDate==="all"){
-    alert.style.display="none";
-    list.innerHTML=tripDates.map(date=>renderRouteCard(date)).join("");
-    return;
-  }
-
-  const data=routes[targetDate];
-  if(!data){list.innerHTML='<div class="empty">尚無資料</div>';return;}
-
-  alertContent.innerHTML=data.summary.map(x=>`<p>${x}</p>`).join("");
-  alert.style.display="block";
-  list.innerHTML=renderRouteCard(targetDate);
-}
-
-function renderRouteCard(date){
-  const data=routes[date];
-  if(!data) return "";
-
-  return `
-    <div class="content-card">
-      <h3>${date} · 每日路線</h3>
-
-      <div class="route-box">
-        <div class="route-line">
-          ${data.route.map((x,i)=>`
-            ${i>0 ? '<span class="route-arrow">→</span>' : ''}
-            ${x}
-          `).join("")}
-        </div>
-        <div class="route-detail">
-          <b>交通：</b>${data.transport}<br>
-          <b>預估：</b>${data.estimate}
-        </div>
-        ${routeButton(data.maps)}
-      </div>
-
-      <div class="summary">
-        <b>行程交通資訊：</b>${data.detail}
-      </div>
-
-      <div class="small-note">
-        ${data.maps ? "本日路線使用你從 Google Maps 分享的固定網址。" : "尚未設定本日 Google Maps 路線分享網址。"}
-      </div>
-    </div>
-  `;
-}
-
-
-/* ============================================================
-   頁面切換
-   ============================================================ */
-
-function showPage(pageId){
-  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
-  const target=document.getElementById("page-"+pageId);
-  if(target) target.classList.add("active");
-  window.scrollTo(0,0);
-
-  if(pageId==="sights") renderSightPage("all");
-  if(pageId==="stations") renderStationPage("all");
-  if(pageId==="routes") renderRoutePage("all");
-}
-
-
-/* ============================================================
-   初始化
-   ============================================================ */
-
-renderDateButtons("sight-dates","renderSightPage");
-renderDateButtons("station-dates","renderStationPage");
-renderDateButtons("route-dates","renderRoutePage");
-
+// 初始化
+renderDateButtons();
+renderDay("all");
 </script>
 </body>
 </html>
