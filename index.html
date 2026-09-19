@@ -46,13 +46,6 @@ body{
 .alert-title{font-size:16px;font-weight:800;color:#fbbf24;margin-bottom:6px;display:flex;gap:6px}
 .alert-content{font-size:14px;color:#fef3c7;line-height:1.5;font-weight:500}
 
-.subpage-header{display:flex;align-items:center;margin-bottom:16px}
-.btn-back{
-  background:rgba(212,175,55,.1);color:#d4af37;border:1.5px solid #d4af37;
-  padding:8px 16px;border-radius:14px;font-size:15px;font-weight:800;cursor:pointer
-}
-.subpage-title{font-size:20px;font-weight:800;margin-left:12px;color:#fff}
-
 .date-filter-container{
   display:flex;gap:8px;overflow-x:auto;padding-bottom:12px;margin-bottom:16px;
   -webkit-overflow-scrolling:touch;scrollbar-width:none
@@ -80,7 +73,7 @@ body{
   border-radius:50%;background:#d4af37;box-shadow:0 0 8px #d4af37
 }
 
-.item-title{font-size:17px;font-weight:800;color:#fff;margin-bottom:4px;display:flex;align-items:center;gap:6px}
+.item-title{font-size:17px;font-weight:800;color:#fff;margin-bottom:4px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
 .item-meta{font-size:14px;color:#94a3b8;line-height:1.5}
 
 .badge{
@@ -93,9 +86,12 @@ body{
 .badge.food{background:rgba(239,68,68,.15);color:#fca5a5;border-color:rgba(239,68,68,.3)}
 
 .transit-info{
-  font-size:12px;color:#d4af37;background:rgba(212,175,55,.05);
-  padding:4px 10px;border-radius:6px;margin:8px 0;display:inline-block
+  font-size:12px;color:#d4af37;background:rgba(212,175,55,.08);
+  padding:6px 12px;border-radius:8px;margin:8px 0;display:inline-flex;
+  align-items:center;gap:4px;border:1px solid rgba(212,175,55,.2);
+  text-decoration:none;transition:all .2s
 }
+.transit-info:hover{background:rgba(212,175,55,.2)}
 
 .map-btn{
   display:inline-flex;align-items:center;justify-content:center;gap:6px;
@@ -189,7 +185,7 @@ const itineraries = {
     ]
   },
   "10/17": {
-    summary: ["米蘭市區主景點日；控制在 1 個主景點＋1 個輕鬆區域。"],
+    summary: ["米蘭市區主景點日；控制在 1 個主景點(主教堂)＋ 1 個步行區域(蒙塔內利花園)。"],
     nodes: [
       {
         name: "Hilton Milan",
@@ -330,22 +326,118 @@ const itineraries = {
   },
   "10/18": {
     summary: ["貝爾加莫一日往返；重點放在 Città Alta，避免連續長距離步行。"],
-    fullMap: "",
+    fullMap: "https://www.google.com/maps/dir/?api=1&origin=Milano+Centrale&destination=Bergamo&travelmode=transit",
     nodes: [
-      { name: "米蘭中央車站 (Milano Centrale)", type: "station", tag: "出發樞紐", note: "搭乘 Trenord 列車前往 Bergamo", map: "", transit: "火車約 1 小時" },
-      { name: "Bergamo 火車站 / Papa Giovanni fermata 2", type: "station", tag: "公車轉乘", note: "搭乘 1 號公車前往纜車站", map: "https://maps.app.goo.gl/EVm2E9U8cCz7u4ep7", transit: "1號公車" },
-      { name: "Vittorio Emanuele 47", type: "station", tag: "公車下車站", note: "1號公車站點，準備前往纜車", map: "https://maps.app.goo.gl/NtLLoYUNVAXrqHdz6", transit: "步行 2 分鐘" },
-      { name: "Funicolare Città Alta (山下站)", type: "sight", tag: "纜車", note: "搭乘纜車/電梯優先，輕鬆登上上城區", map: "https://maps.app.goo.gl/hQddPGQVXAosPEkh9", transit: "纜車上行" },
-      { name: "Staz.Sup.Fun.Città (山上站)", type: "station", tag: "景點纜車站", note: "抵達舊城上城區", map: "https://maps.app.goo.gl/fuunghtVxQhhKFqL6", transit: "步行" },
-      { name: "Alta Funicolare", type: "food", tag: "午餐地點", note: "義大利小餐館享用午餐", map: "https://maps.app.goo.gl/iXWio87iSoBz62rZ8", transit: "步行" },
-      { name: "Pezzi di artiglieria", type: "sight", tag: "觀景台", note: "公園觀景台，可遠眺貝爾加莫下城區全景", map: "https://maps.app.goo.gl/Jvfs6N9M6MZFx1yd8", transit: "步行" },
-      { name: "Piazzetta Luigi Angelini", type: "sight", tag: "捷徑走廊", note: "可從此中庭走廊直接通往廣場", map: "https://maps.app.goo.gl/DBSityoEsMeUvjnT8", transit: "步行" },
-      { name: "Piazza Vecchia (老城廣場)", type: "sight", tag: "輕鬆區域", note: "古城廣場散步與休息", map: "https://maps.app.goo.gl/GAMLzZ9RnEtkszmR7", transit: "步行" },
-      { name: "Carmen Gelato - Colleoni", type: "food", tag: "冰淇淋/甜點", note: "當地熱門義大利冰淇淋店", map: "https://maps.app.goo.gl/pDy86qQXNP8UkHyJ6", transit: "搭乘纜車/公車返回 Bergamo 火車站" },
-      { name: "Bergamo 火車站", type: "station", tag: "回程樞紐", note: "搭乘 Trenord 返回米蘭中央車站", map: "", transit: "火車約 1 小時" }
+      {
+        name: "米蘭中央車站 (Milano Centrale)",
+        type: "station",
+        tag: "出發樞紐",
+        note: "搭乘 Trenord 列車前往 Bergamo",
+        map: "https://maps.app.goo.gl/d2iH8Z3rR1G32G9a8",
+        transit: "搭乘 Trenord 區域列車前往 Bergamo 火車站 (約 50-60 分鐘)",
+        transitMap: "https://www.google.com/maps/dir/?api=1&origin=Milano+Centrale&destination=Stazione+FS+Bergamo&travelmode=transit"
+      },
+      {
+        name: "Bergamo 火車站 (Stazione FS)",
+        type: "station",
+        tag: "火車站點",
+        note: "抵達 Bergamo，出站前往站前大道公車站",
+        map: "https://maps.app.goo.gl/EVm2E9U8cCz7u4ep7",
+        transit: "步行約 1 分鐘至站前 Papa Giovanni fermata 2 公車站",
+        transitMap: "https://www.google.com/maps/dir/?api=1&origin=Stazione+FS+Bergamo&destination=Papa+Giovanni+fermata+2+Bergamo&travelmode=walking"
+      },
+      {
+        name: "Papa Giovanni fermata 2",
+        type: "station",
+        tag: "公車轉乘",
+        note: "站前公車站點，搭乘 ATB 1 號公車前往纜車站",
+        map: "https://maps.app.goo.gl/EVm2E9U8cCz7u4ep7",
+        transit: "搭乘 1 號公車 ➔ Vittorio Emanuele 47 站 (約 8 分鐘)",
+        transitMap: "https://www.google.com/maps/dir/?api=1&origin=Papa+Giovanni+fermata+2+Bergamo&destination=Vittorio+Emanuele+47+Bergamo&travelmode=transit"
+      },
+      {
+        name: "Vittorio Emanuele 47",
+        type: "station",
+        tag: "公車下車站",
+        note: "1 號公車站點，準備步行前往山下纜車站",
+        map: "https://maps.app.goo.gl/NtLLoYUNVAXrqHdz6",
+        transit: "步行 2 分鐘至 Funicolare Città Alta 山下纜車站",
+        transitMap: "https://www.google.com/maps/dir/?api=1&origin=Vittorio+Emanuele+47+Bergamo&destination=Funicolare+Citt%C3%A0+Alta+Bergamo&travelmode=walking"
+      },
+      {
+        name: "Funicolare Città Alta (山下站)",
+        type: "sight",
+        tag: "纜車",
+        note: "搭乘纜車/電梯優先，輕鬆登上上城區",
+        map: "https://maps.app.goo.gl/hQddPGQVXAosPEkh9",
+        transit: "搭乘 Funicolare 纜車 ➔ 登上 Città Alta 上城區 (約 2-3 分鐘)",
+        transitMap: "https://www.google.com/maps/dir/?api=1&origin=Funicolare+Citt%C3%A0+Alta+Lower+Station&destination=Funicolare+Citt%C3%A0+Alta+Upper+Station&travelmode=transit"
+      },
+      {
+        name: "Staz.Sup.Fun.Città (山上站)",
+        type: "station",
+        tag: "景點纜車站",
+        note: "抵達舊城上城區樞紐",
+        map: "https://maps.app.goo.gl/fuunghtVxQhhKFqL6",
+        transit: "步行 1 分鐘前往 Alta Funicolare 餐廳",
+        transitMap: "https://www.google.com/maps/dir/?api=1&origin=Funicolare+Citt%C3%A0+Alta+Upper+Station&destination=Alta+Funicolare+Bergamo&travelmode=walking"
+      },
+      {
+        name: "Alta Funicolare",
+        type: "food",
+        tag: "午餐地點",
+        note: "義大利小餐館享用午餐",
+        map: "https://maps.app.goo.gl/iXWio87iSoBz62rZ8",
+        transit: "步行 3 分鐘前往 Pezzi di artiglieria 觀景台",
+        transitMap: "https://www.google.com/maps/dir/?api=1&origin=Alta+Funicolare+Bergamo&destination=Pezzi+di+artiglieria+Bergamo&travelmode=walking"
+      },
+      {
+        name: "Pezzi di artiglieria",
+        type: "sight",
+        tag: "觀景台",
+        note: "公園觀景台，可遠眺貝爾加莫下城區全景",
+        map: "https://maps.app.goo.gl/Jvfs6N9M6MZFx1yd8",
+        transit: "步行 2 分鐘經 Piazzetta Luigi Angelini",
+        transitMap: "https://www.google.com/maps/dir/?api=1&origin=Pezzi+di+artiglieria+Bergamo&destination=Piazzetta+Luigi+Angelini+Bergamo&travelmode=walking"
+      },
+      {
+        name: "Piazzetta Luigi Angelini",
+        type: "sight",
+        tag: "捷徑走廊",
+        note: "可從此中庭走廊直接通往老城廣場",
+        map: "https://maps.app.goo.gl/DBSityoEsMeUvjnT8",
+        transit: "步行 1 分鐘前往老城廣場",
+        transitMap: "https://www.google.com/maps/dir/?api=1&origin=Piazzetta+Luigi+Angelini+Bergamo&destination=Piazza+Vecchia+Bergamo&travelmode=walking"
+      },
+      {
+        name: "Piazza Vecchia (老城廣場)",
+        type: "sight",
+        tag: "輕鬆區域",
+        note: "古城廣場散步與休息",
+        map: "https://maps.app.goo.gl/GAMLzZ9RnEtkszmR7",
+        transit: "步行 1 分鐘前往 Carmen Gelato",
+        transitMap: "https://www.google.com/maps/dir/?api=1&origin=Piazza+Vecchia+Bergamo&destination=Carmen+Gelato+Colleoni+Bergamo&travelmode=walking"
+      },
+      {
+        name: "Carmen Gelato - Colleoni",
+        type: "food",
+        tag: "冰淇淋/甜點",
+        note: "當地熱門義大利冰淇淋店",
+        map: "https://maps.app.goo.gl/pDy86qQXNP8UkHyJ6",
+        transit: "步行至山上纜車站，搭纜車與 1 號公車返回 Bergamo 火車站",
+        transitMap: "https://www.google.com/maps/dir/?api=1&origin=Carmen+Gelato+Colleoni+Bergamo&destination=Stazione+FS+Bergamo&travelmode=transit"
+      },
+      {
+        name: "Bergamo 火車站",
+        type: "station",
+        tag: "回程樞紐",
+        note: "搭乘 Trenord 列車返回米蘭中央車站",
+        map: "https://maps.app.goo.gl/EVm2E9U8cCz7u4ep7",
+        transit: "搭乘 Trenord 返回 Milano Centrale (約 50-60 分鐘)",
+        transitMap: "https://www.google.com/maps/dir/?api=1&origin=Stazione+FS+Bergamo&destination=Milano+Centrale&travelmode=transit"
+      }
     ]
   }
-  /* 其他日期依此類推延伸 */
 };
 
 function renderDateButtons() {
@@ -406,7 +498,13 @@ function renderDayCard(date) {
               ${node.name}${getTypeBadge(node.type, node.tag)}
             </div>
             <div class="item-meta">${node.note}</div>${node.map ? `<a class="map-btn" href="${node.map}" target="_blank">📍 地點導航</a>` : ''}
-            ${node.transit ? `<br><div class="transit-info">⬇️ ${node.transit}</div>` : ''}
+            ${node.transit ? `
+              <br>
+              ${node.transitMap 
+                ? `<a class="transit-info" href="${node.transitMap}" target="_blank">⬇️ ${node.transit} 🗺️</a>`
+                : `<div class="transit-info">⬇️ ${node.transit}</div>`
+              }
+            ` : ''}
           </div>
         `).join("")}
       </div>
