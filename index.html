@@ -149,7 +149,8 @@ const tripDates = [
 const itineraries = {
   "10/16": {
     summary: ["抵達米蘭後以入住與休息為主，不安排大量景點。"],
-    fullMap: "https://www.google.com/maps/dir/?api=1&origin=Milano+Malpensa+Airport&destination=CotoliAMO+Milan&waypoints=Milano+Centrale%7CHilton+Milan&travelmode=transit",
+    // 🔽 已修正：全天總路線（可順利載入全天多個地點）
+    fullMap: "https://www.google.com/maps/dir/?api=1&origin=Milano+Malpensa+Airport&destination=CotoliAMO+Milan&waypoints=Milano+Centrale%7CHilton+Milan",
     nodes: [
       {
         name: "Milano Malpensa Airport (MXP)",
@@ -158,6 +159,7 @@ const itineraries = {
         note: "抵達機場後辦理入境與取行李",
         map: "https://maps.app.goo.gl/B3RjZ4MvdgY4Ua9e7",
         transit: "搭乘 Malpensa Express ➔ 米蘭中央車站 (約 50 分鐘)",
+        // 🔽 第一段：專屬機場快鐵大眾運輸導航
         transitMap: "https://www.google.com/maps/dir/?api=1&origin=Milano+Malpensa+Airport&destination=Milano+Centrale&travelmode=transit"
       },
       {
@@ -167,6 +169,7 @@ const itineraries = {
         note: "抵達市區轉乘點（由月台往西側出口 Via Luigi Galvani 方向出站最順）",
         map: "https://maps.app.goo.gl/d2iH8Z3rR1G32G9a8",
         transit: "步行約 3-5 分鐘前往 Hilton Milan",
+        // 🔽 第二段：車站出來步行導航
         transitMap: "https://www.google.com/maps/dir/?api=1&origin=Milano+Centrale&destination=Hilton+Milan&travelmode=walking"
       },
       {
@@ -176,6 +179,7 @@ const itineraries = {
         note: "辦理入住、放置行李與休息",
         map: "https://maps.app.goo.gl/CTvDLYcDfFWfNxHc6",
         transit: "步行 1 分鐘（餐廳位於飯店 1 樓內）",
+        // 🔽 第三段：飯店至餐廳導航
         transitMap: "https://www.google.com/maps/dir/?api=1&origin=Hilton+Milan&destination=CotoliAMO+Milan&travelmode=walking"
       },
       {
