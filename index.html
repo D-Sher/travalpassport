@@ -220,17 +220,8 @@ const itineraries = {
         tag: "中午用餐",
         note: "義大利餐廳 1987年開幕",
         map: "https://maps.app.goo.gl/EyZaBaxgdZJNYJxs7",
-        transit: "步行 5 分鐘前往星巴克臻選®",
-        transitMap: "https://www.google.com/maps/dir/?api=1&origin=Ristorante+Galleria+Milano&destination=Starbucks+Reserve+Roastery+Milano&travelmode=walking"
-      },
-      {
-        name: "星巴克臻選® 米蘭烘焙工坊",
-        type: "food",
-        tag: "可選下午茶",
-        note: "義大利百年郵局入住歐洲最大星巴克",
-        map: "https://maps.app.goo.gl/r5styKUNJncvAmP18",
-        transit: "步行 6 分鐘前往 La Corte Romanengo",
-        transitMap: "https://www.google.com/maps/dir/?api=1&origin=Starbucks+Reserve+Roastery+Milano&destination=La+Corte+Romanengo+Milano&travelmode=walking"
+        transit: "步行 5 分鐘前往La Corte Romanengo",
+        transitMap: "https://www.google.com/maps/dir/?api=1&origin=Ristorante+Galleria+Milano&destination=La+Corte+Romanengo+Milano&travelmode=walking"
       },
       {
         name: "La Corte Romanengo - Salon de thé Manzoni",
@@ -298,7 +289,7 @@ const itineraries = {
       {
         name: "La Volta at RH Milan",
         type: "food",
-        tag: "晚餐用餐地點",
+        tag: "晚餐用餐地點選擇",
         note: "一家評分蠻高的餐館適合晚宴",
         map: "https://maps.app.goo.gl/2WXDwH9QnPzpH5S27",
         transit: "步行 3 分鐘前往威尼斯門與輕軌站",
@@ -316,11 +307,29 @@ const itineraries = {
       {
         name: "P.Ta Venezia M1",
         type: "station",
-        tag: "回程輕軌站",
-        note: "輕軌 9 號線往希爾頓方向",
+        tag: "轉乘輕軌站",
+        note: "可在此搭乘輕軌 9 號線前往 V.Le Piave 區域 或步行5分",
         map: "https://maps.app.goo.gl/G8emMzHB7PY5fqmo7",
+        transit: "搭乘輕軌 9 號線 ➔ V.Le Piave 輕軌站",
+        transitMap: "https://www.google.com/maps/dir/?api=1&origin=P.Ta+Venezia+M1+Milano&destination=V.Le+Piave+Milano&travelmode=transit"
+      },
+      {
+        name: "V.Le Piave 輕軌站",
+        type: "station",
+        tag: "電車下車站",
+        note: "輕軌 9 號線下車站點，準備步行前往義大利麵館",
+        map: "https://maps.app.goo.gl/94k2uX6QJ2U88Y999",
+        transit: "步行 1 分鐘前往 Fresca Pasta Club",
+        transitMap: "https://www.google.com/maps/dir/?api=1&origin=V.Le+Piave+Milano&destination=Fresca+Pasta+Club+Milano&travelmode=walking"
+      },
+      {
+        name: "Fresca Pasta Club",
+        type: "food",
+        tag: "晚餐用餐地點選擇",
+        note: "主打現做手工義大利麵的道地餐館 (Viale Piave 33)",
+        map: "https://maps.app.goo.gl/3X21K4N7A81234567",
         transit: "搭乘輕軌 9 號線 ➔ 返回 Hilton Milan 飯店",
-        transitMap: "https://www.google.com/maps/dir/?api=1&origin=P.Ta+Venezia+M1+Milano&destination=Hilton+Milan&travelmode=transit"
+        transitMap: "https://www.google.com/maps/dir/?api=1&origin=Fresca+Pasta+Club+Milano&destination=Hilton+Milan&travelmode=transit"
       }
     ]
   },
