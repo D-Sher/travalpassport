@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
@@ -6,553 +7,2139 @@
 <title>2026 Europe Journey | 行程總覽與每日導覽</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  -webkit-tap-highlight-color:transparent
+}
+
 body{
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC",sans-serif;
-  background:#0b0f19;color:#f8fafc;min-height:100vh;
-  display:flex;justify-content:center;align-items:flex-start;padding:16px
+  background:#0b0f19;
+  color:#f8fafc;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  padding:16px
 }
-.container{width:min(100%,480px);position:relative}
-.page{display:none;opacity:0;transition:opacity .2s ease-in-out}
-.page.active{display:block;opacity:1}
+
+.container{
+  width:min(100%,480px);
+  position:relative
+}
+
+.page{
+  display:none;
+  opacity:0;
+  transition:opacity .2s ease-in-out
+}
+
+.page.active{
+  display:block;
+  opacity:1
+}
+
+/* =========================
+   HERO
+========================= */
 
 .hero{
   background:linear-gradient(145deg,#171e2e 0%,#0d121d 100%);
-  border:1px solid rgba(212,175,55,.4);border-radius:28px;
-  padding:32px 24px;text-align:center;margin-bottom:24px;
-  box-shadow:0 20px 40px -15px rgba(0,0,0,.8),0 0 15px rgba(212,175,55,.1);
-  position:relative;overflow:hidden
+  border:1px solid rgba(212,175,55,.4);
+  border-radius:28px;
+  padding:32px 24px;
+  text-align:center;
+  margin-bottom:24px;
+  box-shadow:
+    0 20px 40px -15px rgba(0,0,0,.8),
+    0 0 15px rgba(212,175,55,.1);
+  position:relative;
+  overflow:hidden
 }
+
 .hero:after{
-  content:"";position:absolute;inset:0;
-  background:radial-gradient(circle at top right,rgba(212,175,55,.15),transparent 60%);
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(
+    circle at top right,
+    rgba(212,175,55,.15),
+    transparent 60%
+  );
   pointer-events:none
 }
-.agency-badge{font-size:13px;letter-spacing:.25em;color:#d4af37;font-weight:700;text-transform:uppercase;margin-bottom:8px}
-.flags{font-size:40px;line-height:1.2;margin-bottom:6px}
+
+.agency-badge{
+  font-size:13px;
+  letter-spacing:.25em;
+  color:#d4af37;
+  font-weight:700;
+  text-transform:uppercase;
+  margin-bottom:8px
+}
+
+.flags{
+  font-size:40px;
+  line-height:1.2;
+  margin-bottom:6px
+}
+
 .title{
-  font-size:26px;font-weight:800;
+  font-size:26px;
+  font-weight:800;
   background:linear-gradient(135deg,#fff 40%,#d4af37 100%);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
   letter-spacing:.06em
 }
-.route{font-size:15px;color:#94a3b8;font-weight:500;margin-top:6px;letter-spacing:.08em}
+
+.route{
+  font-size:15px;
+  color:#94a3b8;
+  font-weight:500;
+  margin-top:6px;
+  letter-spacing:.08em
+}
+
+/* =========================
+   ALERT
+========================= */
 
 .alert-box{
-  background:linear-gradient(135deg,rgba(245,158,11,.15),rgba(180,83,9,.05));
-  border:1.5px solid #f59e0b;border-radius:20px;padding:16px 20px;margin-bottom:20px;
+  background:linear-gradient(
+    135deg,
+    rgba(245,158,11,.15),
+    rgba(180,83,9,.05)
+  );
+  border:1.5px solid #f59e0b;
+  border-radius:20px;
+  padding:16px 20px;
+  margin-bottom:20px;
   box-shadow:0 8px 20px rgba(245,158,11,.15)
 }
-.alert-title{font-size:16px;font-weight:800;color:#fbbf24;margin-bottom:6px;display:flex;gap:6px}
-.alert-content{font-size:14px;color:#fef3c7;line-height:1.5;font-weight:500}
+
+.alert-title{
+  font-size:16px;
+  font-weight:800;
+  color:#fbbf24;
+  margin-bottom:6px;
+  display:flex;
+  gap:6px
+}
+
+.alert-content{
+  font-size:14px;
+  color:#fef3c7;
+  line-height:1.5;
+  font-weight:500
+}
+
+/* =========================
+   DATE BUTTON
+========================= */
 
 .date-filter-container{
-  display:flex;gap:8px;overflow-x:auto;padding-bottom:12px;margin-bottom:16px;
-  -webkit-overflow-scrolling:touch;scrollbar-width:none
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+  padding-bottom:12px;
+  margin-bottom:16px;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none
 }
-.date-filter-container::-webkit-scrollbar{display:none}
+
+.date-filter-container::-webkit-scrollbar{
+  display:none
+}
+
 .date-btn{
-  background:#131a29;color:#94a3b8;border:1px solid rgba(212,175,55,.2);
-  padding:8px 14px;border-radius:20px;font-size:14px;font-weight:700;
-  white-space:nowrap;cursor:pointer;transition:all .2s;flex-shrink:0
+  background:#131a29;
+  color:#94a3b8;
+  border:1px solid rgba(212,175,55,.2);
+  padding:8px 14px;
+  border-radius:20px;
+  font-size:14px;
+  font-weight:700;
+  white-space:nowrap;
+  cursor:pointer;
+  transition:all .2s;
+  flex-shrink:0
 }
-.date-btn.active{background:linear-gradient(135deg,#d4af37,#b38f2a);color:#0b0f19;border-color:#d4af37;box-shadow:0 4px 12px rgba(212,175,55,.3)}
+
+.date-btn.active{
+  background:linear-gradient(135deg,#d4af37,#b38f2a);
+  color:#0b0f19;
+  border-color:#d4af37;
+  box-shadow:0 4px 12px rgba(212,175,55,.3)
+}
+
+/* =========================
+   CONTENT
+========================= */
 
 .content-card{
-  background:#131a29;border-radius:22px;padding:22px 20px;margin-bottom:16px;
+  background:#131a29;
+  border-radius:22px;
+  padding:22px 20px;
+  margin-bottom:16px;
   border:1px solid rgba(212,175,55,.15)
 }
-.content-card h3{font-size:20px;font-weight:800;margin-bottom:12px;color:#d4af37;border-bottom:1px solid rgba(212,175,55,.2);padding-bottom:8px}
 
-/* 時間軸線條與節點 */
-.timeline{position:relative;padding-left:20px;margin-top:16px;border-left:2px dashed rgba(212,175,55,.3)}
-.timeline-item{position:relative;margin-bottom:20px}
-.timeline-item:last-child{margin-bottom:0}
-.timeline-dot{
-  position:absolute;left:-27px;top:2px;width:12px;height:12px;
-  border-radius:50%;background:#d4af37;box-shadow:0 0 8px #d4af37
+.content-card h3{
+  font-size:20px;
+  font-weight:800;
+  margin-bottom:12px;
+  color:#d4af37;
+  border-bottom:1px solid rgba(212,175,55,.2);
+  padding-bottom:8px
 }
 
-.item-title{font-size:17px;font-weight:800;color:#fff;margin-bottom:4px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
-.item-meta{font-size:14px;color:#94a3b8;line-height:1.5}
+/* =========================
+   TIMELINE
+========================= */
+
+.timeline{
+  position:relative;
+  padding-left:20px;
+  margin-top:16px;
+  border-left:2px dashed rgba(212,175,55,.3)
+}
+
+.timeline-item{
+  position:relative;
+  margin-bottom:20px
+}
+
+.timeline-item:last-child{
+  margin-bottom:0
+}
+
+.timeline-dot{
+  position:absolute;
+  left:-27px;
+  top:2px;
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  background:#d4af37;
+  box-shadow:0 0 8px #d4af37
+}
+
+.item-title{
+  font-size:17px;
+  font-weight:800;
+  color:#fff;
+  margin-bottom:4px;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  flex-wrap:wrap
+}
+
+.item-meta{
+  font-size:14px;
+  color:#94a3b8;
+  line-height:1.5
+}
+
+/* =========================
+   BADGES
+========================= */
 
 .badge{
-  display:inline-block;padding:2px 8px;border-radius:8px;
-  font-size:11px;font-weight:800;background:rgba(212,175,55,.15);color:#d4af37;
+  display:inline-block;
+  padding:2px 8px;
+  border-radius:8px;
+  font-size:11px;
+  font-weight:800;
+  background:rgba(212,175,55,.15);
+  color:#d4af37;
   border:1px solid rgba(212,175,55,.3)
 }
-.badge.hotel{background:rgba(168,85,247,.15);color:#c084fc;border-color:rgba(168,85,247,.3)}
-.badge.station{background:rgba(59,130,246,.15);color:#93c5fd;border-color:rgba(59,130,246,.3)}
-.badge.food{background:rgba(239,68,68,.15);color:#fca5a5;border-color:rgba(239,68,68,.3)}
+
+.badge.hotel{
+  background:rgba(168,85,247,.15);
+  color:#c084fc;
+  border-color:rgba(168,85,247,.3)
+}
+
+.badge.station{
+  background:rgba(59,130,246,.15);
+  color:#93c5fd;
+  border-color:rgba(59,130,246,.3)
+}
+
+.badge.food{
+  background:rgba(239,68,68,.15);
+  color:#fca5a5;
+  border-color:rgba(239,68,68,.3)
+}
+
+/* =========================
+   TRANSIT
+========================= */
 
 .transit-info{
-  font-size:12px;color:#d4af37;background:rgba(212,175,55,.08);
-  padding:6px 12px;border-radius:8px;margin:8px 0;display:inline-flex;
-  align-items:center;gap:4px;border:1px solid rgba(212,175,55,.2);
-  text-decoration:none;transition:all .2s
+  font-size:12px;
+  color:#d4af37;
+  background:rgba(212,175,55,.08);
+  padding:6px 12px;
+  border-radius:8px;
+  margin:8px 0;
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  border:1px solid rgba(212,175,55,.2);
+  text-decoration:none;
+  transition:all .2s
 }
-.transit-info:hover{background:rgba(212,175,55,.2)}
+
+.transit-info:hover{
+  background:rgba(212,175,55,.2)
+}
+
+/* =========================
+   STOPS BUTTON
+========================= */
+
+.stops-toggle{
+  width:100%;
+  margin-top:8px;
+  padding:9px 12px;
+  border-radius:10px;
+  border:1px solid rgba(59,130,246,.25);
+  background:rgba(59,130,246,.08);
+  color:#93c5fd;
+  font-size:13px;
+  font-weight:800;
+  text-align:left;
+  cursor:pointer;
+  transition:all .2s
+}
+
+.stops-toggle:hover{
+  background:rgba(59,130,246,.15)
+}
+
+.stops-panel{
+  display:none;
+  margin-top:8px;
+  padding:12px;
+  border-radius:12px;
+  background:#0d1422;
+  border:1px solid rgba(59,130,246,.18)
+}
+
+.stops-panel.open{
+  display:block
+}
+
+.stops-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:8px;
+  margin-bottom:10px;
+  padding-bottom:8px;
+  border-bottom:1px solid rgba(148,163,184,.15)
+}
+
+.stops-title{
+  font-size:13px;
+  font-weight:800;
+  color:#e2e8f0
+}
+
+.stops-count{
+  font-size:11px;
+  color:#64748b;
+  background:rgba(148,163,184,.08);
+  padding:3px 7px;
+  border-radius:6px
+}
+
+.stop-list{
+  list-style:none;
+  margin:0;
+  padding:0
+}
+
+.stop-item{
+  position:relative;
+  padding:7px 0 7px 25px;
+  font-size:13px;
+  color:#cbd5e1;
+  line-height:1.4
+}
+
+.stop-item:before{
+  content:"";
+  position:absolute;
+  left:4px;
+  top:13px;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#64748b;
+  border:2px solid #0d1422
+}
+
+.stop-item:not(:last-child):after{
+  content:"";
+  position:absolute;
+  left:7px;
+  top:21px;
+  width:2px;
+  height:calc(100% - 7px);
+  background:rgba(100,116,139,.35)
+}
+
+.stop-item.start{
+  color:#f8fafc;
+  font-weight:800
+}
+
+.stop-item.start:before{
+  background:#22c55e
+}
+
+.stop-item.end{
+  color:#f8fafc;
+  font-weight:800
+}
+
+.stop-item.end:before{
+  background:#ef4444
+}
+
+.stop-label{
+  font-size:10px;
+  color:#64748b;
+  margin-left:5px
+}
+
+/* =========================
+   MAP BUTTON
+========================= */
 
 .map-btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:6px;
-  margin-top:6px;padding:6px 12px;border-radius:10px;
-  background:rgba(212,175,55,.15);color:#d4af37;border:1px solid rgba(212,175,55,.3);
-  text-decoration:none;font-weight:700;font-size:12px
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  margin-top:6px;
+  padding:6px 12px;
+  border-radius:10px;
+  background:rgba(212,175,55,.15);
+  color:#d4af37;
+  border:1px solid rgba(212,175,55,.3);
+  text-decoration:none;
+  font-weight:700;
+  font-size:12px
 }
+
 .full-map-btn{
-  display:flex;align-items:center;justify-content:center;gap:8px;
-  width:100%;padding:12px;border-radius:14px;background:#d4af37;color:#0b0f19;
-  text-decoration:none;font-weight:800;font-size:15px;margin-top:12px
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  width:100%;
+  padding:12px;
+  border-radius:14px;
+  background:#d4af37;
+  color:#0b0f19;
+  text-decoration:none;
+  font-weight:800;
+  font-size:15px;
+  margin-top:12px
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:380px){
+
+  body{
+    padding:10px
+  }
+
+  .hero{
+    padding:26px 18px
+  }
+
+  .title{
+    font-size:23px
+  }
+
+  .content-card{
+    padding:18px 16px
+  }
+
 }
 </style>
 </head>
 
 <body>
+
 <div class="container">
 
-  <!-- 主頁面 -->
+  <!-- =====================================================
+       主頁面
+  ====================================================== -->
+
   <div id="page-home" class="page active">
+
     <section class="hero">
-      <div class="agency-badge">PRIVATE JOURNEY GUIDE</div>
-      <div class="flags">🇮🇹 🇫🇷</div>
-      <div class="title">2026 蔚藍海岸慢活 行程導覽</div>
-      <div class="route">MILANO · GENOVA · NICE</div>
+
+      <div class="agency-badge">
+        PRIVATE JOURNEY GUIDE
+      </div>
+
+      <div class="flags">
+        🇮🇹 🇫🇷
+      </div>
+
+      <div class="title">
+        2026 蔚藍海岸慢活 行程導覽
+      </div>
+
+      <div class="route">
+        MILANO · GENOVA · NICE
+      </div>
+
     </section>
 
-    <!-- 日期選擇頁籤 -->
-    <div class="date-filter-container" id="date-buttons"></div>
 
-    <!-- 當日提醒與導覽內容 -->
-    <div id="day-alert" class="alert-box" style="display:none">
-      <div class="alert-title">⚠️ 當日重要提醒</div>
-      <div id="day-alert-content" class="alert-content"></div>
+    <!-- 日期選擇 -->
+
+    <div
+      class="date-filter-container"
+      id="date-buttons">
     </div>
 
+
+    <!-- 當日提醒 -->
+
+    <div
+      id="day-alert"
+      class="alert-box"
+      style="display:none">
+
+      <div class="alert-title">
+        ⚠️ 當日重要提醒
+      </div>
+
+      <div
+        id="day-alert-content"
+        class="alert-content">
+      </div>
+
+    </div>
+
+
+    <!-- 當日內容 -->
+
     <div id="day-content"></div>
+
   </div>
 
 </div>
 
+
 <script>
-const tripDates = [
-  "10/16","10/17","10/18","10/19","10/20","10/21",
-  "10/22","10/23","10/24","10/25","10/26","10/27","10/28"
-];
 
 /* ============================================================
-   整合型資料結構：結合 景點、車站、飯店 與 交通路線
-   ============================================================ */
+   日期
+============================================================ */
+
+const tripDates = [
+  "10/16",
+  "10/17",
+  "10/18",
+  "10/19",
+  "10/20",
+  "10/21",
+  "10/22",
+  "10/23",
+  "10/24",
+  "10/25",
+  "10/26",
+  "10/27",
+  "10/28"
+];
+
+
+/* ============================================================
+   交通工具設定
+============================================================ */
+
+const transitIcons = {
+
+  train: "🚆",
+
+  metro: "🚇",
+
+  tram: "🚋",
+
+  bus: "🚌",
+
+  funicular: "🚠",
+
+  walk: "🚶",
+
+  ferry: "⛴️"
+
+};
+
+
+/* ============================================================
+   行程資料
+============================================================
+
+   stops = [] 就是之後填入「行經站點」的位置。
+
+   注意：
+   目前只填入原始資料中已明確提供的站點。
+============================================================ */
+
 const itineraries = {
+
+
+  /* ========================================================
+     10/16
+  ======================================================== */
+
   "10/16": {
-    summary: ["抵達米蘭後以入住與休息為主，不安排大量景點。"],
+
+    summary: [
+      "抵達米蘭後以入住與休息為主，不安排大量景點。"
+    ],
+
     nodes: [
+
       {
         name: "Milano Malpensa Airport (MXP)",
         type: "station",
         tag: "機場鐵路",
-        note: "抵達機場後辦理入境與取行李",
-        map: "https://maps.app.goo.gl/B3RjZ4MvdgY4Ua9e7",
-        transit: "第一段：搭乘 Malpensa Express 機場快線 ➔ 米蘭中央車站 (約 50 分鐘)",
-        transitMap: "https://www.google.com/maps/dir/?api=1&origin=Milano+Malpensa+Airport&destination=Milano+Centrale&travelmode=transit"
+
+        note:
+          "抵達機場後辦理入境與取行李",
+
+        map:
+          "https://maps.app.goo.gl/B3RjZ4MvdgY4Ua9e7",
+
+        transit: {
+          mode: "train",
+          line: "Malpensa Express",
+          from: "Milano Malpensa Airport",
+          to: "Milano Centrale",
+          duration: "約 50 分鐘",
+
+          /* 目前原始資料沒有完整中間站 */
+          stops: [
+            "Milano Malpensa Airport",
+            "Milano Centrale"
+          ]
+        },
+
+        transitMap:
+          "https://www.google.com/maps/dir/?api=1&origin=Milano+Malpensa+Airport&destination=Milano+Centrale&travelmode=transit"
       },
+
+
       {
         name: "米蘭中央車站 (Milano Centrale)",
         type: "station",
         tag: "交通樞紐",
-        note: "抵達市區轉乘點（建議由月台往西側出口 Via Luigi Galvani 方向出站）",
-        map: "https://maps.app.goo.gl/d2iH8Z3rR1G32G9a8",
-        transit: "第二段：步行約 3-5 分鐘前往 Hilton Milan",
-        transitMap: "https://www.google.com/maps/dir/?api=1&origin=Milano+Centrale&destination=Hilton+Milan&travelmode=walking"
+
+        note:
+          "抵達市區轉乘點（建議由月台往西側出口 Via Luigi Galvani 方向出站）",
+
+        map:
+          "https://maps.app.goo.gl/d2iH8Z3rR1G32G9a8",
+
+        transit: {
+          mode: "walk",
+          from: "Milano Centrale",
+          to: "Hilton Milan",
+          duration: "步行約 3–5 分鐘",
+
+          stops: [
+            "Milano Centrale",
+            "Hilton Milan"
+          ]
+        },
+
+        transitMap:
+          "https://www.google.com/maps/dir/?api=1&origin=Milano+Centrale&destination=Hilton+Milan&travelmode=walking"
       },
+
+
       {
         name: "Hilton Milan",
         type: "hotel",
         tag: "住宿飯店",
-        note: "辦理入住、放置行李與休息",
-        map: "https://maps.app.goo.gl/CTvDLYcDfFWfNxHc6",
-        transit: "第三段：步行 1 分鐘（餐廳位於飯店 1 樓內）",
-        transitMap: "https://www.google.com/maps/dir/?api=1&origin=Hilton+Milan&destination=CotoliAMO+Milan&travelmode=walking"
+
+        note:
+          "辦理入住、放置行李與休息",
+
+        map:
+          "https://maps.app.goo.gl/CTvDLYcDfFWfNxHc6",
+
+        transit: {
+          mode: "walk",
+          from: "Hilton Milan",
+          to: "CotoliAMO",
+          duration: "步行約 1 分鐘",
+
+          stops: [
+            "Hilton Milan",
+            "CotoliAMO"
+          ]
+        },
+
+        transitMap:
+          "https://www.google.com/maps/dir/?api=1&origin=Hilton+Milan&destination=CotoliAMO+Milan&travelmode=walking"
       },
+
+
       {
         name: "CotoliAMO",
         type: "food",
         tag: "晚餐地點",
-        note: "飯店附設義大利餐廳，輕鬆享用晚餐",
-        map: "https://maps.app.goo.gl/rPbei9YcnEGtG8WM7",
-        transit: "回房休息",
+
+        note:
+          "飯店附設義大利餐廳，輕鬆享用晚餐",
+
+        map:
+          "https://maps.app.goo.gl/rPbei9YcnEGtG8WM7",
+
+        transit: {
+          mode: "walk",
+          from: "CotoliAMO",
+          to: "Hilton Milan",
+          duration: "回房休息",
+
+          stops: [
+            "CotoliAMO",
+            "Hilton Milan"
+          ]
+        },
+
         transitMap: ""
       }
+
     ]
   },
+
+
+  /* ========================================================
+     10/17
+  ======================================================== */
+
   "10/17": {
-    summary: ["米蘭市區主景點日；控制在 1 個主景點(主教堂)＋ 1 個步行區域(蒙塔內利花園)。"],
+
+    summary: [
+      "米蘭市區主景點日；控制在 1 個主景點（主教堂）＋ 1 個步行區域（蒙塔內利花園）。"
+    ],
+
     nodes: [
+
       {
         name: "Hilton Milan",
         type: "hotel",
         tag: "出發",
-        note: "飯店出發",
-        map: "https://maps.app.goo.gl/CTvDLYcDfFWfNxHc6",
-        transit: "搭乘 Metro M3 (黃線) Centrale FS ➔ Duomo 站",
-        transitMap: "https://www.google.com/maps/dir/?api=1&origin=Hilton+Milan&destination=Duomo+di+Milano&travelmode=transit"
+
+        note:
+          "飯店出發",
+
+        map:
+          "https://maps.app.goo.gl/CTvDLYcDfFWfNxHc6",
+
+        transit: {
+          mode: "metro",
+          line: "Metro M3 黃線",
+          from: "Centrale FS",
+          to: "Duomo",
+          duration: "依當日交通狀況",
+
+          /*
+           * 這裡可以之後補完整站序
+           */
+          stops: [
+            "Centrale FS",
+            "Duomo"
+          ]
+        },
+
+        transitMap:
+          "https://www.google.com/maps/dir/?api=1&origin=Hilton+Milan&destination=Duomo+di+Milano&travelmode=transit"
       },
+
+
       {
         name: "米蘭主教座堂 (Duomo)",
         type: "sight",
         tag: "主景點",
-        note: "參觀教堂與廣場區域",
-        map: "https://maps.app.goo.gl/1BwWX5AbHh28yy7H7",
-        transit: "步行 1 分鐘前往埃馬努埃萊二世拱廊",
-        transitMap: "https://www.google.com/maps/dir/?api=1&origin=Duomo+di+Milano&destination=Galleria+Vittorio+Emanuele+II&travelmode=walking"
+
+        note:
+          "參觀教堂與廣場區域",
+
+        map:
+          "https://maps.app.goo.gl/1BwWX5AbHh28yy7H7",
+
+        transit: {
+          mode: "walk",
+          from: "Duomo",
+          to: "Galleria Vittorio Emanuele II",
+          duration: "步行 1 分鐘",
+
+          stops: [
+            "Duomo",
+            "Galleria Vittorio Emanuele II"
+          ]
+        },
+
+        transitMap:
+          "https://www.google.com/maps/dir/?api=1&origin=Duomo+di+Milano&destination=Galleria+Vittorio+Emanuele+II&travelmode=walking"
       },
+
+
       {
         name: "埃馬努埃萊二世拱廊",
         type: "sight",
         tag: "輕鬆區域",
-        note: "大教堂旁輕鬆逛街區",
-        map: "https://maps.app.goo.gl/xzRx7fFwCv5wQWSr5",
-        transit: "步行 1 分鐘前往 Ristorante Galleria",
-        transitMap: "https://maps.app.goo.gl/aGneQZgzATAbwYak6"
+
+        note:
+          "大教堂旁輕鬆逛街區",
+
+        map:
+          "https://maps.app.goo.gl/xzRx7fFwCv5wQWSr5",
+
+        transit: {
+          mode: "walk",
+          from: "Galleria Vittorio Emanuele II",
+          to: "Ristorante Galleria",
+          duration: "步行約 1 分鐘",
+
+          stops: [
+            "Galleria Vittorio Emanuele II",
+            "Ristorante Galleria"
+          ]
+        },
+
+        transitMap:
+          "https://maps.app.goo.gl/aGneQZgzATAbwYak6"
       },
+
+
       {
         name: "Ristorante Galleria",
         type: "food",
         tag: "中午用餐選擇",
-        note: "義大利餐廳 1987年開幕",
-        map: "https://maps.app.goo.gl/EyZaBaxgdZJNYJxs7",
-        transit: "步行 5 分鐘前往La Corte Romanengo",
-        transitMap: "https://www.google.com/maps/dir/?api=1&origin=Ristorante+Galleria+Milano&destination=La+Corte+Romanengo+Milano&travelmode=walking"
+
+        note:
+          "義大利餐廳 1987 年開幕",
+
+        map:
+          "https://maps.app.goo.gl/EyZaBaxgdZJNYJxs7",
+
+        transit: {
+          mode: "walk",
+          from: "Ristorante Galleria",
+          to: "La Corte Romanengo",
+          duration: "步行 5 分鐘",
+
+          stops: [
+            "Ristorante Galleria",
+            "La Corte Romanengo"
+          ]
+        },
+
+        transitMap:
+          "https://www.google.com/maps/dir/?api=1&origin=Ristorante+Galleria+Milano&destination=La+Corte+Romanengo+Milano&travelmode=walking"
       },
+
+
       {
         name: "La Corte Romanengo - Salon de thé Manzoni",
         type: "food",
         tag: "下午茶/早午餐選擇",
-        note: "百年老字號精緻茶館與法式/義式點心，極具優雅氛圍",
-        map: "https://maps.app.goo.gl/cQpBxgS17Wz8Z48P7",
-        transit: "步行 2 分鐘前往斯卡拉大劇院",
-        transitMap: "https://maps.app.goo.gl/xnrgWGnTMYrMm3tp6"
+
+        note:
+          "百年老字號精緻茶館與法式/義式點心，極具優雅氛圍",
+
+        map:
+          "https://maps.app.goo.gl/cQpBxgS17Wz8Z48P7",
+
+        transit: {
+          mode: "walk",
+          from: "La Corte Romanengo",
+          to: "斯卡拉大劇院",
+          duration: "步行 2 分鐘",
+
+          stops: [
+            "La Corte Romanengo",
+            "斯卡拉大劇院"
+          ]
+        },
+
+        transitMap:
+          "https://maps.app.goo.gl/xnrgWGnTMYrMm3tp6"
       },
+
+
       {
         name: "斯卡拉大劇院",
         type: "sight",
         tag: "輕鬆區域",
-        note: "18 世紀的豪華劇院，以義大利歌劇聞名",
-        map: "https://maps.app.goo.gl/UnXheEdWotjZfWuJA",
-        transit: "步行 1 分鐘至劇場旁輕軌站",
-        transitMap: "https://www.google.com/maps/dir/?api=1&origin=Teatro+alla+Scala&destination=Teatro+Alla+Scala+Tram+Stop+Milano&travelmode=walking"
+
+        note:
+          "18 世紀的豪華劇院，以義大利歌劇聞名",
+
+        map:
+          "https://maps.app.goo.gl/UnXheEdWotjZfWuJA",
+
+        transit: {
+          mode: "walk",
+          from: "Teatro alla Scala",
+          to: "Teatro Alla Scala Tram Stop",
+          duration: "步行 1 分鐘",
+
+          stops: [
+            "Teatro alla Scala",
+            "Teatro Alla Scala Tram Stop"
+          ]
+        },
+
+        transitMap:
+          "https://www.google.com/maps/dir/?api=1&origin=Teatro+alla+Scala&destination=Teatro+Alla+Scala+Tram+Stop+Milano&travelmode=walking"
       },
+
+
       {
         name: "Teatro Alla Scala 輕軌站",
         type: "station",
         tag: "電車上車點",
-        note: "米蘭路面電車 1 號線搭乘點",
-        map: "https://maps.app.goo.gl/GfDCCWtFYoVaRMRB7",
-        transit: "搭乘路面電車 1 號線 ➔ P.Za Cavour",
-        transitMap: "https://www.google.com/maps/dir/?api=1&origin=Teatro+Alla+Scala+Milano&destination=P.Za+Cavour+Milano&travelmode=transit"
+
+        note:
+          "米蘭路面電車 1 號線搭乘點",
+
+        map:
+          "https://maps.app.goo.gl/GfDCCWtFYoVaRMRB7",
+
+        transit: {
+          mode: "tram",
+          line: "Tram 1",
+          from: "Teatro Alla Scala",
+          to: "P.Za Cavour",
+          duration: "依當日交通狀況",
+
+          stops: [
+            "Teatro Alla Scala",
+            "P.Za Cavour"
+          ]
+        },
+
+        transitMap:
+          "https://www.google.com/maps/dir/?api=1&origin=Teatro+Alla+Scala+Milano&destination=P.Za+Cavour+Milano&travelmode=transit"
       },
+
+
       {
         name: "P.Za Cavour",
         type: "station",
         tag: "電車下車點",
-        note: "米蘭路面電車 1 號線下車點",
-        map: "https://maps.app.goo.gl/eseG5QHQiTzeafg6A",
-        transit: "步行 2 分鐘進入蒙塔內利花園",
-        transitMap: "https://www.google.com/maps/dir/?api=1&origin=P.Za+Cavour+Milano&destination=Giardini+Indro+Montanelli+Milano&travelmode=walking"
+
+        note:
+          "米蘭路面電車 1 號線下車點",
+
+        map:
+          "https://maps.app.goo.gl/eseG5QHQiTzeafg6A",
+
+        transit: {
+          mode: "walk",
+          from: "P.Za Cavour",
+          to: "Giardini Indro Montanelli",
+          duration: "步行 2 分鐘",
+
+          stops: [
+            "P.Za Cavour",
+            "Giardini Indro Montanelli"
+          ]
+        },
+
+        transitMap:
+          "https://www.google.com/maps/dir/?api=1&origin=P.Za+Cavour+Milano&destination=Giardini+Indro+Montanelli+Milano&travelmode=walking"
       },
+
+
       {
         name: "蒙塔內利花園",
         type: "sight",
         tag: "步行區域",
-        note: "米蘭最古老的城市花園 建於1784年",
-        map: "https://maps.app.goo.gl/6rNZ97skhvHupy7J6",
-        transit: "花園內步行前往杜尼亞尼宮",
-        transitMap: "https://maps.app.goo.gl/VGedvCX9MQhvxmbM7"
+
+        note:
+          "米蘭最古老的城市花園，建於 1784 年",
+
+        map:
+          "https://maps.app.goo.gl/6rNZ97skhvHupy7J6",
+
+        transit: {
+          mode: "walk",
+          from: "Giardini Indro Montanelli",
+          to: "杜尼亞尼宮",
+          duration: "花園內步行",
+
+          stops: [
+            "Giardini Indro Montanelli",
+            "杜尼亞尼宮"
+          ]
+        },
+
+        transitMap:
+          "https://maps.app.goo.gl/VGedvCX9MQhvxmbM7"
       },
+
+
       {
         name: "杜尼亞尼宮",
         type: "sight",
         tag: "步行區域",
-        note: "建於 17 世紀的歷史建築",
-        map: "https://maps.app.goo.gl/fd9UDLkg3gbBq2yZA",
-        transit: "步行前往自然歷史博物館",
-        transitMap: "https://www.google.com/maps/dir/?api=1&origin=Palazzo+Dugnani+Milano&destination=Museo+Civico+di+Storia+Naturale+di+Milano&travelmode=walking"
+
+        note:
+          "建於 17 世紀的歷史建築",
+
+        map:
+          "https://maps.app.goo.gl/fd9UDLkg3gbBq2yZA",
+
+        transit: {
+          mode: "walk",
+          from: "Palazzo Dugnani",
+          to: "Museo Civico di Storia Naturale",
+          duration: "步行",
+
+          stops: [
+            "Palazzo Dugnani",
+            "Museo Civico di Storia Naturale"
+          ]
+        },
+
+        transitMap:
+          "https://www.google.com/maps/dir/?api=1&origin=Palazzo+Dugnani+Milano&destination=Museo+Civico+di+Storia+Naturale+di+Milano&travelmode=walking"
       },
+
+
       {
         name: "自然歷史博物館",
         type: "sight",
         tag: "步行區域",
-        note: "位於公園內之歷史博物館",
-        map: "https://maps.app.goo.gl/ocFSBaGMmMnAotdL7",
-        transit: "步行約 4 分鐘前往 La Volta 餐廳",
-        transitMap: "https://www.google.com/maps/dir/?api=1&origin=Museo+Civico+di+Storia+Naturale+di+Milano&destination=RH+Milan+The+Gallery+at+Palazzo+Gorani&travelmode=walking"
+
+        note:
+          "位於公園內之歷史博物館",
+
+        map:
+          "https://maps.app.goo.gl/ocFSBaGMmMnAotdL7",
+
+        transit: {
+          mode: "walk",
+          from: "Museo Civico di Storia Naturale",
+          to: "La Volta at RH Milan",
+          duration: "步行約 4 分鐘",
+
+          stops: [
+            "Museo Civico di Storia Naturale",
+            "La Volta at RH Milan"
+          ]
+        },
+
+        transitMap:
+          "https://www.google.com/maps/dir/?api=1&origin=Museo+Civico+di+Storia+Naturale+di+Milano&destination=RH+Milan+The+Gallery+at+Palazzo+Gorani&travelmode=walking"
       },
+
+
       {
         name: "La Volta at RH Milan",
         type: "food",
         tag: "晚餐用餐地點選擇",
-        note: "一家評分蠻高的餐館適合晚宴",
-        map: "https://maps.app.goo.gl/2WXDwH9QnPzpH5S27",
-        transit: "步行 1 分鐘前往威尼斯門與輕軌站",
-        transitMap: "https://maps.app.goo.gl/NCEiQAH1uM9knf138"
+
+        note:
+          "一家評分蠻高的餐館適合晚宴",
+
+        map:
+          "https://maps.app.goo.gl/2WXDwH9QnPzpH5S27",
+
+        transit: {
+          mode: "walk",
+          from: "La Volta at RH Milan",
+          to: "威尼斯門",
+          duration: "步行 1 分鐘",
+
+          stops: [
+            "La Volta at RH Milan",
+            "威尼斯門"
+          ]
+        },
+
+        transitMap:
+          "https://maps.app.goo.gl/NCEiQAH1uM9knf138"
       },
+
+
       {
         name: "威尼斯門",
         type: "sight",
         tag: "步行區域",
-        note: "古羅馬時期便存在的老城門，多次經不同朝代改建",
-        map: "https://maps.app.goo.gl/KWPwvb8wrSSKXA9n7",
-        transit: "步行 1 分鐘至 P.Ta Venezia M1 輕軌站",
-        transitMap: "https://www.google.com/maps/dir/?api=1&origin=Porta+Venezia+Milano&destination=P.Ta+Venezia+M1+Milano&travelmode=walking"
+
+        note:
+          "古羅馬時期便存在的老城門，多次經不同朝代改建",
+
+        map:
+          "https://maps.app.goo.gl/KWPwvb8wrSSKXA9n7",
+
+        transit: {
+          mode: "walk",
+          from: "Porta Venezia",
+          to: "P.Ta Venezia M1",
+          duration: "步行 1 分鐘",
+
+          stops: [
+            "Porta Venezia",
+            "P.Ta Venezia M1"
+          ]
+        },
+
+        transitMap:
+          "https://www.google.com/maps/dir/?api=1&origin=Porta+Venezia+Milano&destination=P.Ta+Venezia+M1+Milano&travelmode=walking"
       },
+
+
       {
         name: "P.Ta Venezia M1",
         type: "station",
         tag: "轉乘/步行起點",
-        note: "可在此下車後直接步行約 5 分鐘前往餐廳",
-        map: "https://maps.app.goo.gl/G8emMzHB7PY5fqmo7",
-        transit: "步行約 5 分鐘前往 Fresca Pasta Club",
-        transitMap: "https://www.google.com/maps/dir/?api=1&origin=P.Ta+Venezia+M1+Milano&destination=Fresca+Pasta+Club+Milano&travelmode=walking"
+
+        note:
+          "可在此下車後直接步行約 5 分鐘前往餐廳",
+
+        map:
+          "https://maps.app.goo.gl/G8emMzHB7PY5fqmo7",
+
+        transit: {
+          mode: "walk",
+          from: "P.Ta Venezia M1",
+          to: "Fresca Pasta Club",
+          duration: "步行約 5 分鐘",
+
+          stops: [
+            "P.Ta Venezia M1",
+            "Fresca Pasta Club"
+          ]
+        },
+
+        transitMap:
+          "https://www.google.com/maps/dir/?api=1&origin=P.Ta+Venezia+M1+Milano&destination=Fresca+Pasta+Club+Milano&travelmode=walking"
       },
+
+
       {
         name: "Fresca Pasta Club",
         type: "food",
         tag: "晚餐用餐地點選擇",
-        note: "主打現做手工義大利麵的道地餐館",
-        map: "https://maps.app.goo.gl/3X21K4N7A81234567",
-        transit: "搭乘輕軌 9 號線 ➔ 返回 Hilton Milan 飯店",
-        transitMap: "https://www.google.com/maps/dir/?api=1&origin=Fresca+Pasta+Club+Milano&destination=Hilton+Milan&travelmode=transit"
+
+        note:
+          "主打現做手工義大利麵的道地餐館",
+
+        map:
+          "https://maps.app.goo.gl/3X21K4N7A81234567",
+
+        transit: {
+          mode: "tram",
+          line: "輕軌 9 號線",
+          from: "Fresca Pasta Club",
+          to: "Hilton Milan",
+          duration: "依當日交通狀況",
+
+          stops: [
+            "Fresca Pasta Club",
+            "Hilton Milan"
+          ]
+        },
+
+        transitMap:
+          "https://www.google.com/maps/dir/?api=1&origin=Fresca+Pasta+Club+Milano&destination=Hilton+Milan&travelmode=transit"
       }
+
     ]
   },
+
+
+  /* ========================================================
+     10/18
+  ======================================================== */
+
   "10/18": {
-    summary: ["貝爾加莫一日往返；重點放在 Città Alta，避免連續長距離步行。"],
-    fullMap: "https://www.google.com/maps/dir/?api=1&origin=Milano+Centrale&destination=Bergamo&travelmode=transit",
+
+    summary: [
+      "貝爾加莫一日往返；重點放在 Città Alta，避免連續長距離步行。"
+    ],
+
+    fullMap:
+      "https://www.google.com/maps/dir/?api=1&origin=Milano+Centrale&destination=Bergamo&travelmode=transit",
+
     nodes: [
+
       {
         name: "米蘭中央車站 (Milano Centrale)",
         type: "station",
         tag: "出發樞紐",
-        note: "搭乘 Trenord 列車前往 Bergamo",
-        map: "https://maps.app.goo.gl/d2iH8Z3rR1G32G9a8",
-        transit: "搭乘 Trenord 區域列車前往 Bergamo 火車站 (約 50-60 分鐘)",
-        transitMap: "https://www.google.com/maps/dir/?api=1&origin=Milano+Centrale&destination=Stazione+FS+Bergamo&travelmode=transit"
+
+        note:
+          "搭乘 Trenord 列車前往 Bergamo",
+
+        map:
+          "https://maps.app.goo.gl/d2iH8Z3rR1G32G9a8",
+
+        transit: {
+          mode: "train",
+          line: "Trenord",
+          from: "Milano Centrale",
+          to: "Bergamo",
+          duration: "約 50–60 分鐘",
+
+          stops: [
+            "Milano Centrale",
+            "Bergamo"
+          ]
+        },
+
+        transitMap:
+          "https://www.google.com/maps/dir/?api=1&origin=Milano+Centrale&destination=Stazione+FS+Bergamo&travelmode=transit"
       },
+
+
       {
         name: "Bergamo 火車站 (Stazione FS)",
         type: "station",
         tag: "火車站點",
-        note: "抵達 Bergamo，出站前往站前大道公車站",
-        map: "https://maps.app.goo.gl/EVm2E9U8cCz7u4ep7",
-        transit: "步行約 1 分鐘至站前 Papa Giovanni fermata 2 公車站",
-        transitMap: "https://www.google.com/maps/dir/?api=1&origin=Stazione+FS+Bergamo&destination=Papa+Giovanni+fermata+2+Bergamo&travelmode=walking"
+
+        note:
+          "抵達 Bergamo，出站前往站前大道公車站",
+
+        map:
+          "https://maps.app.goo.gl/EVm2E9U8cCz7u4ep7",
+
+        transit: {
+          mode: "walk",
+          from: "Stazione FS Bergamo",
+          to: "Papa Giovanni fermata 2",
+          duration: "步行約 1 分鐘",
+
+          stops: [
+            "Stazione FS Bergamo",
+            "Papa Giovanni fermata 2"
+          ]
+        },
+
+        transitMap:
+          "https://www.google.com/maps/dir/?api=1&origin=Stazione+FS+Bergamo&destination=Papa+Giovanni+fermata+2+Bergamo&travelmode=walking"
       },
+
+
       {
         name: "Papa Giovanni fermata 2",
         type: "station",
         tag: "公車轉乘",
-        note: "站前公車站點，搭乘 ATB 1 號公車前往纜車站",
-        map: "https://maps.app.goo.gl/EVm2E9U8cCz7u4ep7",
-        transit: "搭乘 1 號公車 ➔ Vittorio Emanuele 47 站 (約 8 分鐘)",
-        transitMap: "https://www.google.com/maps/dir/?api=1&origin=Papa+Giovanni+fermata+2+Bergamo&destination=Vittorio+Emanuele+47+Bergamo&travelmode=transit"
+
+        note:
+          "站前公車站點，搭乘 ATB 1 號公車前往纜車站",
+
+        map:
+          "https://maps.app.goo.gl/EVm2E9U8cCz7u4ep7",
+
+        transit: {
+          mode: "bus",
+          line: "ATB 1",
+          from: "Papa Giovanni fermata 2",
+          to: "Vittorio Emanuele 47",
+          duration: "約 8 分鐘",
+
+          stops: [
+            "Papa Giovanni fermata 2",
+            "Vittorio Emanuele 47"
+          ]
+        },
+
+        transitMap:
+          "https://www.google.com/maps/dir/?api=1&origin=Papa+Giovanni+fermata+2+Bergamo&destination=Vittorio+Emanuele+47+Bergamo&travelmode=transit"
       },
+
+
       {
         name: "Vittorio Emanuele 47",
         type: "station",
         tag: "公車下車站",
-        note: "1 號公車站點，準備步行前往山下纜車站",
-        map: "https://maps.app.goo.gl/NtLLoYUNVAXrqHdz6",
-        transit: "步行 1 分鐘至 Funicolare Città Alta 山下纜車站",
-        transitMap: "https://maps.app.goo.gl/GYM3j2ZJ1QYPTGm46"
+
+        note:
+          "1 號公車站點，準備步行前往山下纜車站",
+
+        map:
+          "https://maps.app.goo.gl/NtLLoYUNVAXrqHdz6",
+
+        transit: {
+          mode: "walk",
+          from: "Vittorio Emanuele 47",
+          to: "Funicolare Città Alta",
+          duration: "步行 1 分鐘",
+
+          stops: [
+            "Vittorio Emanuele 47",
+            "Funicolare Città Alta"
+          ]
+        },
+
+        transitMap:
+          "https://maps.app.goo.gl/GYM3j2ZJ1QYPTGm46"
       },
+
+
       {
         name: "Funicolare Città Alta (山下站)",
         type: "sight",
         tag: "纜車",
-        note: "搭乘纜車/電梯優先，輕鬆登上上城區",
-        map: "https://maps.app.goo.gl/hQddPGQVXAosPEkh9",
-        transit: "搭乘 Funicolare 纜車 ➔ 登上 Città Alta 上城區 (約 2-3 分鐘)",
-        transitMap: "https://maps.app.goo.gl/EH9dor9ZQ8Y2CWpF8t"
+
+        note:
+          "搭乘纜車/電梯優先，輕鬆登上上城區",
+
+        map:
+          "https://maps.app.goo.gl/hQddPGQVXAosPEkh9",
+
+        transit: {
+          mode: "funicular",
+          line: "Funicolare Città Alta",
+          from: "山下站",
+          to: "Staz.Sup.Fun.Città",
+          duration: "約 2–3 分鐘",
+
+          stops: [
+            "Funicolare Città Alta（山下站）",
+            "Staz.Sup.Fun.Città（山上站）"
+          ]
+        },
+
+        transitMap:
+          "https://maps.app.goo.gl/EH9dor9ZQ8Y2CWpF8t"
       },
+
+
       {
         name: "Staz.Sup.Fun.Città (山上站)",
         type: "station",
         tag: "景點纜車站",
-        note: "抵達舊城上城區樞紐",
-        map: "https://maps.app.goo.gl/fuunghtVxQhhKFqL6",
-        transit: "步行 1 分鐘前往 Alta Funicolare 餐廳",
-        transitMap: "https://maps.app.goo.gl/vud7WNyrP8so57DX8"
+
+        note:
+          "抵達舊城上城區樞紐",
+
+        map:
+          "https://maps.app.goo.gl/fuunghtVxQhhKFqL6",
+
+        transit: {
+          mode: "walk",
+          from: "Staz.Sup.Fun.Città",
+          to: "Alta Funicolare",
+          duration: "步行 1 分鐘",
+
+          stops: [
+            "Staz.Sup.Fun.Città",
+            "Alta Funicolare"
+          ]
+        },
+
+        transitMap:
+          "https://maps.app.goo.gl/vud7WNyrP8so57DX8"
       },
+
+
       {
         name: "Alta Funicolare",
         type: "food",
         tag: "午餐地點",
-        note: "義大利小餐館享用午餐",
-        map: "https://maps.app.goo.gl/iXWio87iSoBz62rZ8",
-        transit: "步行 4 分鐘前往 Pezzi di artiglieria 觀景台",
-        transitMap: "https://maps.app.goo.gl/Rvh6s6PeDj7nKmaa7"
+
+        note:
+          "義大利小餐館享用午餐",
+
+        map:
+          "https://maps.app.goo.gl/iXWio87iSoBz62rZ8",
+
+        transit: {
+          mode: "walk",
+          from: "Alta Funicolare",
+          to: "Pezzi di artiglieria",
+          duration: "步行 4 分鐘",
+
+          stops: [
+            "Alta Funicolare",
+            "Pezzi di artiglieria"
+          ]
+        },
+
+        transitMap:
+          "https://maps.app.goo.gl/Rvh6s6PeDj7nKmaa7"
       },
+
+
       {
         name: "Pezzi di artiglieria",
         type: "sight",
         tag: "觀景台",
-        note: "公園觀景台，可遠眺貝爾加莫下城區全景",
-        map: "https://maps.app.goo.gl/Jvfs6N9M6MZFx1yd8",
-        transit: "步行 4 分鐘經 Piazzetta Luigi Angelini",
-        transitMap: "https://www.google.com/maps/dir/?api=1&origin=Pezzi+di+artiglieria+Bergamo&destination=Piazzetta+Luigi+Angelini+Bergamo&travelmode=walking"
+
+        note:
+          "公園觀景台，可遠眺貝爾加莫下城區全景",
+
+        map:
+          "https://maps.app.goo.gl/Jvfs6N9M6MZFx1yd8",
+
+        transit: {
+          mode: "walk",
+          from: "Pezzi di artiglieria",
+          to: "Piazzetta Luigi Angelini",
+          duration: "步行 4 分鐘",
+
+          stops: [
+            "Pezzi di artiglieria",
+            "Piazzetta Luigi Angelini"
+          ]
+        },
+
+        transitMap:
+          "https://www.google.com/maps/dir/?api=1&origin=Pezzi+di+artiglieria+Bergamo&destination=Piazzetta+Luigi+Angelini+Bergamo&travelmode=walking"
       },
+
+
       {
         name: "Piazzetta Luigi Angelini",
         type: "sight",
         tag: "捷徑走廊",
-        note: "可從此中庭走廊直接通往老城廣場",
-        map: "https://maps.app.goo.gl/DBSityoEsMeUvjnT8",
-        transit: "步行 5 分鐘前往老城廣場",
-        transitMap: "https://www.google.com/maps/dir/?api=1&origin=Piazzetta+Luigi+Angelini+Bergamo&destination=Piazza+Vecchia+Bergamo&travelmode=walking"
+
+        note:
+          "可從此中庭走廊直接通往老城廣場",
+
+        map:
+          "https://maps.app.goo.gl/DBSityoEsMeUvjnT8",
+
+        transit: {
+          mode: "walk",
+          from: "Piazzetta Luigi Angelini",
+          to: "Piazza Vecchia",
+          duration: "步行 5 分鐘",
+
+          stops: [
+            "Piazzetta Luigi Angelini",
+            "Piazza Vecchia"
+          ]
+        },
+
+        transitMap:
+          "https://www.google.com/maps/dir/?api=1&origin=Piazzetta+Luigi+Angelini+Bergamo&destination=Piazza+Vecchia+Bergamo&travelmode=walking"
       },
+
+
       {
         name: "Piazza Vecchia (老城廣場)",
         type: "sight",
         tag: "輕鬆區域",
-        note: "古城廣場散步與休息",
-        map: "https://maps.app.goo.gl/GAMLzZ9RnEtkszmR7",
-        transit: "步行 2 分鐘前往 Carmen Gelato",
-        transitMap: "https://www.google.com/maps/dir/?api=1&origin=Piazza+Vecchia+Bergamo&destination=Carmen+Gelato+Colleoni+Bergamo&travelmode=walking"
+
+        note:
+          "古城廣場散步與休息",
+
+        map:
+          "https://maps.app.goo.gl/GAMLzZ9RnEtkszmR7",
+
+        transit: {
+          mode: "walk",
+          from: "Piazza Vecchia",
+          to: "Carmen Gelato",
+          duration: "步行 2 分鐘",
+
+          stops: [
+            "Piazza Vecchia",
+            "Carmen Gelato - Colleoni"
+          ]
+        },
+
+        transitMap:
+          "https://www.google.com/maps/dir/?api=1&origin=Piazza+Vecchia+Bergamo&destination=Carmen+Gelato+Colleoni+Bergamo&travelmode=walking"
       },
+
+
       {
         name: "Carmen Gelato - Colleoni",
         type: "food",
         tag: "冰淇淋/甜點",
-        note: "當地熱門義大利冰淇淋店",
-        map: "https://maps.app.goo.gl/pDy86qQXNP8UkHyJ6",
-        transit: "步行約 5 分鐘返回 Staz.Sup.Fun.Città 山上纜車",
-        transitMap: "https://maps.app.goo.gl/V7yTH3deMN6F7NRm8"
+
+        note:
+          "當地熱門義大利冰淇淋店",
+
+        map:
+          "https://maps.app.goo.gl/pDy86qQXNP8UkHyJ6",
+
+        transit: {
+          mode: "walk",
+          from: "Carmen Gelato - Colleoni",
+          to: "Staz.Sup.Fun.Città",
+          duration: "步行約 5 分鐘",
+
+          stops: [
+            "Carmen Gelato - Colleoni",
+            "Staz.Sup.Fun.Città"
+          ]
+        },
+
+        transitMap:
+          "https://maps.app.goo.gl/V7yTH3deMN6F7NRm8"
       },
+
+
       {
         name: "Staz.Sup.Fun.Città (山上站)",
         type: "station",
         tag: "纜車回程",
-        note: "搭乘纜車下山返回 Bergamo 下城區",
-        map: "https://maps.app.goo.gl/fuunghtVxQhhKFqL6",
-        transit: "搭乘 Funicolare 纜車下行 ➔ 抵達山下纜車站 (約 2-3 分鐘)",
-        transitMap: "https://www.google.com/maps/dir/?api=1&origin=Funicolare+Citt%C3%A0+Alta+Upper+Station&destination=Funicolare+Citt%C3%A0+Alta+Lower+Station&travelmode=transit"
+
+        note:
+          "搭乘纜車下山返回 Bergamo 下城區",
+
+        map:
+          "https://maps.app.goo.gl/fuunghtVxQhhKFqL6",
+
+        transit: {
+          mode: "funicular",
+          line: "Funicolare Città Alta",
+          from: "Staz.Sup.Fun.Città",
+          to: "Funicolare Città Alta 山下站",
+          duration: "約 2–3 分鐘",
+
+          stops: [
+            "Staz.Sup.Fun.Città（山上站）",
+            "Funicolare Città Alta（山下站）"
+          ]
+        },
+
+        transitMap:
+          "https://www.google.com/maps/dir/?api=1&origin=Funicolare+Citt%C3%A0+Alta+Upper+Station&destination=Funicolare+Citt%C3%A0+Alta+Lower+Station&travelmode=transit"
       },
+
+
       {
         name: "Funicolare Città Alta (山下站)",
         type: "sight",
         tag: "纜車/步行",
-        note: "出纜車站後步行至對向 Vittorio Emanuele 公車站",
-        map: "https://maps.app.goo.gl/hQddPGQVXAosPEkh9",
-        transit: "步行約 1 分鐘至 Vittorio Emanuele 公車站",
-        transitMap: "https://www.google.com/maps/dir/?api=1&origin=Funicolare+Citt%C3%A0+Alta+Lower+Station&destination=Vittorio+Emanuele+42+Bergamo&travelmode=walking"
+
+        note:
+          "出纜車站後步行至對向 Vittorio Emanuele 公車站",
+
+        map:
+          "https://maps.app.goo.gl/hQddPGQVXAosPEkh9",
+
+        transit: {
+          mode: "walk",
+          from: "Funicolare Città Alta",
+          to: "Vittorio Emanuele 42",
+          duration: "步行約 1 分鐘",
+
+          stops: [
+            "Funicolare Città Alta",
+            "Vittorio Emanuele"
+          ]
+        },
+
+        transitMap:
+          "https://www.google.com/maps/dir/?api=1&origin=Funicolare+Citt%C3%A0+Alta+Lower+Station&destination=Vittorio+Emanuele+42+Bergamo&travelmode=walking"
       },
+
+
       {
         name: "Vittorio Emanuele 47",
         type: "station",
         tag: "公車上車站",
-        note: "搭乘 ATB 1 號公車返回火車站方向",
-        map: "https://maps.app.goo.gl/NtLLoYUNVAXrqHdz6",
-        transit: "搭乘 1 號公車 ➔ Papa Giovanni fermata 2 (約 8 分鐘)",
-        transitMap: "https://www.google.com/maps/dir/?api=1&origin=Vittorio+Emanuele+47+Bergamo&destination=Papa+Giovanni+fermata+2+Bergamo&travelmode=transit"
+
+        note:
+          "搭乘 ATB 1 號公車返回火車站方向",
+
+        map:
+          "https://maps.app.goo.gl/NtLLoYUNVAXrqHdz6",
+
+        transit: {
+          mode: "bus",
+          line: "ATB 1",
+          from: "Vittorio Emanuele 47",
+          to: "Papa Giovanni fermata 2",
+          duration: "約 8 分鐘",
+
+          stops: [
+            "Vittorio Emanuele 47",
+            "Papa Giovanni fermata 2"
+          ]
+        },
+
+        transitMap:
+          "https://www.google.com/maps/dir/?api=1&origin=Vittorio+Emanuele+47+Bergamo&destination=Papa+Giovanni+fermata+2+Bergamo&travelmode=transit"
       },
+
+
       {
         name: "Papa Giovanni fermata 2",
         type: "station",
         tag: "公車下車站",
-        note: "抵達火車站前公車站，準備步行進入火車站",
-        map: "https://maps.app.goo.gl/EVm2E9U8cCz7u4ep7",
-        transit: "步行約 1 分鐘至 Bergamo 火車站內部",
-        transitMap: "https://www.google.com/maps/dir/?api=1&origin=Papa+Giovanni+fermata+2+Bergamo&destination=Stazione+FS+Bergamo&travelmode=walking"
+
+        note:
+          "抵達火車站前公車站，準備步行進入火車站",
+
+        map:
+          "https://maps.app.goo.gl/EVm2E9U8cCz7u4ep7",
+
+        transit: {
+          mode: "walk",
+          from: "Papa Giovanni fermata 2",
+          to: "Stazione FS Bergamo",
+          duration: "步行約 1 分鐘",
+
+          stops: [
+            "Papa Giovanni fermata 2",
+            "Stazione FS Bergamo"
+          ]
+        },
+
+        transitMap:
+          "https://www.google.com/maps/dir/?api=1&origin=Papa+Giovanni+fermata+2+Bergamo&destination=Stazione+FS+Bergamo&travelmode=walking"
       },
+
+
       {
         name: "Bergamo 火車站",
         type: "station",
         tag: "回程樞紐",
-        note: "搭乘 Trenord 列車返回米蘭中央車站",
-        map: "https://maps.app.goo.gl/EVm2E9U8cCz7u4ep7",
-        transit: "搭乘 Trenord 返回 Milano Centrale (約 50-60 分鐘)",
-        transitMap: "https://www.google.com/maps/dir/?api=1&origin=Stazione+FS+Bergamo&destination=Milano+Centrale&travelmode=transit"
+
+        note:
+          "搭乘 Trenord 列車返回米蘭中央車站",
+
+        map:
+          "https://maps.app.goo.gl/EVm2E9U8cCz7u4ep7",
+
+        transit: {
+          mode: "train",
+          line: "Trenord",
+          from: "Bergamo",
+          to: "Milano Centrale",
+          duration: "約 50–60 分鐘",
+
+          stops: [
+            "Bergamo",
+            "Milano Centrale"
+          ]
+        },
+
+        transitMap:
+          "https://www.google.com/maps/dir/?api=1&origin=Stazione+FS+Bergamo&destination=Milano+Centrale&travelmode=transit"
       }
+
     ]
   }
+
 };
 
-function renderDateButtons() {
-  const box = document.getElementById("date-buttons");
-  box.innerHTML = 
-    `<button class="date-btn active" onclick="renderDay('all', this)">全部行程</button>` +
-    tripDates.map(d => `<button class="date-btn" onclick="renderDay('${d}', this)">${d}</button>`).join("");
+
+/* ============================================================
+   日期按鈕
+============================================================ */
+
+function renderDateButtons(){
+
+  const box =
+    document.getElementById("date-buttons");
+
+  box.innerHTML =
+    `<button
+      class="date-btn active"
+      onclick="renderDay('all', this)">
+      全部行程
+    </button>` +
+
+    tripDates
+      .map(date =>
+        `<button
+          class="date-btn"
+          onclick="renderDay('${date}', this)">
+          ${date}
+        </button>`
+      )
+      .join("");
 }
 
-function renderDay(targetDate, btn) {
-  if(btn) {
-    btn.parentElement.querySelectorAll(".date-btn").forEach(x => x.classList.remove("active"));
-    btn.classList.add("active");
-  }
 
-  const container = document.getElementById("day-content");
-  const alertBox = document.getElementById("day-alert");
-  const alertContent = document.getElementById("day-alert-content");
+/* ============================================================
+   取得交通圖示
+============================================================ */
 
-  if(targetDate === "all") {
-    alertBox.style.display = "none";
-    container.innerHTML = tripDates.map(date => renderDayCard(date)).join("");
-    return;
-  }
+function getTransitIcon(mode){
 
-  const data = itineraries[targetDate];
-  if(!data) {
-    alertBox.style.display = "none";
-    container.innerHTML = '<div style="color:#64748b;text-align:center;padding:20px;">尚無本日行程資料</div>';
-    return;
-  }
+  return transitIcons[mode] || "🚉";
 
-  alertContent.innerHTML = data.summary.map(x => `<p>${x}</p>`).join("");
-  alertBox.style.display = "block";
-  container.innerHTML = renderDayCard(targetDate);
 }
 
-function renderDayCard(date) {
-  const data = itineraries[date];
-  if(!data) return "";
 
-  const getTypeBadge = (type, tag) => {
-    if(type === 'hotel') return `<span class="badge hotel">🏨 ${tag}</span>`;
-    if(type === 'station') return `<span class="badge station">🚉 ${tag}</span>`;
-    if(type === 'food') return `<span class="badge food">🍽️ ${tag}</span>`;
-    return `<span class="badge">📍 ${tag}</span>`;
-  };
+/* ============================================================
+   交通資訊渲染
+============================================================ */
 
-  return `
-    <div class="content-card">
-      <h3>${date} 行程與路線導引</h3>
-      
-      <div class="timeline">
-        ${data.nodes.map(node => `
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="item-title">
-              ${node.name}${getTypeBadge(node.type, node.tag)}
-            </div>
-            <div class="item-meta">${node.note}</div>${node.map ? `<a class="map-btn" href="${node.map}" target="_blank">📍 地點導航</a>` : ''}
-            ${node.transit ? `
-              <br>
-              ${node.transitMap 
-                ? `<a class="transit-info" href="${node.transitMap}" target="_blank">⬇️ ${node.transit} 🗺️</a>`
-                : `<div class="transit-info">⬇️ ${node.transit}</div>`
-              }
-            ` : ''}
+function renderTransit(node, index){
+
+  if(!node.transit){
+    return "";
+  }
+
+  const t = node.transit;
+
+  const icon =
+    getTransitIcon(t.mode);
+
+  const lineText =
+    t.line
+      ? ` ${t.line}`
+      : "";
+
+  const routeText =
+    t.from && t.to
+      ? `${t.from} → ${t.to}`
+      : "";
+
+  const durationText =
+    t.duration
+      ? `｜${t.duration}`
+      : "";
+
+  const summary =
+    `${icon}${lineText}｜${routeText}${durationText}`;
+
+
+  let html = `
+    <br>
+
+    ${
+      node.transitMap
+      ?
+
+      `<a
+        class="transit-info"
+        href="${node.transitMap}"
+        target="_blank">
+
+        ${summary} 🗺️
+
+      </a>`
+
+      :
+
+      `<div class="transit-info">
+
+        ${summary}
+
+      </div>`
+    }
+  `;
+
+
+  /* ========================================================
+     行經站點
+  ======================================================== */
+
+  if(
+    Array.isArray(t.stops) &&
+    t.stops.length > 0
+  ){
+
+    const panelId =
+      `stops-${node.name
+        .replace(/[^\w\u4e00-\u9fff]/g,"-")
+        .replace(/-+/g,"-")
+        .substring(0,30)
+      }-${index}`;
+
+
+    const stopItems =
+      t.stops
+        .map((stop, i) => {
+
+          let cls = "stop-item";
+
+          if(i === 0){
+            cls += " start";
+          }
+
+          if(i === t.stops.length - 1){
+            cls += " end";
+          }
+
+          let label = "";
+
+          if(i === 0){
+            label =
+              `<span class="stop-label">起點</span>`;
+          }
+          else if(i === t.stops.length - 1){
+            label =
+              `<span class="stop-label">終點</span>`;
+          }
+
+          return `
+            <li class="${cls}">
+              ${stop}
+              ${label}
+            </li>
+          `;
+
+        })
+        .join("");
+
+
+    html += `
+
+      <button
+        class="stops-toggle"
+        onclick="toggleStops('${panelId}', this)">
+
+        🚉 行經站點
+        <span style="float:right">＋</span>
+
+      </button>
+
+
+      <div
+        id="${panelId}"
+        class="stops-panel">
+
+        <div class="stops-header">
+
+          <div class="stops-title">
+            ${icon} ${t.line || "交通路線"}
           </div>
-        `).join("")}
+
+          <div class="stops-count">
+            ${Math.max(t.stops.length - 1, 0)} 段
+          </div>
+
+        </div>
+
+        <ul class="stop-list">
+          ${stopItems}
+        </ul>
+
       </div>
 
-      ${data.fullMap ? `<a class="full-map-btn" href="${data.fullMap}" target="_blank">🗺️ 開啟今日 Google Maps 總路線</a>` : ''}
-    </div>
+    `;
+  }
+
+
+  return html;
+
+}
+
+
+/* ============================================================
+   展開 / 收合站點
+============================================================ */
+
+function toggleStops(id, button){
+
+  const panel =
+    document.getElementById(id);
+
+  if(!panel){
+    return;
+  }
+
+  const isOpen =
+    panel.classList.toggle("open");
+
+  button.innerHTML =
+    isOpen
+
+      ? `🚉 收起行經站點
+         <span style="float:right">－</span>`
+
+      : `🚉 行經站點
+         <span style="float:right">＋</span>`;
+}
+
+
+/* ============================================================
+   類型 Badge
+============================================================ */
+
+function getTypeBadge(type, tag){
+
+  if(type === "hotel"){
+
+    return `
+      <span class="badge hotel">
+        🏨 ${tag}
+      </span>
+    `;
+
+  }
+
+  if(type === "station"){
+
+    return `
+      <span class="badge station">
+        🚉 ${tag}
+      </span>
+    `;
+
+  }
+
+  if(type === "food"){
+
+    return `
+      <span class="badge food">
+        🍽️ ${tag}
+      </span>
+    `;
+
+  }
+
+  return `
+    <span class="badge">
+      📍 ${tag}
+    </span>
   `;
 }
 
-// 初始化
+
+/* ============================================================
+   Render Day
+============================================================ */
+
+function renderDay(targetDate, btn){
+
+  if(btn){
+
+    btn.parentElement
+      .querySelectorAll(".date-btn")
+      .forEach(x =>
+        x.classList.remove("active")
+      );
+
+    btn.classList.add("active");
+  }
+
+
+  const container =
+    document.getElementById("day-content");
+
+  const alertBox =
+    document.getElementById("day-alert");
+
+  const alertContent =
+    document.getElementById("day-alert-content");
+
+
+  /* 全部行程 */
+
+  if(targetDate === "all"){
+
+    alertBox.style.display =
+      "none";
+
+    container.innerHTML =
+      tripDates
+        .map(date =>
+          renderDayCard(date)
+        )
+        .join("");
+
+    return;
+  }
+
+
+  const data =
+    itineraries[targetDate];
+
+
+  if(!data){
+
+    alertBox.style.display =
+      "none";
+
+    container.innerHTML = `
+
+      <div
+        style="
+          color:#64748b;
+          text-align:center;
+          padding:20px;
+        ">
+
+        尚無本日行程資料
+
+      </div>
+
+    `;
+
+    return;
+  }
+
+
+  alertContent.innerHTML =
+    data.summary
+      .map(x => `<p>${x}</p>`)
+      .join("");
+
+
+  alertBox.style.display =
+    "block";
+
+
+  container.innerHTML =
+    renderDayCard(targetDate);
+}
+
+
+/* ============================================================
+   Render Day Card
+============================================================ */
+
+function renderDayCard(date){
+
+  const data =
+    itineraries[date];
+
+
+  if(!data){
+    return "";
+  }
+
+
+  return `
+
+    <div class="content-card">
+
+      <h3>
+        ${date} 行程與路線導引
+      </h3>
+
+
+      <div class="timeline">
+
+        ${
+
+          data.nodes
+
+            .map((node, index) => `
+
+              <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+
+                <div class="item-title">
+
+                  ${node.name}
+
+                  ${getTypeBadge(
+                    node.type,
+                    node.tag
+                  )}
+
+                </div>
+
+
+                <div class="item-meta">
+
+                  ${node.note}
+
+                </div>
+
+
+                ${
+                  node.map
+
+                  ?
+
+                  `<a
+                    class="map-btn"
+                    href="${node.map}"
+                    target="_blank">
+
+                    📍 地點導航
+
+                  </a>`
+
+                  :
+
+                  ""
+                }
+
+
+                ${
+
+                  renderTransit(
+                    node,
+                    index
+                  )
+
+                }
+
+              </div>
+
+            `)
+
+            .join("")
+
+        }
+
+      </div>
+
+
+      ${
+
+        data.fullMap
+
+        ?
+
+        `<a
+          class="full-map-btn"
+          href="${data.fullMap}"
+          target="_blank">
+
+          🗺️ 開啟今日 Google Maps 總路線
+
+        </a>`
+
+        :
+
+        ""
+
+      }
+
+    </div>
+
+  `;
+}
+
+
+/* ============================================================
+   初始化
+============================================================ */
+
 renderDateButtons();
+
 renderDay("all");
+
 </script>
+
 </body>
 </html>
+```
