@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
@@ -1634,6 +1633,1191 @@ const itineraries = {
     ]
   }
 
+,
+
+  "10/19": {
+  "summary": [
+    "科莫湖一日往返：Varenna → Bellagio，安排湖畔散步與船程，並延伸至 Lenno／Villa del Balbianello。"
+  ],
+  "nodes": [
+    {
+      "name": "Varenna Esino",
+      "type": "station",
+      "tag": "交通節點",
+      "note": "抵達 Varenna 的火車站，作為湖區一日行程起點。",
+      "map": "https://www.google.com/maps/search/?api=1&query=46.01491399999999,9.286209999999999",
+      "transit": {
+        "mode": "train",
+        "line": "Trenord",
+        "from": "Milano Centrale",
+        "to": "Varenna Esino",
+        "duration": "約 1 小時",
+        "stops": []
+      }
+    },
+    {
+      "name": "Varenna",
+      "type": "sight",
+      "tag": "景點／區域",
+      "note": "湖畔小鎮，先沿湖岸步行，再前往碼頭。",
+      "map": "https://www.google.com/maps/search/?api=1&query=46.01388459999999,9.2828318",
+      "transit": {
+        "mode": "walk",
+        "from": "Varenna Esino",
+        "to": "Varenna",
+        "duration": "步行前往湖畔",
+        "stops": []
+      }
+    },
+    {
+      "name": "LOCANDA CAVALLINO",
+      "type": "food",
+      "tag": "用餐／休息",
+      "note": "Varenna 用餐／休息選擇。",
+      "map": "https://www.google.com/maps/search/?api=1&query=46.0137837,9.283243299999999",
+      "transit": {
+        "mode": "walk",
+        "from": "Varenna",
+        "to": "LOCANDA CAVALLINO",
+        "duration": "短程步行",
+        "stops": []
+      }
+    },
+    {
+      "name": "Bar La Cambusa",
+      "type": "food",
+      "tag": "用餐／休息",
+      "note": "Varenna 湖畔休息與飲品選擇。",
+      "map": "https://www.google.com/maps/search/?api=1&query=46.0141807,9.2831794"
+    },
+    {
+      "name": "Passeggiata degli innamorati",
+      "type": "sight",
+      "tag": "景點／區域",
+      "note": "湖畔步道，作為 Varenna 的短程散步段。",
+      "map": "https://www.google.com/maps/search/?api=1&query=46.0133087,9.2836394",
+      "transit": {
+        "mode": "walk",
+        "from": "Bar La Cambusa",
+        "to": "Passeggiata degli innamorati",
+        "duration": "短程步行",
+        "stops": []
+      }
+    },
+    {
+      "name": "Bellagio",
+      "type": "sight",
+      "tag": "景點／區域",
+      "note": "搭船抵達 Bellagio，安排湖畔小鎮散步。",
+      "map": "https://www.google.com/maps/search/?api=1&query=45.9874063,9.2602813",
+      "transit": {
+        "mode": "ferry",
+        "from": "Varenna",
+        "to": "Bellagio",
+        "duration": "湖上船程，依當日船班",
+        "stops": []
+      }
+    },
+    {
+      "name": "Lungolago Europa",
+      "type": "sight",
+      "tag": "景點／區域",
+      "note": "Bellagio 湖畔步道。",
+      "map": "https://www.google.com/maps/search/?api=1&query=45.9849566,9.259232599999999",
+      "transit": {
+        "mode": "walk",
+        "from": "Bellagio",
+        "to": "Lungolago Europa",
+        "duration": "短程步行",
+        "stops": []
+      }
+    },
+    {
+      "name": "Bellagio (Traghetto)",
+      "type": "sight",
+      "tag": "景點／區域",
+      "note": "Bellagio 船碼頭，銜接湖區船班。",
+      "map": "https://www.google.com/maps/search/?api=1&query=45.985813,9.259951",
+      "transit": {
+        "mode": "walk",
+        "from": "Lungolago Europa",
+        "to": "Bellagio (Traghetto)",
+        "duration": "步行前往碼頭",
+        "stops": []
+      }
+    },
+    {
+      "name": "Ristorante Carillon",
+      "type": "food",
+      "tag": "用餐／休息",
+      "note": "Bellagio 用餐選擇。",
+      "map": "https://www.google.com/maps/search/?api=1&query=45.98549819999999,9.260745199999999"
+    },
+    {
+      "name": "Cadenabbia",
+      "type": "sight",
+      "tag": "景點／區域",
+      "note": "湖區船程中的停靠點。",
+      "map": "https://www.google.com/maps/search/?api=1&query=45.99067400000001,9.237639",
+      "transit": {
+        "mode": "ferry",
+        "from": "Bellagio",
+        "to": "Cadenabbia",
+        "duration": "依當日船班",
+        "stops": []
+      }
+    },
+    {
+      "name": "Lenno",
+      "type": "sight",
+      "tag": "景點／區域",
+      "note": "前往 Villa del Balbianello 的湖畔區域。",
+      "map": "https://www.google.com/maps/search/?api=1&query=45.974258,9.199733",
+      "transit": {
+        "mode": "ferry",
+        "from": "Cadenabbia",
+        "to": "Lenno",
+        "duration": "依當日船班／接駁安排",
+        "stops": []
+      }
+    },
+    {
+      "name": "巴比安內羅別墅",
+      "type": "sight",
+      "tag": "景點／區域",
+      "note": "Lake Como 著名湖畔別墅與花園。",
+      "map": "https://www.google.com/maps/search/?api=1&query=45.9652533,9.2024923",
+      "transit": {
+        "mode": "walk",
+        "from": "Lenno",
+        "to": "巴比安內羅別墅",
+        "duration": "步行／園區接駁依當日安排",
+        "stops": []
+      }
+    }
+  ]
+},
+  "10/20": {
+  "summary": [
+    "米蘭前往熱那亞，入住 Grand Hotel Savoia；下午以 Principe 與飯店周邊為主。"
+  ],
+  "nodes": [
+    {
+      "name": "熱拿亞王子廣場 新古典主義建築 19世紀",
+      "type": "sight",
+      "tag": "景點／區域",
+      "note": "抵達 Genova 後的王子廣場與車站周邊。",
+      "map": "https://www.google.com/maps/search/?api=1&query=44.41694,8.92149",
+      "transit": {
+        "mode": "train",
+        "line": "Intercity 659",
+        "from": "Milano Centrale",
+        "to": "Genova Piazza Principe",
+        "duration": "約 1 小時 34 分鐘",
+        "stops": []
+      }
+    },
+    {
+      "name": "Grand Hotel Savoia Genova, Curio Collection by Hilton",
+      "type": "hotel",
+      "tag": "住宿飯店",
+      "note": "入住飯店、放置行李與休息。",
+      "map": "https://www.google.com/maps/search/?api=1&query=44.4170425,8.9229307",
+      "transit": {
+        "mode": "walk",
+        "from": "熱拿亞王子廣場 新古典主義建築 19世紀",
+        "to": "Grand Hotel Savoia Genova, Curio Collection by Hilton",
+        "duration": "短程步行",
+        "stops": []
+      }
+    },
+    {
+      "name": "Acquamarina Ristorante Bistrot",
+      "type": "food",
+      "tag": "用餐／休息",
+      "note": "飯店周邊用餐選擇。",
+      "map": "https://www.google.com/maps/search/?api=1&query=44.4169257,8.923064499999999",
+      "transit": {
+        "mode": "walk",
+        "from": "Grand Hotel Savoia Genova, Curio Collection by Hilton",
+        "to": "Acquamarina Ristorante Bistrot",
+        "duration": "短程步行",
+        "stops": []
+      }
+    },
+    {
+      "name": "E Prïe de mâ",
+      "type": "sight",
+      "tag": "景點／區域",
+      "note": "Genova Principe 周邊餐飲選擇。",
+      "map": "https://www.google.com/maps/search/?api=1&query=44.4162952,8.9236242",
+      "transit": {
+        "mode": "walk",
+        "from": "Acquamarina Ristorante Bistrot",
+        "to": "E Prïe de mâ",
+        "duration": "短程步行",
+        "stops": []
+      }
+    },
+    {
+      "name": "Trattoria Tralalero",
+      "type": "food",
+      "tag": "用餐／休息",
+      "note": "Genova Principe 周邊餐飲選擇。",
+      "map": "https://www.google.com/maps/search/?api=1&query=44.4167531,8.923256799999999",
+      "transit": {
+        "mode": "walk",
+        "from": "E Prïe de mâ",
+        "to": "Trattoria Tralalero",
+        "duration": "短程步行",
+        "stops": []
+      }
+    },
+    {
+      "name": "San Giorgio",
+      "type": "sight",
+      "tag": "景點／區域",
+      "note": "古港口一帶的地標位置。",
+      "map": "https://www.google.com/maps/search/?api=1&query=44.40895099999999,8.928676",
+      "transit": {
+        "mode": "walk",
+        "from": "Trattoria Tralalero",
+        "to": "San Giorgio",
+        "duration": "短程步行",
+        "stops": []
+      }
+    },
+    {
+      "name": "聖喬治宮",
+      "type": "sight",
+      "tag": "景點／區域",
+      "note": "Genova 古港口的重要歷史建築。",
+      "map": "https://www.google.com/maps/search/?api=1&query=44.4090992,8.928607399999999",
+      "transit": {
+        "mode": "walk",
+        "from": "San Giorgio",
+        "to": "聖喬治宮",
+        "duration": "短程步行",
+        "stops": []
+      }
+    },
+    {
+      "name": "熱拿亞港口",
+      "type": "sight",
+      "tag": "景點／區域",
+      "note": "Genova 港區與舊港周邊。",
+      "map": "https://www.google.com/maps/search/?api=1&query=44.4096179,8.9275641",
+      "transit": {
+        "mode": "walk",
+        "from": "聖喬治宮",
+        "to": "熱拿亞港口",
+        "duration": "短程步行",
+        "stops": []
+      }
+    },
+    {
+      "name": "海王星帆船/海盜船",
+      "type": "sight",
+      "tag": "景點／區域",
+      "note": "舊港區的船舶景觀。",
+      "map": "https://www.google.com/maps/search/?api=1&query=44.410984,8.927067",
+      "transit": {
+        "mode": "walk",
+        "from": "熱拿亞港口",
+        "to": "海王星帆船/海盜船",
+        "duration": "短程步行",
+        "stops": []
+      }
+    },
+    {
+      "name": "RISTORANTE \"IL GOZZO\"",
+      "type": "food",
+      "tag": "用餐／休息",
+      "note": "舊港區用餐選擇。",
+      "map": "https://www.google.com/maps/search/?api=1&query=44.410825,8.9253161",
+      "transit": {
+        "mode": "walk",
+        "from": "海王星帆船/海盜船",
+        "to": "RISTORANTE \"IL GOZZO\"",
+        "duration": "短程步行",
+        "stops": []
+      }
+    }
+  ]
+},
+  "10/21": {
+  "summary": [
+    "熱那亞市中心歷史區：De Ferrari、舊城與 Porto Antico，安排短程步行與用餐休息。"
+  ],
+  "nodes": [
+    {
+      "name": "Principe",
+      "type": "station",
+      "tag": "交通節點",
+      "note": "Genova Principe 交通節點。",
+      "map": "https://www.google.com/maps/search/?api=1&query=44.41628850000001,8.9194394"
+    },
+    {
+      "name": "De Ferrari",
+      "type": "sight",
+      "tag": "景點／區域",
+      "note": "Genova 市中心主要廣場區域。",
+      "map": "https://www.google.com/maps/search/?api=1&query=44.4075955,8.9343911",
+      "transit": {
+        "mode": "walk",
+        "from": "Principe",
+        "to": "De Ferrari",
+        "duration": "市區步行／短程移動",
+        "stops": []
+      }
+    },
+    {
+      "name": "Piazza De Ferrari",
+      "type": "sight",
+      "tag": "景點／區域",
+      "note": "城市核心廣場，適合作為市中心行程節點。",
+      "map": "https://www.google.com/maps/search/?api=1&query=44.4071699,8.9340399",
+      "transit": {
+        "mode": "walk",
+        "from": "De Ferrari",
+        "to": "Piazza De Ferrari",
+        "duration": "市區步行／短程移動",
+        "stops": []
+      }
+    },
+    {
+      "name": "哥倫布故居",
+      "type": "sight",
+      "tag": "景點／區域",
+      "note": "Genova 舊城歷史景點。",
+      "map": "https://www.google.com/maps/search/?api=1&query=44.4056052,8.935100199999999",
+      "transit": {
+        "mode": "walk",
+        "from": "Piazza De Ferrari",
+        "to": "哥倫布故居",
+        "duration": "市區步行／短程移動",
+        "stops": []
+      }
+    },
+    {
+      "name": "索普拉納門",
+      "type": "sight",
+      "tag": "景點／區域",
+      "note": "Genova 中世紀城門遺跡。",
+      "map": "https://www.google.com/maps/search/?api=1&query=44.4055629,8.9345049",
+      "transit": {
+        "mode": "walk",
+        "from": "哥倫布故居",
+        "to": "索普拉納門",
+        "duration": "市區步行／短程移動",
+        "stops": []
+      }
+    },
+    {
+      "name": "Pesto per Amore Ravecca",
+      "type": "food",
+      "tag": "用餐／休息",
+      "note": "Ravecca 區用餐選擇。",
+      "map": "https://www.google.com/maps/search/?api=1&query=44.4054454,8.9343103",
+      "transit": {
+        "mode": "walk",
+        "from": "索普拉納門",
+        "to": "Pesto per Amore Ravecca",
+        "duration": "市區步行／短程移動",
+        "stops": []
+      }
+    },
+    {
+      "name": "Pizzeria da Pino",
+      "type": "food",
+      "tag": "用餐／休息",
+      "note": "Ravecca 區餐飲選擇。",
+      "map": "https://www.google.com/maps/search/?api=1&query=44.4051856,8.9341268",
+      "transit": {
+        "mode": "walk",
+        "from": "Pesto per Amore Ravecca",
+        "to": "Pizzeria da Pino",
+        "duration": "市區步行／短程移動",
+        "stops": []
+      }
+    },
+    {
+      "name": "Antica Osteria Ravecca",
+      "type": "sight",
+      "tag": "景點／區域",
+      "note": "Ravecca 區傳統餐飲選擇。",
+      "map": "https://www.google.com/maps/search/?api=1&query=44.4051214,8.9340496",
+      "transit": {
+        "mode": "walk",
+        "from": "Pizzeria da Pino",
+        "to": "Antica Osteria Ravecca",
+        "duration": "市區步行／短程移動",
+        "stops": []
+      }
+    },
+    {
+      "name": "Ristorante E. Prie Rosse",
+      "type": "food",
+      "tag": "用餐／休息",
+      "note": "Ravecca 區餐飲選擇。",
+      "map": "https://www.google.com/maps/search/?api=1&query=44.40484989999999,8.9335684",
+      "transit": {
+        "mode": "walk",
+        "from": "Antica Osteria Ravecca",
+        "to": "Ristorante E. Prie Rosse",
+        "duration": "市區步行／短程移動",
+        "stops": []
+      }
+    },
+    {
+      "name": "總督宮",
+      "type": "sight",
+      "tag": "景點／區域",
+      "note": "Genova 歷史核心區的重要宮殿建築。",
+      "map": "https://www.google.com/maps/search/?api=1&query=44.40751580000001,8.9332508",
+      "transit": {
+        "mode": "walk",
+        "from": "Ristorante E. Prie Rosse",
+        "to": "總督宮",
+        "duration": "市區步行／短程移動",
+        "stops": []
+      }
+    },
+    {
+      "name": "Douce Pâtisserie Café",
+      "type": "food",
+      "tag": "用餐／休息",
+      "note": "市中心咖啡與甜點休息點。",
+      "map": "https://www.google.com/maps/search/?api=1&query=44.407033,8.9331011",
+      "transit": {
+        "mode": "walk",
+        "from": "總督宮",
+        "to": "Douce Pâtisserie Café",
+        "duration": "市區步行／短程移動",
+        "stops": []
+      }
+    },
+    {
+      "name": "古港口",
+      "type": "sight",
+      "tag": "景點／區域",
+      "note": "Genova Porto Antico 舊港區。",
+      "map": "https://www.google.com/maps/search/?api=1&query=44.4085588,8.9224716",
+      "transit": {
+        "mode": "walk",
+        "from": "Douce Pâtisserie Café",
+        "to": "古港口",
+        "duration": "市區步行／短程移動",
+        "stops": []
+      }
+    }
+  ]
+},
+  "10/22": {
+  "summary": [
+    "Santa Margherita Ligure → Portofino 一日行程，以區域交通搭配港灣散步。"
+  ],
+  "nodes": [
+    {
+      "name": "S.Margherita Ligure",
+      "type": "sight",
+      "tag": "景點／區域",
+      "note": "Portofino 一日行程的起點小鎮。",
+      "map": "https://www.google.com/maps/search/?api=1&query=44.33645,9.216669999999999"
+    },
+    {
+      "name": "S. Margherita F.S. capolinea linea 782",
+      "type": "station",
+      "tag": "交通節點",
+      "note": "搭乘 782 號公車前往 Portofino 的站點。",
+      "map": "https://www.google.com/maps/search/?api=1&query=44.3364487,9.2161827",
+      "transit": {
+        "mode": "walk",
+        "from": "S.Margherita Ligure",
+        "to": "S. Margherita F.S. capolinea linea 782",
+        "duration": "步行前往公車站",
+        "stops": []
+      }
+    },
+    {
+      "name": "Portofino",
+      "type": "sight",
+      "tag": "景點／區域",
+      "note": "利古里亞海岸著名港灣小鎮。",
+      "map": "https://www.google.com/maps/search/?api=1&query=44.3042145,9.2076368",
+      "transit": {
+        "mode": "bus",
+        "line": "782",
+        "from": "S. Margherita F.S. capolinea linea 782",
+        "to": "Portofino",
+        "duration": "依當日交通狀況",
+        "stops": []
+      }
+    },
+    {
+      "name": "DaV Mare",
+      "type": "food",
+      "tag": "用餐／休息",
+      "note": "Portofino 用餐選擇。",
+      "map": "https://www.google.com/maps/search/?api=1&query=44.3032203,9.209292",
+      "transit": {
+        "mode": "walk",
+        "from": "Portofino",
+        "to": "DaV Mare",
+        "duration": "短程步行",
+        "stops": []
+      }
+    },
+    {
+      "name": "Ristorante \"Trattoria Tripoli\"",
+      "type": "food",
+      "tag": "用餐／休息",
+      "note": "Portofino 用餐選擇。",
+      "map": "https://www.google.com/maps/search/?api=1&query=44.30284109999999,9.2095928",
+      "transit": {
+        "mode": "walk",
+        "from": "DaV Mare",
+        "to": "Ristorante \"Trattoria Tripoli\"",
+        "duration": "短程步行",
+        "stops": []
+      }
+    },
+    {
+      "name": "Ristorante Lo Stella",
+      "type": "food",
+      "tag": "用餐／休息",
+      "note": "Portofino 港區用餐選擇。",
+      "map": "https://www.google.com/maps/search/?api=1&query=44.302687,9.210056999999999",
+      "transit": {
+        "mode": "walk",
+        "from": "Ristorante \"Trattoria Tripoli\"",
+        "to": "Ristorante Lo Stella",
+        "duration": "短程步行",
+        "stops": []
+      }
+    },
+    {
+      "name": "WC",
+      "type": "sight",
+      "tag": "景點／區域",
+      "note": "Portofino 行程中的休息設施。",
+      "map": "https://www.google.com/maps/search/?api=1&query=44.3019899,9.2116774",
+      "transit": {
+        "mode": "walk",
+        "from": "Ristorante Lo Stella",
+        "to": "WC",
+        "duration": "短程步行",
+        "stops": []
+      }
+    },
+    {
+      "name": "Punto Panoramico",
+      "type": "sight",
+      "tag": "景點／區域",
+      "note": "Portofino 觀景點。",
+      "map": "https://www.google.com/maps/search/?api=1&query=44.3022778,9.211839999999999",
+      "transit": {
+        "mode": "walk",
+        "from": "WC",
+        "to": "Punto Panoramico",
+        "duration": "短程步行",
+        "stops": []
+      }
+    },
+    {
+      "name": "Gelateria ö Magazín",
+      "type": "sight",
+      "tag": "景點／區域",
+      "note": "Portofino 甜點／冰淇淋休息點。",
+      "map": "https://www.google.com/maps/search/?api=1&query=44.3033164,9.2112404",
+      "transit": {
+        "mode": "walk",
+        "from": "Punto Panoramico",
+        "to": "Gelateria ö Magazín",
+        "duration": "短程步行",
+        "stops": []
+      }
+    }
+  ]
+},
+  "10/23": {
+  "summary": [
+    "Genova → Ventimiglia → Nice，抵達 Nice 後完成交通票券與飯店入住。"
+  ],
+  "nodes": [
+    {
+      "name": "Ventimiglia",
+      "type": "sight",
+      "tag": "景點／區域",
+      "note": "Genova→Nice 路線上的轉乘城市，安排午餐與短暫休息。",
+      "map": "https://www.google.com/maps/search/?api=1&query=43.7924461,7.6097338",
+      "transit": {
+        "mode": "train",
+        "line": "Trenitalia",
+        "from": "Genova Piazza Principe",
+        "to": "Ventimiglia",
+        "duration": "依已購車次",
+        "stops": []
+      }
+    },
+    {
+      "name": "Sir Thomas",
+      "type": "sight",
+      "tag": "景點／區域",
+      "note": "Ventimiglia 用餐／休息選擇。",
+      "map": "https://www.google.com/maps/search/?api=1&query=43.7916978,7.609904299999998",
+      "transit": {
+        "mode": "walk",
+        "from": "Ventimiglia",
+        "to": "Sir Thomas",
+        "duration": "市區步行／短程移動",
+        "stops": []
+      }
+    },
+    {
+      "name": "Natività",
+      "type": "sight",
+      "tag": "景點／區域",
+      "note": "Ventimiglia 行程標記點。",
+      "map": "https://www.google.com/maps/search/?api=1&query=43.7898417,7.607438499999999",
+      "transit": {
+        "mode": "walk",
+        "from": "Sir Thomas",
+        "to": "Natività",
+        "duration": "市區步行／短程移動",
+        "stops": []
+      }
+    },
+    {
+      "name": "Nice-Ville",
+      "type": "station",
+      "tag": "交通節點",
+      "note": "抵達 Nice 的主要火車站。",
+      "map": "https://www.google.com/maps/search/?api=1&query=43.70462080000001,7.2619444",
+      "transit": {
+        "mode": "train",
+        "line": "TER",
+        "from": "Ventimiglia",
+        "to": "Nice-Ville",
+        "duration": "約 50 分鐘",
+        "stops": []
+      }
+    },
+    {
+      "name": "Paul",
+      "type": "food",
+      "tag": "用餐／休息",
+      "note": "Nice-Ville 周邊快速用餐選擇。",
+      "map": "https://www.google.com/maps/search/?api=1&query=43.7042574,7.261727399999999",
+      "transit": {
+        "mode": "walk",
+        "from": "Nice-Ville",
+        "to": "Paul",
+        "duration": "市區步行／短程移動",
+        "stops": []
+      }
+    },
+    {
+      "name": "Public Transport Office",
+      "type": "sight",
+      "tag": "景點／區域",
+      "note": "前往 Nice 公共交通票券／資訊服務點。",
+      "map": "https://www.google.com/maps/search/?api=1&query=43.7037287,7.261498400000001",
+      "transit": {
+        "mode": "walk",
+        "from": "Paul",
+        "to": "Public Transport Office",
+        "duration": "市區步行／短程移動",
+        "stops": []
+      }
+    },
+    {
+      "name": "Gare Thiers",
+      "type": "station",
+      "tag": "交通節點",
+      "note": "Nice-Ville／Thiers 一帶的交通節點。",
+      "map": "https://www.google.com/maps/search/?api=1&query=43.7055,7.264879999999998",
+      "transit": {
+        "mode": "walk",
+        "from": "Public Transport Office",
+        "to": "Gare Thiers",
+        "duration": "市區步行／短程移動",
+        "stops": []
+      }
+    },
+    {
+      "name": "Jean Médecin",
+      "type": "station",
+      "tag": "交通節點",
+      "note": "Nice 市中心主要交通與商業區域。",
+      "map": "https://www.google.com/maps/search/?api=1&query=43.70169,7.267299999999999",
+      "transit": {
+        "mode": "walk",
+        "from": "Gare Thiers",
+        "to": "Jean Médecin",
+        "duration": "市區步行／短程移動",
+        "stops": []
+      }
+    },
+    {
+      "name": "Jean Médecin",
+      "type": "station",
+      "tag": "交通節點",
+      "note": "Nice 市中心主要交通與商業區域。",
+      "map": "https://www.google.com/maps/search/?api=1&query=43.7002775,7.266866099999999",
+      "transit": {
+        "mode": "walk",
+        "from": "Jean Médecin",
+        "to": "Jean Médecin",
+        "duration": "市區步行／短程移動",
+        "stops": []
+      }
+    },
+    {
+      "name": "Centre Universitaire Méditerranéen",
+      "type": "sight",
+      "tag": "景點／區域",
+      "note": "Promenade des Anglais 西側的重要地標。",
+      "map": "https://www.google.com/maps/search/?api=1&query=43.693051,7.249489199999998",
+      "transit": {
+        "mode": "walk",
+        "from": "Jean Médecin",
+        "to": "Centre Universitaire Méditerranéen",
+        "duration": "市區步行／短程移動",
+        "stops": []
+      }
+    },
+    {
+      "name": "AC Hotel Nice",
+      "type": "hotel",
+      "tag": "住宿飯店",
+      "note": "入住 Nice 飯店、放置行李與休息。",
+      "map": "https://www.google.com/maps/search/?api=1&query=43.6939091,7.253143799999999",
+      "transit": {
+        "mode": "walk",
+        "from": "Centre Universitaire Méditerranéen",
+        "to": "AC Hotel Nice",
+        "duration": "市區步行／短程移動",
+        "stops": []
+      }
+    },
+    {
+      "name": "La Vela",
+      "type": "food",
+      "tag": "用餐／休息",
+      "note": "飯店周邊用餐選擇。",
+      "map": "https://www.google.com/maps/search/?api=1&query=43.69287749999999,7.2534686",
+      "transit": {
+        "mode": "walk",
+        "from": "AC Hotel Nice",
+        "to": "La Vela",
+        "duration": "市區步行／短程移動",
+        "stops": []
+      }
+    },
+    {
+      "name": "Les Jardins Du Capitole",
+      "type": "sight",
+      "tag": "景點／區域",
+      "note": "飯店周邊休息／用餐選擇。",
+      "map": "https://www.google.com/maps/search/?api=1&query=43.6936652,7.254979800000001",
+      "transit": {
+        "mode": "walk",
+        "from": "La Vela",
+        "to": "Les Jardins Du Capitole",
+        "duration": "市區步行／短程移動",
+        "stops": []
+      }
+    },
+    {
+      "name": "Farago on the roof",
+      "type": "food",
+      "tag": "用餐／休息",
+      "note": "飯店周邊餐飲與屋頂景觀選擇。",
+      "map": "https://www.google.com/maps/search/?api=1&query=43.693928,7.253190999999998",
+      "transit": {
+        "mode": "walk",
+        "from": "Les Jardins Du Capitole",
+        "to": "Farago on the roof",
+        "duration": "市區步行／短程移動",
+        "stops": []
+      }
+    },
+    {
+      "name": "Maison Armand - Pâtisserie Boulangerie Nice France",
+      "type": "food",
+      "tag": "用餐／休息",
+      "note": "飯店周邊麵包與甜點選擇。",
+      "map": "https://www.google.com/maps/search/?api=1&query=43.6942667,7.252610500000001",
+      "transit": {
+        "mode": "walk",
+        "from": "Farago on the roof",
+        "to": "Maison Armand - Pâtisserie Boulangerie Nice France",
+        "duration": "市區步行／短程移動",
+        "stops": []
+      }
+    },
+    {
+      "name": "Le cocodile",
+      "type": "food",
+      "tag": "用餐／休息",
+      "note": "飯店周邊餐飲選擇。",
+      "map": "https://www.google.com/maps/search/?api=1&query=43.6938891,7.255799800000001",
+      "transit": {
+        "mode": "walk",
+        "from": "Maison Armand - Pâtisserie Boulangerie Nice France",
+        "to": "Le cocodile",
+        "duration": "市區步行／短程移動",
+        "stops": []
+      }
+    },
+    {
+      "name": "La Rotonde Nice",
+      "type": "food",
+      "tag": "用餐／休息",
+      "note": "飯店周邊餐飲選擇。",
+      "map": "https://www.google.com/maps/search/?api=1&query=43.694393,7.257910699999999",
+      "transit": {
+        "mode": "walk",
+        "from": "Le cocodile",
+        "to": "La Rotonde Nice",
+        "duration": "市區步行／短程移動",
+        "stops": []
+      }
+    },
+    {
+      "name": "Le Chantecler",
+      "type": "food",
+      "tag": "用餐／休息",
+      "note": "Nice 海濱飯店區餐飲選擇。",
+      "map": "https://www.google.com/maps/search/?api=1&query=43.6944349,7.2580579",
+      "transit": {
+        "mode": "walk",
+        "from": "La Rotonde Nice",
+        "to": "Le Chantecler",
+        "duration": "市區步行／短程移動",
+        "stops": []
+      }
+    },
+    {
+      "name": "Restaurant Le Duc - Nice",
+      "type": "food",
+      "tag": "用餐／休息",
+      "note": "Nice 海濱飯店區餐飲選擇。",
+      "map": "https://www.google.com/maps/search/?api=1&query=43.6948235,7.2605344",
+      "transit": {
+        "mode": "walk",
+        "from": "Le Chantecler",
+        "to": "Restaurant Le Duc - Nice",
+        "duration": "市區步行／短程移動",
+        "stops": []
+      }
+    }
+  ]
+},
+  "10/24": {
+  "summary": [
+    "Nice 舊城區行程：歌劇院、Cours Saleya 與周邊餐飲。"
+  ],
+  "nodes": [
+    {
+      "name": "Grosso CUM / Promenade",
+      "type": "sight",
+      "tag": "景點／區域",
+      "note": "從飯店一帶前往 Nice 舊城區的行程節點。",
+      "map": "https://www.google.com/maps/search/?api=1&query=43.6923477,7.250825099999999"
+    },
+    {
+      "name": "Opéra - Vieille Ville",
+      "type": "sight",
+      "tag": "景點／區域",
+      "note": "Nice 舊城區交通節點。",
+      "map": "https://www.google.com/maps/search/?api=1&query=43.6972482,7.2729582",
+      "transit": {
+        "mode": "walk",
+        "from": "Grosso CUM / Promenade",
+        "to": "Opéra - Vieille Ville",
+        "duration": "市區步行／短程移動",
+        "stops": []
+      }
+    },
+    {
+      "name": "尼斯歌劇院",
+      "type": "sight",
+      "tag": "景點／區域",
+      "note": "Nice 舊城區歷史文化地標。",
+      "map": "https://www.google.com/maps/search/?api=1&query=43.6954724,7.2725385",
+      "transit": {
+        "mode": "walk",
+        "from": "Opéra - Vieille Ville",
+        "to": "尼斯歌劇院",
+        "duration": "市區步行／短程移動",
+        "stops": []
+      }
+    },
+    {
+      "name": "Cours Saleya",
+      "type": "sight",
+      "tag": "景點／區域",
+      "note": "Nice 舊城區著名市集與餐飲街區。",
+      "map": "https://www.google.com/maps/search/?api=1&query=43.695607,7.274922699999999",
+      "transit": {
+        "mode": "walk",
+        "from": "尼斯歌劇院",
+        "to": "Cours Saleya",
+        "duration": "市區步行／短程移動",
+        "stops": []
+      }
+    },
+    {
+      "name": "La Voglia",
+      "type": "sight",
+      "tag": "景點／區域",
+      "note": "Cours Saleya 周邊用餐選擇。",
+      "map": "https://www.google.com/maps/search/?api=1&query=43.695555,7.273308999999999",
+      "transit": {
+        "mode": "walk",
+        "from": "Cours Saleya",
+        "to": "La Voglia",
+        "duration": "市區步行／短程移動",
+        "stops": []
+      }
+    },
+    {
+      "name": "Bocca Nissa",
+      "type": "sight",
+      "tag": "景點／區域",
+      "note": "Nice 舊城區用餐選擇。",
+      "map": "https://www.google.com/maps/search/?api=1&query=43.69583069999999,7.2730139",
+      "transit": {
+        "mode": "walk",
+        "from": "La Voglia",
+        "to": "Bocca Nissa",
+        "duration": "市區步行／短程移動",
+        "stops": []
+      }
+    }
+  ]
+},
+  "10/25": {
+  "summary": [
+    "Villefranche-sur-Mer 海灣小鎮一日行程，以港區、海灣與 Citadelle 周邊為主。"
+  ],
+  "nodes": [
+    {
+      "name": "Villefranche-sur-Mer",
+      "type": "sight",
+      "tag": "景點／區域",
+      "note": "從 Nice 出發的海灣小鎮一日行程。",
+      "map": "https://www.google.com/maps/search/?api=1&query=43.70705969999999,7.314145399999999"
+    },
+    {
+      "name": "Alma Goût Méditerranée - Villefranche",
+      "type": "sight",
+      "tag": "景點／區域",
+      "note": "Villefranche 用餐選擇。",
+      "map": "https://www.google.com/maps/search/?api=1&query=43.7048286,7.3127773",
+      "transit": {
+        "mode": "walk",
+        "from": "Villefranche-sur-Mer",
+        "to": "Alma Goût Méditerranée - Villefranche",
+        "duration": "市區步行／短程移動",
+        "stops": []
+      }
+    },
+    {
+      "name": "Mayssa Beach",
+      "type": "food",
+      "tag": "用餐／休息",
+      "note": "Villefranche 海灣休息點。",
+      "map": "https://www.google.com/maps/search/?api=1&query=43.7025059,7.3122182",
+      "transit": {
+        "mode": "walk",
+        "from": "Alma Goût Méditerranée - Villefranche",
+        "to": "Mayssa Beach",
+        "duration": "市區步行／短程移動",
+        "stops": []
+      }
+    },
+    {
+      "name": "La Mère Germaine",
+      "type": "sight",
+      "tag": "景點／區域",
+      "note": "Villefranche 港區餐飲選擇。",
+      "map": "https://www.google.com/maps/search/?api=1&query=43.7036987,7.312141599999999",
+      "transit": {
+        "mode": "walk",
+        "from": "Mayssa Beach",
+        "to": "La Mère Germaine",
+        "duration": "市區步行／短程移動",
+        "stops": []
+      }
+    },
+    {
+      "name": "TOSCA",
+      "type": "food",
+      "tag": "用餐／休息",
+      "note": "Villefranche 港區餐飲選擇。",
+      "map": "https://www.google.com/maps/search/?api=1&query=43.7028585,7.311291700000002",
+      "transit": {
+        "mode": "walk",
+        "from": "La Mère Germaine",
+        "to": "TOSCA",
+        "duration": "市區步行／短程移動",
+        "stops": []
+      }
+    },
+    {
+      "name": "LOU BANTRY",
+      "type": "food",
+      "tag": "用餐／休息",
+      "note": "Villefranche 港區餐飲選擇。",
+      "map": "https://www.google.com/maps/search/?api=1&query=43.7039653,7.312162799999999",
+      "transit": {
+        "mode": "walk",
+        "from": "TOSCA",
+        "to": "LOU BANTRY",
+        "duration": "市區步行／短程移動",
+        "stops": []
+      }
+    },
+    {
+      "name": "Jardins de la Citadelle",
+      "type": "sight",
+      "tag": "景點／區域",
+      "note": "Villefranche 城塞花園與海景區域。",
+      "map": "https://www.google.com/maps/search/?api=1&query=43.7014836,7.3115688",
+      "transit": {
+        "mode": "walk",
+        "from": "LOU BANTRY",
+        "to": "Jardins de la Citadelle",
+        "duration": "市區步行／短程移動",
+        "stops": []
+      }
+    }
+  ]
+},
+  "10/26": {
+  "summary": [
+    "Saint-Jean-Cap-Ferrat 海岸線行程：Port Lympia → Cap-Ferrat 港區與羅斯柴爾德花園別墅。"
+  ],
+  "nodes": [
+    {
+      "name": "Port Lympia",
+      "type": "station",
+      "tag": "交通節點",
+      "note": "Nice 東側港區，作為 Cap-Ferrat 行程的交通起點。",
+      "map": "https://www.google.com/maps/search/?api=1&query=43.6983053,7.284467399999999"
+    },
+    {
+      "name": "Port Lympia / Arson",
+      "type": "station",
+      "tag": "交通節點",
+      "note": "Port Lympia 周邊交通節點。",
+      "map": "https://www.google.com/maps/search/?api=1&query=43.6987824,7.2863307",
+      "transit": {
+        "mode": "walk",
+        "from": "Port Lympia",
+        "to": "Port Lympia / Arson",
+        "duration": "市區步行／短程移動",
+        "stops": []
+      }
+    },
+    {
+      "name": "Passable / Rothschild",
+      "type": "station",
+      "tag": "交通節點",
+      "note": "Saint-Jean-Cap-Ferrat 一帶的交通／海灣節點。",
+      "map": "https://www.google.com/maps/search/?api=1&query=43.69403,7.328799999999999",
+      "transit": {
+        "mode": "walk",
+        "from": "Port Lympia / Arson",
+        "to": "Passable / Rothschild",
+        "duration": "市區步行／短程移動",
+        "stops": []
+      }
+    },
+    {
+      "name": "羅斯柴爾德花園別墅",
+      "type": "sight",
+      "tag": "景點／區域",
+      "note": "Saint-Jean-Cap-Ferrat 著名花園別墅。",
+      "map": "https://www.google.com/maps/search/?api=1&query=43.6966527,7.328465599999999",
+      "transit": {
+        "mode": "walk",
+        "from": "Passable / Rothschild",
+        "to": "羅斯柴爾德花園別墅",
+        "duration": "市區步行／短程移動",
+        "stops": []
+      }
+    },
+    {
+      "name": "Port de Saint-Jean",
+      "type": "station",
+      "tag": "交通節點",
+      "note": "Cap-Ferrat 港區。",
+      "map": "https://www.google.com/maps/search/?api=1&query=43.6900404,7.333242200000001",
+      "transit": {
+        "mode": "walk",
+        "from": "羅斯柴爾德花園別墅",
+        "to": "Port de Saint-Jean",
+        "duration": "市區步行／短程移動",
+        "stops": []
+      }
+    },
+    {
+      "name": "Restaurant La Goëlette à Saint-Jean-Cap-Ferrat",
+      "type": "food",
+      "tag": "用餐／休息",
+      "note": "港區用餐選擇。",
+      "map": "https://www.google.com/maps/search/?api=1&query=43.6897372,7.3339626",
+      "transit": {
+        "mode": "walk",
+        "from": "Port de Saint-Jean",
+        "to": "Restaurant La Goëlette à Saint-Jean-Cap-Ferrat",
+        "duration": "市區步行／短程移動",
+        "stops": []
+      }
+    },
+    {
+      "name": "Ilios",
+      "type": "food",
+      "tag": "用餐／休息",
+      "note": "Saint-Jean-Cap-Ferrat 港區餐飲選擇。",
+      "map": "https://www.google.com/maps/search/?api=1&query=43.6907402,7.333827299999999",
+      "transit": {
+        "mode": "walk",
+        "from": "Restaurant La Goëlette à Saint-Jean-Cap-Ferrat",
+        "to": "Ilios",
+        "duration": "市區步行／短程移動",
+        "stops": []
+      }
+    },
+    {
+      "name": "Restaurant Le Pirate",
+      "type": "food",
+      "tag": "用餐／休息",
+      "note": "Saint-Jean-Cap-Ferrat 港區餐飲選擇。",
+      "map": "https://www.google.com/maps/search/?api=1&query=43.6902004,7.3338349",
+      "transit": {
+        "mode": "walk",
+        "from": "Ilios",
+        "to": "Restaurant Le Pirate",
+        "duration": "市區步行／短程移動",
+        "stops": []
+      }
+    }
+  ]
+},
+  "10/27": {
+    "summary": ["KML 地圖目前沒有 10/27 的標記；此日期保留日期按鈕，待補入行程資料。"],
+    "nodes": []
+  },
+  "10/28": {
+    "summary": ["KML 地圖目前沒有 10/28 的標記；此日期保留日期按鈕，待補入行程資料。"],
+    "nodes": []
+  }
+
 };
 
 
@@ -2128,4 +3312,3 @@ renderDay("all");
 
 </body>
 </html>
-```
