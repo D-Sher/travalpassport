@@ -1160,421 +1160,476 @@ const itineraries = {
 
     ]
   },
+/* ========================================================
+10/18
+======================================================== */
 
-
-  "10/18": {
+"10/18": {
 
 summary: [
-"貝爾加莫一日往返；以 Città Alta 上城區為主，搭乘公車與登山纜車減少爬坡，最後由 Porta San Giacomo 搭公車 15 返回 Bergamo 火車站。"
+  "貝爾加莫一日往返；重點放在 Città Alta，避免連續長距離步行。"
 ],
 
 fullMap:
-"https://www.google.com/maps/dir/?api=1&origin=Milano+Centrale&destination=Bergamo&travelmode=transit",
+  "https://www.google.com/maps/dir/?api=1&origin=Milano+Centrale&destination=Bergamo&travelmode=transit",
 
 nodes: [
 
-```
-{
-  name: "米蘭中央車站 (Milano Centrale)",
-  type: "station",
-  tag: "出發樞紐",
+  {
+    name: "米蘭中央車站 (Milano Centrale)",
+    type: "station",
+    tag: "出發樞紐",
 
-  note:
-    "搭乘 Trenord 列車前往 Bergamo",
+    note:
+      "搭乘 Trenord 列車前往 Bergamo",
 
-  map:
-    "https://maps.app.goo.gl/d2iH8Z3rR1G32G9a8",
+    map:
+      "https://maps.app.goo.gl/d2iH8Z3rR1G32G9a8",
 
-  transit: {
-    mode: "train",
-    line: "Trenord",
-    from: "Milano Centrale",
-    to: "Bergamo",
-    duration: "約 50–60 分鐘",
+    transit: {
+      mode: "train",
+      line: "Trenord",
+      from: "Milano Centrale",
+      to: "Bergamo",
+      duration: "約 50–60 分鐘",
 
-    stops: [
-      "Milano Centrale",
-      "Bergamo"
-    ]
+      stops: [
+        "Milano Centrale",
+        "Bergamo"
+      ]
+    },
+
+    transitMap:
+      "https://www.google.com/maps/dir/?api=1&origin=Milano+Centrale&destination=Stazione+FS+Bergamo&travelmode=transit"
   },
 
-  transitMap:
-    "https://www.google.com/maps/dir/?api=1&origin=Milano+Centrale&destination=Stazione+FS+Bergamo&travelmode=transit"
-},
 
+  {
+    name: "Bergamo 火車站 (Stazione FS)",
+    type: "station",
+    tag: "火車站點",
 
-{
-  name: "Bergamo 火車站 (Stazione FS)",
-  type: "station",
-  tag: "火車站點",
+    note:
+      "抵達 Bergamo，出站前往站前大道公車站",
 
-  note:
-    "抵達 Bergamo，步行至站前 Papa Giovanni 公車站",
+    map:
+      "https://maps.app.goo.gl/EVm2E9U8cCz7u4ep7",
 
-  map:
-    "https://maps.app.goo.gl/EVm2E9U8cCz7u4ep7",
+    transit: {
+      mode: "walk",
+      from: "Stazione FS Bergamo",
+      to: "Papa Giovanni fermata 2",
+      duration: "步行約 1 分鐘",
 
-  transit: {
-    mode: "walk",
-    from: "Stazione FS Bergamo",
-    to: "Papa Giovanni fermata 2",
-    duration: "步行約 1 分鐘",
+      stops: [
+        "Stazione FS Bergamo",
+        "Papa Giovanni fermata 2"
+      ]
+    },
 
-    stops: [
-      "Stazione FS Bergamo",
-      "Papa Giovanni fermata 2"
-    ]
+    transitMap:
+      "https://www.google.com/maps/dir/?api=1&origin=Stazione+FS+Bergamo&destination=Papa+Giovanni+fermata+2+Bergamo&travelmode=walking"
   },
 
-  transitMap:
-    "https://www.google.com/maps/dir/?api=1&origin=Stazione+FS+Bergamo&destination=Papa+Giovanni+fermata+2+Bergamo&travelmode=walking"
-},
 
+  {
+    name: "Papa Giovanni fermata 2",
+    type: "station",
+    tag: "公車轉乘",
 
-{
-  name: "Papa Giovanni fermata 2",
-  type: "station",
-  tag: "公車轉乘",
+    note:
+      "站前公車站點，搭乘 ATB 1 號公車前往纜車站",
 
-  note:
-    "搭乘 ATB 1 號公車前往 Città Alta 纜車站方向",
+    map:
+      "https://maps.app.goo.gl/EVm2E9U8cCz7u4ep7",
 
-  map:
-    "https://maps.app.goo.gl/EVm2E9U8cCz7u4ep7",
+    transit: {
+      mode: "bus",
+      line: "ATB 1",
+      from: "Papa Giovanni fermata 2",
+      to: "Vittorio Emanuele 47",
+      duration: "約 8 分鐘",
 
-  transit: {
-    mode: "bus",
-    line: "ATB 1",
-    from: "Papa Giovanni fermata 2",
-    to: "Vittorio Emanuele 47",
-    duration: "約 8 分鐘",
+      stops: [
+        "Papa Giovanni fermata 2",
+        "Vittorio Emanuele 47"
+      ]
+    },
 
-    stops: [
-      "Papa Giovanni fermata 2",
-      "Porta Nuova Chiesa Grazie",
-      "Vittorio Emanuele 3",
-      "Vittorio Emanuele 19",
-      "Vittorio Emanuele 47"
-    ]
+    transitMap:
+      "https://www.google.com/maps/dir/?api=1&origin=Papa+Giovanni+fermata+2+Bergamo&destination=Vittorio+Emanuele+47+Bergamo&travelmode=transit"
   },
 
-  transitMap:
-    "https://www.google.com/maps/dir/?api=1&origin=Papa+Giovanni+fermata+2+Bergamo&destination=Vittorio+Emanuele+47+Bergamo&travelmode=transit"
-},
 
+  {
+    name: "Vittorio Emanuele 47",
+    type: "station",
+    tag: "公車下車站",
 
-{
-  name: "Vittorio Emanuele 47",
-  type: "station",
-  tag: "公車下車站",
+    note:
+      "1 號公車站點，準備步行前往山下纜車站",
 
-  note:
-    "下車後步行至 Funicolare Città Alta 山下站",
+    map:
+      "https://maps.app.goo.gl/NtLLoYUNVAXrqHdz6",
 
-  map:
-    "https://maps.app.goo.gl/NtLLoYUNVAXrqHdz6",
+    transit: {
+      mode: "walk",
+      from: "Vittorio Emanuele 47",
+      to: "Funicolare Città Alta",
+      duration: "步行 1 分鐘",
 
-  transit: {
-    mode: "walk",
-    from: "Vittorio Emanuele 47",
-    to: "Funicolare Città Alta",
-    duration: "步行約 1 分鐘",
+      stops: [
+        "Vittorio Emanuele 47",
+        "Funicolare Città Alta"
+      ]
+    },
 
-    stops: [
-      "Vittorio Emanuele 47",
-      "Funicolare Città Alta"
-    ]
+    transitMap:
+      "https://maps.app.goo.gl/GYM3j2ZJ1QYPTGm46"
   },
 
-  transitMap:
-    "https://maps.app.goo.gl/GYM3j2ZJ1QYPTGm46"
-},
 
+  {
+    name: "Funicolare Città Alta (山下站)",
+    type: "sight",
+    tag: "纜車",
 
-{
-  name: "Funicolare Città Alta (山下站)",
-  type: "sight",
-  tag: "登山纜車",
+    note:
+      "搭乘纜車/電梯優先，輕鬆登上上城區",
 
-  note:
-    "搭乘登山纜車前往 Città Alta 上城區，減少連續爬坡",
+    map:
+      "https://maps.app.goo.gl/hQddPGQVXAosPEkh9",
 
-  map:
-    "https://maps.app.goo.gl/hQddPGQVXAosPEkh9",
+    transit: {
+      mode: "funicular",
+      line: "Funicolare Città Alta",
+      from: "山下站",
+      to: "Staz.Sup.Fun.Città",
+      duration: "約 2–3 分鐘",
 
-  transit: {
-    mode: "funicular",
-    line: "Funicolare Città Alta",
-    from: "Funicolare Città Alta",
-    to: "Staz.Sup.Fun.Città",
-    duration: "約 2–3 分鐘",
+      stops: [
+        "Funicolare Città Alta（山下站）",
+        "Staz.Sup.Fun.Città（山上站）"
+      ]
+    },
 
-    stops: [
-      "Funicolare Città Alta（山下站）",
-      "Staz.Sup.Fun.Città（山上站）"
-    ]
+    transitMap:
+      "https://maps.app.goo.gl/EH9dor9ZQ8Y2CWpF8t"
   },
 
-  transitMap:
-    "https://maps.app.goo.gl/EH9dor9ZQ8Y2CWpF8t"
-},
 
+  {
+    name: "Staz.Sup.Fun.Città (山上站)",
+    type: "station",
+    tag: "景點纜車站",
 
-{
-  name: "Staz.Sup.Fun.Città (山上站)",
-  type: "station",
-  tag: "上城入口",
+    note:
+      "抵達舊城上城區樞紐",
 
-  note:
-    "抵達 Città Alta，上城遊覽從此展開",
+    map:
+      "https://maps.app.goo.gl/fuunghtVxQhhKFqL6",
 
-  map:
-    "https://maps.app.goo.gl/fuunghtVxQhhKFqL6",
+    transit: {
+      mode: "walk",
+      from: "Staz.Sup.Fun.Città",
+      to: "Alta Funicolare",
+      duration: "步行 1 分鐘",
 
-  transit: {
-    mode: "walk",
-    from: "Staz.Sup.Fun.Città",
-    to: "Piazzetta Luigi Angelini",
-    duration: "步行約 5–10 分鐘",
+      stops: [
+        "Staz.Sup.Fun.Città",
+        "Alta Funicolare"
+      ]
+    },
 
-    stops: [
-      "Staz.Sup.Fun.Città",
-      "Piazzetta Luigi Angelini"
-    ]
+    transitMap:
+      "https://maps.app.goo.gl/vud7WNyrP8so57DX8"
   },
 
-  transitMap:
-    "https://www.google.com/maps/dir/?api=1&origin=Staz.Sup.Fun.Citt%C3%A0+Bergamo&destination=Piazzetta+Luigi+Angelini+Bergamo&travelmode=walking"
-},
 
+  {
+    name: "Alta Funicolare",
+    type: "food",
+    tag: "午餐地點",
 
-{
-  name: "Piazzetta Luigi Angelini",
-  type: "sight",
-  tag: "上城入口",
+    note:
+      "義大利小餐館享用午餐",
 
-  note:
-    "沿著上城街區前往 Piazza Vecchia，開始 Città Alta 核心區域遊覽",
+    map:
+      "https://maps.app.goo.gl/iXWio87iSoBz62rZ8",
 
-  map:
-    "https://maps.app.goo.gl/DBSityoEsMeUvjnT8",
+    transit: {
+      mode: "walk",
+      from: "Alta Funicolare",
+      to: "Pezzi di artiglieria",
+      duration: "步行 4 分鐘",
 
-  transit: {
-    mode: "walk",
-    from: "Piazzetta Luigi Angelini",
-    to: "Piazza Vecchia",
-    duration: "步行約 5 分鐘",
+      stops: [
+        "Alta Funicolare",
+        "Pezzi di artiglieria"
+      ]
+    },
 
-    stops: [
-      "Piazzetta Luigi Angelini",
-      "Piazza Vecchia"
-    ]
+    transitMap:
+      "https://maps.app.goo.gl/Rvh6s6PeDj7nKmaa7"
   },
 
-  transitMap:
-    "https://www.google.com/maps/dir/?api=1&origin=Piazzetta+Luigi+Angelini+Bergamo&destination=Piazza+Vecchia+Bergamo&travelmode=walking"
-},
 
+  {
+    name: "Pezzi di artiglieria",
+    type: "sight",
+    tag: "觀景台",
 
-{
-  name: "Piazza Vecchia (老城廣場)",
-  type: "sight",
-  tag: "Città Alta 核心",
+    note:
+      "公園觀景台，可遠眺貝爾加莫下城區全景",
 
-  note:
-    "Città Alta 的核心廣場，可在廣場與周邊街區停留、休息",
+    map:
+      "https://maps.app.goo.gl/Jvfs6N9M6MZFx1yd8",
 
-  map:
-    "https://maps.app.goo.gl/GAMLzZ9RnEtkszmR7",
+    transit: {
+      mode: "walk",
+      from: "Pezzi di artiglieria",
+      to: "Piazzetta Luigi Angelini",
+      duration: "步行 4 分鐘",
 
-  transit: {
-    mode: "walk",
-    from: "Piazza Vecchia",
-    to: "Caffè del Tasso 1476",
-    duration: "步行約 1–2 分鐘",
+      stops: [
+        "Pezzi di artiglieria",
+        "Piazzetta Luigi Angelini"
+      ]
+    },
 
-    stops: [
-      "Piazza Vecchia",
-      "Caffè del Tasso 1476"
-    ]
+    transitMap:
+      "https://www.google.com/maps/dir/?api=1&origin=Pezzi+di+artiglieria+Bergamo&destination=Piazzetta+Luigi+Angelini+Bergamo&travelmode=walking"
   },
 
-  transitMap:
-    "https://www.google.com/maps/dir/?api=1&origin=Piazza+Vecchia+Bergamo&destination=Caff%C3%A8+del+Tasso+1476+Bergamo&travelmode=walking"
-},
 
+  {
+    name: "Piazzetta Luigi Angelini",
+    type: "sight",
+    tag: "捷徑走廊",
 
-{
-  name: "Caffè del Tasso 1476",
-  type: "food",
-  tag: "咖啡休息",
+    note:
+      "可從此中庭走廊直接通往老城廣場",
 
-  note:
-    "老城廣場周邊的歷史咖啡館，可作為短暫休息點",
+    map:
+      "https://maps.app.goo.gl/DBSityoEsMeUvjnT8",
 
-  map:
-    "https://maps.app.goo.gl/GAMLzZ9RnEtkszmR7",
+    transit: {
+      mode: "walk",
+      from: "Piazzetta Luigi Angelini",
+      to: "Piazza Vecchia",
+      duration: "步行 5 分鐘",
 
-  transit: {
-    mode: "walk",
-    from: "Caffè del Tasso 1476",
-    to: "Il Fornaio",
-    duration: "步行約 2–3 分鐘",
+      stops: [
+        "Piazzetta Luigi Angelini",
+        "Piazza Vecchia"
+      ]
+    },
 
-    stops: [
-      "Caffè del Tasso 1476",
-      "Il Fornaio"
-    ]
+    transitMap:
+      "https://www.google.com/maps/dir/?api=1&origin=Piazzetta+Luigi+Angelini+Bergamo&destination=Piazza+Vecchia+Bergamo&travelmode=walking"
   },
 
-  transitMap:
-    "https://www.google.com/maps/dir/?api=1&origin=Caff%C3%A8+del+Tasso+1476+Bergamo&destination=Il+Fornaio+Bergamo&travelmode=walking"
-},
 
+  {
+    name: "Piazza Vecchia (老城廣場)",
+    type: "sight",
+    tag: "輕鬆區域",
 
-{
-  name: "Il Fornaio",
-  type: "food",
-  tag: "當地美食",
+    note:
+      "古城廣場散步與休息",
 
-  note:
-    "上城區麵包店，可作為簡單點心或途中補給",
+    map:
+      "https://maps.app.goo.gl/GAMLzZ9RnEtkszmR7",
 
-  map:
-    "https://maps.app.goo.gl/pDy86qQXNP8UkHyJ6",
+    transit: {
+      mode: "walk",
+      from: "Piazza Vecchia",
+      to: "Carmen Gelato",
+      duration: "步行 2 分鐘",
 
-  transit: {
-    mode: "walk",
-    from: "Il Fornaio",
-    to: "Carmen Gelato - Colleoni",
-    duration: "步行約 2–3 分鐘",
+      stops: [
+        "Piazza Vecchia",
+        "Carmen Gelato - Colleoni"
+      ]
+    },
 
-    stops: [
-      "Il Fornaio",
-      "Carmen Gelato - Colleoni"
-    ]
+    transitMap:
+      "https://www.google.com/maps/dir/?api=1&origin=Piazza+Vecchia+Bergamo&destination=Carmen+Gelato+Colleoni+Bergamo&travelmode=walking"
   },
 
-  transitMap:
-    "https://www.google.com/maps/dir/?api=1&origin=Il+Fornaio+Bergamo&destination=Carmen+Gelato+Colleoni+Bergamo&travelmode=walking"
-},
 
+  {
+    name: "Carmen Gelato - Colleoni",
+    type: "food",
+    tag: "冰淇淋/甜點",
 
-{
-  name: "Carmen Gelato - Colleoni",
-  type: "food",
-  tag: "冰淇淋/甜點",
+    note:
+      "當地熱門義大利冰淇淋店",
 
-  note:
-    "上城區甜點休息點，可依體力安排",
+    map:
+      "https://maps.app.goo.gl/pDy86qQXNP8UkHyJ6",
 
-  map:
-    "https://maps.app.goo.gl/pDy86qQXNP8UkHyJ6",
+    transit: {
+      mode: "walk",
+      from: "Carmen Gelato - Colleoni",
+      to: "Staz.Sup.Fun.Città",
+      duration: "步行約 5 分鐘",
 
-  transit: {
-    mode: "walk",
-    from: "Carmen Gelato - Colleoni",
-    to: "Via San Giacomo",
-    duration: "步行約 5 分鐘",
+      stops: [
+        "Carmen Gelato - Colleoni",
+        "Staz.Sup.Fun.Città"
+      ]
+    },
 
-    stops: [
-      "Carmen Gelato - Colleoni",
-      "Via San Giacomo"
-    ]
+    transitMap:
+      "https://maps.app.goo.gl/V7yTH3deMN6F7NRm8"
   },
 
-  transitMap:
-    "https://www.google.com/maps/dir/?api=1&origin=Carmen+Gelato+Colleoni+Bergamo&destination=Via+San+Giacomo+Bergamo&travelmode=walking"
-},
 
+  {
+    name: "Staz.Sup.Fun.Città (山上站)",
+    type: "station",
+    tag: "纜車回程",
 
-{
-  name: "Via San Giacomo",
-  type: "sight",
-  tag: "古城街道",
+    note:
+      "搭乘纜車下山返回 Bergamo 下城區",
 
-  note:
-    "沿上城街區前往 Porta San Giacomo，途中可欣賞 Città Alta 的街道與城牆景觀",
+    map:
+      "https://maps.app.goo.gl/fuunghtVxQhhKFqL6",
 
-  map:
-    "https://maps.app.goo.gl/GYM3j2ZJ1QYPTGm46",
+    transit: {
+      mode: "funicular",
+      line: "Funicolare Città Alta",
+      from: "Staz.Sup.Fun.Città",
+      to: "Funicolare Città Alta 山下站",
+      duration: "約 2–3 分鐘",
 
-  transit: {
-    mode: "walk",
-    from: "Via San Giacomo",
-    to: "Porta San Giacomo",
-    duration: "步行約 5 分鐘",
+      stops: [
+        "Staz.Sup.Fun.Città（山上站）",
+        "Funicolare Città Alta（山下站）"
+      ]
+    },
 
-    stops: [
-      "Via San Giacomo",
-      "Porta San Giacomo"
-    ]
+    transitMap:
+      "https://www.google.com/maps/dir/?api=1&origin=Funicolare+Citt%C3%A0+Alta+Upper+Station&destination=Funicolare+Citt%C3%A0+Alta+Lower+Station&travelmode=transit"
   },
 
-  transitMap:
-    "https://www.google.com/maps/dir/?api=1&origin=Via+San+Giacomo+Bergamo&destination=Porta+San+Giacomo+Bergamo&travelmode=walking"
-},
 
+  {
+    name: "Funicolare Città Alta (山下站)",
+    type: "sight",
+    tag: "纜車/步行",
 
-{
-  name: "Porta San Giacomo",
-  type: "sight",
-  tag: "古城城門",
+    note:
+      "出纜車站後步行至對向 Vittorio Emanuele 公車站",
 
-  note:
-    "從 Città Alta 離開的主要城門之一；在此欣賞城牆與下城區景觀，之後搭乘公車 15 返回 Bergamo 火車站",
+    map:
+      "https://maps.app.goo.gl/hQddPGQVXAosPEkh9",
 
-  map:
-    "https://maps.app.goo.gl/GYM3j2ZJ1QYPTGm46",
+    transit: {
+      mode: "walk",
+      from: "Funicolare Città Alta",
+      to: "Vittorio Emanuele 42",
+      duration: "步行約 1 分鐘",
 
-  transit: {
-    mode: "bus",
-    line: "ATB 15",
-    from: "Porta San Giacomo",
-    to: "Bergamo 火車站",
-    duration: "依現場班次為準",
+      stops: [
+        "Funicolare Città Alta",
+        "Vittorio Emanuele"
+      ]
+    },
 
-    stops: [
-      "Porta San Giacomo",
-      "Bergamo 火車站"
-    ]
+    transitMap:
+      "https://www.google.com/maps/dir/?api=1&origin=Funicolare+Citt%C3%A0+Alta+Lower+Station&destination=Vittorio+Emanuele+42+Bergamo&travelmode=walking"
   },
 
-  transitMap:
-    "https://www.google.com/maps/dir/?api=1&origin=Porta+San+Giacomo+Bergamo&destination=Stazione+FS+Bergamo&travelmode=transit"
-},
 
+  {
+    name: "Vittorio Emanuele 47",
+    type: "station",
+    tag: "公車上車站",
 
-{
-  name: "Bergamo 火車站",
-  type: "station",
-  tag: "回程樞紐",
+    note:
+      "搭乘 ATB 1 號公車返回火車站方向",
 
-  note:
-    "搭乘 Trenord RE 2232 返回 Milano Centrale",
+    map:
+      "https://maps.app.goo.gl/NtLLoYUNVAXrqHdz6",
 
-  map:
-    "https://maps.app.goo.gl/EVm2E9U8cCz7u4ep7",
+    transit: {
+      mode: "bus",
+      line: "ATB 1",
+      from: "Vittorio Emanuele 47",
+      to: "Papa Giovanni fermata 2",
+      duration: "約 8 分鐘",
 
-  transit: {
-    mode: "train",
-    line: "RE 2232",
-    from: "Bergamo",
-    to: "Milano Centrale",
-    duration: "約 50 分鐘",
+      stops: [
+        "Vittorio Emanuele 47",
+        "Papa Giovanni fermata 2"
+      ]
+    },
 
-    stops: [
-      "Bergamo",
-      "Milano Centrale"
-    ]
+    transitMap:
+      "https://www.google.com/maps/dir/?api=1&origin=Vittorio+Emanuele+47+Bergamo&destination=Papa+Giovanni+fermata+2+Bergamo&travelmode=transit"
   },
 
-  transitMap:
-    "https://www.google.com/maps/dir/?api=1&origin=Stazione+FS+Bergamo&destination=Milano+Centrale&travelmode=transit"
-}
-```
+
+  {
+    name: "Papa Giovanni fermata 2",
+    type: "station",
+    tag: "公車下車站",
+
+    note:
+      "抵達火車站前公車站，準備步行進入火車站",
+
+    map:
+      "https://maps.app.goo.gl/EVm2E9U8cCz7u4ep7",
+
+    transit: {
+      mode: "walk",
+      from: "Papa Giovanni fermata 2",
+      to: "Stazione FS Bergamo",
+      duration: "步行約 1 分鐘",
+
+      stops: [
+        "Papa Giovanni fermata 2",
+        "Stazione FS Bergamo"
+      ]
+    },
+
+    transitMap:
+      "https://www.google.com/maps/dir/?api=1&origin=Papa+Giovanni+fermata+2+Bergamo&destination=Stazione+FS+Bergamo&travelmode=walking"
+  },
+
+
+  {
+    name: "Bergamo 火車站",
+    type: "station",
+    tag: "回程樞紐",
+
+    note:
+      "搭乘 Trenord 列車返回米蘭中央車站",
+
+    map:
+      "https://maps.app.goo.gl/EVm2E9U8cCz7u4ep7",
+
+    transit: {
+      mode: "train",
+      line: "Trenord",
+      from: "Bergamo",
+      to: "Milano Centrale",
+      duration: "約 50–60 分鐘",
+
+      stops: [
+        "Bergamo",
+        "Milano Centrale"
+      ]
+    },
+
+    transitMap:
+      "https://www.google.com/maps/dir/?api=1&origin=Stazione+FS+Bergamo&destination=Milano+Centrale&travelmode=transit"
+  }
 
 ]
+
 }
 
 ,
